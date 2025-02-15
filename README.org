@@ -2,6 +2,15 @@
 #+TITLE: LaTeX Class for MCI (mcidoc)
 
 
+** Table of Contents :TOC_5:
+  - [[#introduction][Introduction]]
+  - [[#the-class][The Class]]
+    - [[#documentclass][Documentclass]]
+      - [[#state][State]]
+  - [[#faq][FAQ]]
+
+** Introduction
+
 MCI LaTeX Template Re-Caffeinated!!
 
 version: 1.00
@@ -26,3 +35,48 @@ the necessary formatted text.
           documentation and some example documents which should compile without any
           additional configuration. Nevertheless, I can only help with the errors from code
           and not with your personal LaTeX development environment (i.e., TeXStudio). 
+
+
+** The Class
+
+*** Documentclass
+
+Below is an example execution of the class ~mcidoc~
+
+#+begin_src latex
+\documentclass[   
+state       = Report,                       % (Report | Slide | Thesis | Poster)
+lang        = EN,                           % (DE     | EN) 
+degree      = BSc,                          % (BSc    | MSc)
+code-engine = listings,                     % (minted | listings | none)
+title-page  = nouveau,                      % (tudor  | nouveau)
+dept        = MECH                          % (MECH   | SBT)
+]{mcidoc} 
+#+end_src
+
+As you can see the class have a wide variety of options which all are shown in the commented
+lines (%).
+
+Let's go through each of them
+
+**** State
+
+This is the variable which controls HOW the document looks and feels from a practical
+perspective, as in each document abides certain forms, shapes and standards and the ~state~
+variable is what controls it.
+
+The options are as follows:
+
+| KEY    | DESCRIPTION                                                                    |
+|--------+--------------------------------------------------------------------------------|
+| Report | The standard report class which is meant to be used in any lecture assignment. |
+| Slide  |                                                                                |
+| Thesis |                                                                                |
+| Poster |                                                                                |
+
+** FAQ
+
+
+
+
+-DTMc
