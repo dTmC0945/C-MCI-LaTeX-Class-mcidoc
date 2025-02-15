@@ -1,0 +1,8 @@
+
+#+TITLE: LaTeX Class for MCI (mcidoc)
+
+
+MCI LaTeX Template Re-Caffeinated!!          
+version: 1.00
+
+Greetings!!!
