@@ -67,12 +67,12 @@ variable is what controls it.
 
 The options are as follows:
 
-| KEY    | DESCRIPTION                                                                    |
-|--------+--------------------------------------------------------------------------------|
-| Report | The standard report class which is meant to be used in any lecture assignment. |
-| Slide  |                                                                                |
-| Thesis |                                                                                |
-| Poster |                                                                                |
+| KEY    | DESCRIPTION                                                                                                                                                                   |
+|--------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Report | The standard report class which is meant to be used in any lecture assignment. The document is based on scrreprt and does simple customisation on it to conform to standards. |
+| Slide  | Generates a slide with MCI logos and design language. Uses beamer as base                                                                                                     |
+| Thesis | Thesis structure based on scrbook and conforms to past thesis structures.                                                                                                     |
+| Poster | Generates a Poster in A3 format using MCI style (WIP)                                                                                                                         |
 
 ** FAQ
 
