@@ -5,8 +5,13 @@
 ** Table of Contents :TOC_5:
   - [[#introduction][Introduction]]
   - [[#the-class][The Class]]
-    - [[#documentclass][Documentclass]]
-      - [[#state][State]]
+    - [[#document-class][Document Class]]
+      - [[#state][state]]
+      - [[#lang][lang]]
+      - [[#degree][degree]]
+      - [[#code-engine][code-engine]]
+      - [[#title-page][title-page]]
+      - [[#dept][dept]]
   - [[#faq][FAQ]]
 
 ** Introduction
@@ -39,7 +44,7 @@ the necessary formatted text.
 
 ** The Class
 
-*** Documentclass
+*** Document Class
 
 Below is an example execution of the class ~mcidoc~
 
@@ -59,7 +64,7 @@ lines (%).
 
 Let's go through each of them
 
-**** State
+**** state
 
 This is the variable which controls HOW the document looks and feels from a practical
 perspective, as in each document abides certain forms, shapes and standards and the ~state~
@@ -73,6 +78,90 @@ The options are as follows:
 | Slide  | Generates a slide with MCI logos and design language. Uses beamer as base                                                                                                     |
 | Thesis | Thesis structure based on scrbook and conforms to past thesis structures.                                                                                                     |
 | Poster | Generates a Poster in A3 format using MCI style (WIP)                                                                                                                         |
+
+**** lang
+
+As can be seen this controls the way LaTeX interact with language specific formatting and
+typography. For this, [[https:https://mirror.kumi.systems/ctan/macros/latex/required/babel/base/babel.pdf][babel]] is used. It is quite a versatile language package which makes life
+easier (no need to write "o to get ö anymore)
+
+In addition all trivial stuff (such as figure/table captions, table of contents, chapter
+headers) are automatically translated to the correct language.  Following this, cover pages
+are also changed depending on the chosen language.
+
+The options are as follows
+
+| KEY | DESCRIPTION     |
+|-----+-----------------|
+| EN  | English support |
+| DE  | German support  |
+
+**** degree
+
+Defines the degree which the document is written as. As you can imagine, there are two (2)
+options.
+
+This key changes some texts in the cover page on some document states.
+
+| KEY | DESCRIPTION |
+|-----+-------------|
+| BSc | Bachelor    |
+| MSc | Masters     |
+
+**** code-engine
+
+Coding makes the world go round and of course it is also important to showcase all your
+important code in your report/thesis and for that LaTeX got you covered. This class supports
+out of the box two (2) types of packages to showcase your good-looking code:
+
+| KEY      | DESCRIPTION                                       |
+|----------+---------------------------------------------------|
+| minted   | Loads§ the minted package and customised settings |
+| listings | Loads listings package and customised settings    |
+| none     | no code engine is loaded                          |
+
+
+It is a worthy discussion to ask why did I have to come up with two packages which do the
+same thing ?! Well,.... yeah but I have a legitimate reason you see. While minted is the
+far superior option, it requires what is called a "shell escape". This basically means that
+the minted package needs to access your shell interpreter to do its thing which can be seen
+as a security issue (which is a good reason). To enable this, one must run their LaTeX in
+shell escape mode and this can be a bit laborious so some might want to avoid this....
+
+listings on the other hand is pure-bred LaTeX solution and does not need any -shell-escape
+and can be used without modifications to your compilation.
+
+If you are going to use Overleaf (Why tho?) both options are valid so it is up to you as
+both were customised to look almost identical to each other.
+
+**** title-page
+
+Title pages are important as it is the first thing the assessor sees or anyone for that matter.
+To conform with the standards (i.e., previous works) the class supports two (2) options:
+
+| KEY     | DESCRIPTION                                     |
+|---------+-------------------------------------------------|
+| tudor   | Apply the past accepted title pages             |
+| nouveau | Applies a slightly curated version of the title |
+
+Please don't ask why the names are the way they are. I was reading a something about
+architecture and those options stuck...
+
+**** dept
+
+The final *GLOBAL* option is choosing the department.
+
+| KEY  | DESCRIPTION                |
+|------+----------------------------|
+| MECH | Deparments of Mechatronics |
+| SBT  |                            |
+
+While I will add more information if any student wants to use this template which are not of
+the predefined department, they can write the command *BEFORE* the ~\MakeTitle~ command:
+
+#+begin_src latex
+\AddDeparmentHook{SW}{Silly Walks}
+#+end_src
 
 ** FAQ
 
