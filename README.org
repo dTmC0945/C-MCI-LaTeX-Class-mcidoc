@@ -33,6 +33,8 @@ the necessary formatted text.
           I can only help with the errors from code
           and not with your personal LaTeX development environment (i.e., TeXStudio). 
 
+This class is licenced under MIT License. TLDR; you are free to use, copy, modify, merge,
+publish, disribute the work here as you wish.
 
 ** The Class
 
@@ -41,7 +43,11 @@ is described below
 
 *** Document Class
 
-Below is an example execution of the class ~mcidoc~
+Below is an example execution of the class ~mcidoc~. The bevaviour of the class is the same as
+with other classes you may encounter (i.e., article, srcreprt) with it having a ~key~ and ~value~
+system.
+
+All of its *global* options are available as follows:
 
 #+begin_src latex
 \documentclass[   
@@ -49,23 +55,26 @@ state       = Report,                       % (Report | Slide | Thesis | Poster)
 lang        = EN,                           % (DE     | EN) 
 degree      = BSc,                          % (BSc    | MSc)
 code-engine = listings,                     % (minted | listings | none)
-title-page  = nouveau,                      % (tudor  | nouveau)
+title-page  = A,                            % (A  | B)
 dept        = MECH                          % (MECH   | SBT)
 ]{mcidoc} 
 #+end_src
 
+*NOTE:* Each state can have its own option and therefore it is recommended to read its respective
+      section to learn more about it.
+
 As you can see the class have a wide variety of options which all are shown in the commented
 lines (%).
 
-Let's go through each of them
+Let's go through each of them in detail and cover all their features.
 
-**** state
+**** Key value: state
 
-This is the variable which controls HOW the document looks and feels from a practical
-perspective, as in each document abides certain forms, shapes and standards and the ~state~
-variable is what controls it.
+This is the variable which controls HOW the document looks and feels, as each document has
+certain requirements (i.e., page geometry, text location, custom commands) which needs to be
+taken care of within its state
 
-The options are as follows:
+The ~value~ of the key ~state~ are as follows:
 
 | KEY    | DESCRIPTION                                                                                                                                                                   |
 |--------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -74,17 +83,44 @@ The options are as follows:
 | Thesis | Thesis structure based on scrbook and conforms to past thesis structures.                                                                                                     |
 | Poster | Generates a Poster in A3 format using MCI style (WIP)                                                                                                                         |
 
+These options are based on the following classess and therefore will accept
+their respective options:
+
+| STATE  | ORIGINAL CLASS |
+|--------+----------------|
+| Report | scrreprt       |
+| Slide  | beamer         |
+| Thesis | scrbook        |
+| Poster |                |
+
+Therefore one can do the following for the Report state:
+
+#+begin_src latex
+\documentclass[   
+state       = Report,                       % (Report | Slide | Thesis | Poster)
+lang        = EN,                           % (DE     | EN) 
+degree      = BSc,                          % (BSc    | MSc)
+code-engine = listings,                     % (minted | listings | none)
+title-page  = A,                            % (A  | B)
+dept        = MECH,                         % (MECH   | SBT)
+draft       = true                          % comes from KOMA scrreprt
+]{mcidoc} 
+#+end_src
+
+As can be seen we have added a ~draft~ option to the class which will draw small black boxes
+at the end of overly long lines.
+
 **** lang
 
 As can be seen this controls the way LaTeX interact with language specific formatting and
-typography. For this, [[https:https://mirror.kumi.systems/ctan/macros/latex/required/babel/base/babel.pdf][babel]] is used. It is quite a versatile language package which makes life
+typography. For this, [[https://mirror.kumi.systems/ctan/macros/latex/required/babel/base/babel.pdf][babel]] is used. It is quite a versatile language package which makes life
 easier (no need to write "o to get ö anymore)
 
 In addition all trivial stuff (such as figure/table captions, table of contents, chapter
 headers) are automatically translated to the correct language.  Following this, cover pages
 are also changed depending on the chosen language.
 
-The options are as follows
+The options are as follows:
 
 | KEY | DESCRIPTION     |
 |-----+-----------------|
@@ -134,13 +170,12 @@ both were customised to look almost identical to each other.
 Title pages are important as it is the first thing the assessor sees or anyone for that matter.
 To conform with the standards (i.e., previous works) the class supports two (2) options:
 
-| KEY     | DESCRIPTION                                     |
-|---------+-------------------------------------------------|
-| tudor   | Apply the past accepted title pages             |
-| nouveau | Applies a slightly curated version of the title |
+| KEY | DESCRIPTION                                                          |
+|-----+----------------------------------------------------------------------|
+| A   | Apply the past accepted title pages                                  |
+| B   | Applies a slightly curated and opinionated version of the title page |
 
-Please don't ask why the names are the way they are. I was reading a something about
-architecture and those options stuck...
+Letter will suffice for naming them.
 
 **** dept
 
