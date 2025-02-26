@@ -1,18 +1,10 @@
-
 #+TITLE: LaTeX Class for MCI (mcidoc)
 
-
-** Table of Contents :TOC_5:
+** Table of Contents :TOC_2:
   - [[#introduction][Introduction]]
   - [[#the-class][The Class]]
-    - [[#document-class][Document Class]]
-      - [[#state][state]]
-      - [[#lang][lang]]
-      - [[#degree][degree]]
-      - [[#code-engine][code-engine]]
-      - [[#title-page][title-page]]
-      - [[#dept][dept]]
-  - [[#faq][FAQ]]
+  - [[#overleaf][Overleaf]]
+  - [[#future-upgradespatches][Future Upgrades/Patches]]
 
 ** Introduction
 
@@ -22,27 +14,30 @@ version: 1.00
 
 Greetings!!!
 
-
 This is a LaTeX document formatting designed to cater to all possible student requirements
-Regarding document preparation, presentation, poster and thesis writing. All bundled up in
+regarding document preparation, presentation, poster and thesis writing. All bundled up in
 on class called mcidoc. Aside from trying to standardise formatting across different report
 style, the goal here is also to have a place to have an UNOFFICIAL/OFFICIAL repo housing all
 the necessary formatted text.
 
  *NOTE:* This class has been tested on different computers, different OSs and LuaTeX
-       and pdfTeX. However, as with everything, there will always be edge cases and I am sure
-       to that end, if you let me know anonymously or just let me know via email, I can 
-       squash the bugs or add any feature it may seem necessary.
+       and pdfTeX. However, as with everything, there will always be edge cases and 
+       if you let me know either anonymously, let me know via email or create an issue on
+       GitHub, I can squash the bugs or add any feature it may seem necessary.
 
-
- WARNING: While I will try to help with any problem this class might have, it is by no means
+   
+ WARNING: While I will try to help with any problem this class might have, it is by NO means
           I am providing any kind of WARRANTY or TECHNICAL SUPPORT. There will be
           documentation and some example documents which should compile without any
-          additional configuration. Nevertheless, I can only help with the errors from code
+          additional configuration as tested by the author. Nevertheless,
+          I can only help with the errors from code
           and not with your personal LaTeX development environment (i.e., TeXStudio). 
 
 
 ** The Class
+
+The class is the heart of any LaTeX documentation and for mci a custom one is designed which
+is described below
 
 *** Document Class
 
@@ -163,9 +158,35 @@ the predefined department, they can write the command *BEFORE* the ~\MakeTitle~ 
 \AddDeparmentHook{SW}{Silly Walks}
 #+end_src
 
-** FAQ
+** Overleaf
 
+WIP
 
+** Future Upgrades/Patches
 
+These are the future updates for this class, which will be updated as time goes on. By no means
+there is a promise of certain features be implemented within a given time.
+
+- [ ] Fix the Report subclass
+  - [ ] Fix the MCI text on the cover-page
+- [ ] Implement the Thesis subclass
+  - [ ] Fix the cover page alignment
+  - [ ] Apply the appendix page numbering
+  - [ ] Improve the german language text
+  - [ ] Add hooks to automatically add LOF and LOT to the main TOC
+  - [ ] Add a embargo option to the class
+  - [ ] Create a thesis LaTeX example
+- [ ] Implement the Slide subclass
+  - [ ] Finalise the coverpage for the slide
+  - [ ] Research the coverpages used for MCI
+  - [ ] Implement auto TOC for the class
+  - [ ] Possibly implement a progressbar as an option
+- [ ] Create a Poster subclass
+  - [ ] Define two standard LaTex template design
+  - [ ] Create a LaTeX example document
+  - [ ] Create documentation for this class
+- [ ] Overleaf
+  - [ ] Create overleaf examples
+  - [ ] Improve compilation time for overleaf
 
 -DTMc
