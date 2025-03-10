@@ -499,7 +499,12 @@
           \begin{flushleft}
             % 
             % First Row of text with MCI on left and department on right
-            \MakeUppercase{Management Center Innsbruck}
+            \Lang@English{
+              \MakeUppercase{MCI | The Entrepreneurial School}
+            }
+            \Lang@German{
+              \MakeUppercase{MCI | Die Unternehmerische Hochschule}
+            }
             \hfill
             \MakeUppercase{\textbf{\Department}} \\
             % 
