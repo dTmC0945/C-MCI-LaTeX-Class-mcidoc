@@ -14,6 +14,10 @@ version: 1.00
 
 Greetings!!!
 
+*NOTE:* As it currently stands, only the REPORT class is working correctly. The other classes
+are actively being developed and should be finished soon :)
+
+
 This is a LaTeX document formatting designed to cater to all possible student requirements
 regarding document preparation, presentation, poster and thesis writing. All bundled up in
 on class called mcidoc. Aside from trying to standardise formatting across different report

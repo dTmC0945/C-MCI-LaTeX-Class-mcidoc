@@ -9,5 +9,5 @@
 *.synctex.gz
 *.toc
 *.el
-*.DS_Store
+.DS_Store
 *blx.bib    
