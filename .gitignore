@@ -1,0 +1,13 @@
+# Remove auxiliary files
+*.aux
+*.log
+*.lot
+*.lof
+*.blg
+*.bbl
+*.run.xml
+*.synctex.gz
+*.toc
+*.el
+*.DS_Store
+*blx.bib    

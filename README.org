@@ -26,7 +26,7 @@ the necessary formatted text.
        GitHub, I can squash the bugs or add any feature it may seem necessary.
 
    
- WARNING: While I will try to help with any problem this class might have, it is by NO means
+ *WARNING:* While I will try to help with any problem this class might have, it is by NO means
           I am providing any kind of WARRANTY or TECHNICAL SUPPORT. There will be
           documentation and some example documents which should compile without any
           additional configuration as tested by the author. Nevertheless,
