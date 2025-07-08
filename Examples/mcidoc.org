@@ -1,0 +1,158 @@
+#+TITLE: mcidoc class
+
+
+** Table of Contents :TOC_5:
+- [[#introduction][Introduction]]
+  - [[#purpose-of-making][Purpose of Making]]
+- [[#the-mcidoc-class][The mcidoc Class]]
+  - [[#class-header][Class Header]]
+  - [[#declaring-keys][Declaring Keys]]
+    - [[#internal-command-ifstate][INTERNAL COMMAND: IF@STATE]]
+  - [[#class-choice][Class Choice]]
+    - [[#thesis-class][Thesis Class]]
+    - [[#slide-class][Slide Class]]
+    - [[#report-class][Report Class]]
+
+* Introduction
+
+This is a LaTeX document formatting designed to cater to all possible student
+requirements regarding:
+ - document preparation,
+ - presentation,
+ - poster,
+ - and thesis writing.
+   
+All the aforementioned documents are bundled up as a class called ~mcidoc~.
+
+** Purpose of Making
+
+ The main ethos of this class is to standardise and streamline document creation which abides
+ to the standards set by the institution with regards to:
+ - the font-size,
+ - page spacing,
+ - line spacing,
+ - caption style,
+ - languages specific settings
+ - header/footer styles
+and so on so forth.
+  
+A second goal it to create a repository to house a standard class to minimise any friction
+between your work and the presentation. Therefore care was given to how the class behaves
+to minimise the dependencies it needs and give you key/value pairs to modify the document
+as you see fit.
+
+
+#+begin_quote
+[!TIP]
+NOTE: This class has been tested on different computers, different OSs and LuaTeX
+ : and pdfTeX. However, as with everything, there will always be edge cases and I am sure
+ : to that end, if you let me know anonymously or just let me know via email, I can 
+ : squash the bugs or add any feature it may seem necessary.
+#+end_quote 
+ 
+WARNING: While I will try to help with any problem this class might have, it is by no means
+: I am providing any kind of WARRANTY or TECHNICAL SUPPORT. There will be
+: documentation and some example documents which should compile without any
+: additional configuration. Nevertheless, I can only help with the errors from code
+: and not with your personal LaTeX development environment (i.e., TeXStudio).
+
+* The mcidoc Class
+
+** Class Header
+
+We start with defining the class header where we define the:
+ - Which version of LaTeX is required,
+ - Give an information about the package
+
+#+begin_src latex
+\NeedsTeXFormat{LaTeX2e}[13-02-2025]  
+\ProvidesClass{mcidoc}[13-02-2025]{A documentclass for mci MECH Students}    
+#+end_src
+
+We then define a value called ~\mci@version~ to have a
+version control
+
+#+begin_src latex
+\def\mci@version{1.00}                
+#+end_src
+
+** Declaring Keys
+
+We now define the keys which is needed for the class to work and some
+information regarding it:
+
+#+begin_src latex
+\DeclareKeys{
+  state.store       = \DocState,         % Declare the document state (Thesis | Report | Slide)
+  lang.store        = \Lang,             % Define document language   (EN | DE)
+  degree.store      = \Degree,           % Define degree level        (BSc | MSc)
+  dept.store        = \Dept,             % Define department          (mech)
+  code-engine.store = \CodeEngine,       % Define code environment    (listings | minted)
+  title-page.store  = \TitlePageStyle,   % Define title page style    (standard | nouveau)
+  bib-active.store  = \KEY@BIBLIOGRAPHY, % (true | false)
+  bib-style.store   = \KEY@BIBSTYLE,     % (true | false)
+  column-type.store = \KEY@COLUMNTYPE,   % (true | false)
+}
+#+end_src
+
+And let's not forget to process the Keys.
+
+#+begin_src latex
+\ProcessKeyOptions\relax        
+#+end_src
+
+*** INTERNAL COMMAND: IF@STATE
+
+We now need to define a non-user command to create a short-hand
+to select document state:
+
+ - #1 : The state of the document (i.e., Report, Thesis, ...)
+ - #2 : The action to be taken
+
+#+begin_src latex
+\newcommand{\If@State}[2]{%
+  \ifthenelse{\equal{\DocState}{#1}
+  }{%
+    #2
+  }{%
+    % 
+  }%
+}%
+#+end_src
+
+** Class Choice
+
+As you can see I am not really creating anything from scratch.
+No one does as almost every document class is a super set of one
+another. Currently there are three classes ~mcidoc~ uses to create
+the documents
+
+*** Thesis Class
+
+We load the KOMA-Script class and describe the following options.
+There are points worth discussing.
+
+- We set the font-size 10pt to not waste paper.
+- We set the value of ~twoside~ as true to allow margins to change
+  between even and odd.
+- We also set it to ~openright~ to make sure chapters are opening
+  on the RIGHT.
+
+#+begin_src latex
+\If@State{Thesis}{
+  \LoadClass[
+  chapterprefix = true,
+  DIV           = 11,
+  paper         = A4,
+  fontsize      = 10,
+  twoside       = true,
+  openright
+  ]{scrreprt}
+}
+#+end_src
+
+
+*** Slide Class
+
+
+*** Report Class
