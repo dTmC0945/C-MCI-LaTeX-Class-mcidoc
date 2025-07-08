@@ -9,6 +9,8 @@
   - [[#declaring-keys][Declaring Keys]]
   - [[#load-packages][Load Packages]]
     - [[#package-ifthen][Package: ifthen]]
+    - [[#package-tikz][Package: tikz]]
+    - [[#package-graphicx][Package: graphicx]]
     - [[#internal-command-ifstate][INTERNAL COMMAND: IF@STATE]]
   - [[#class-choice][Class Choice]]
     - [[#thesis-class][Thesis Class]]
@@ -22,8 +24,15 @@
   - [[#thesis-specific-commands][Thesis Specific Commands]]
     - [[#newcommand-declarationofnovelty][NEWCOMMAND: DeclarationOfNovelty]]
     - [[#newcommand-thesisembargorequest][NEWCOMMAND: ThesisEmbargoRequest]]
+  - [[#header-settings][Header Settings]]
     - [[#newcommand-tableofcontents][NEWCOMMAND: TableOfContents]]
     - [[#newcommand-maketitlepage][NEWCOMMAND MakeTitlePage]]
+    - [[#package-geometry][Package: geometry]]
+    - [[#package-siunitx][Package: siunitx]]
+    - [[#package-booktabs][Package: booktabs]]
+    - [[#package-enumitem][Package: enumitem]]
+    - [[#package-ams][Package: ams]]
+    - [[#package-ams-1][Package: ams]]
     - [[#end-mcidoc][END: mcidoc]]
 
 * Introduction
@@ -72,6 +81,9 @@ and not with your personal LaTeX development environment (i.e., TeXStudio).
 #+end_quote
 
 * The mcidoc Class
+:PROPERTIES:
+:HEADER-ARGS: :tangle yes :tangle mcidoc.cls
+:END:
 
 ** Class Header
 
@@ -81,7 +93,7 @@ We start with defining the class header where we define the:
 
 #+begin_src latex
 \NeedsTeXFormat{LaTeX2e}[13-02-2025]  
-\ProvidesClass{mcidoc}[13-02-2025]{A documentclass for mci MECH Students}    
+\ProvidesClass{mcidoc}[13-02-2025 A documentclass for mci MECH Students]
 #+end_src
 
 We then define a value called ~\mci@version~ to have a
@@ -127,6 +139,22 @@ Allows conditional statements,
 #+begin_src latex
 \RequirePackage{ifthen}         
 #+end_src
+
+*** Package: tikz
+
+#+begin_src latex
+\RequirePackage{tikz}
+\usetikzlibrary{calc}
+#+end_src
+
+*** Package: graphicx
+
+#+begin_src latex
+\RequirePackage{graphicx}
+\usetikzlibrary{}
+#+end_src
+
+
 
 *** INTERNAL COMMAND: IF@STATE
 
@@ -433,6 +461,26 @@ Here we define the departments supported by the ~mcidoc~ class:
   }
 #+end_src
 
+** Header Settings
+
+#+begin_src latex
+\If@State{Thesis}{
+
+  \RequirePackage[
+  automark,
+  headsepline,
+  autooneside  = false
+  ]{scrlayer-scrpage}
+
+  \clearpairofpagestyles
+
+  \ihead{\MakeUppercase{\leftmark}}
+  \ohead{\rightmark}
+  \ifoot{\thepage}
+  \renewcommand{\headfont}{\normalfont}
+}
+#+end_src
+
 *** NEWCOMMAND: TableOfContents
 
 #+begin_src latex
@@ -502,8 +550,9 @@ the correct placement of the objects within the page.
         }%
       }%
     \end{center}
-    %
+    
     \vspace{4ex}
+    
     % Add the fullfilment text
     \ifthenelse{%
       \equal{\Lang}{EN}%
@@ -512,9 +561,9 @@ the correct placement of the objects within the page.
     }{%
       \Large zur Erlangung des akademischen Grades%
     }%
-    %
+    
     \vspace{1ex}
-    %
+    
     % Add which degree is it from.
     \ifthenelse{%
       \equal{\Degree}{BSc}%
@@ -523,9 +572,9 @@ the correct placement of the objects within the page.
     }{%
       \Large {\em Master of Science in Engineering}%
     }%
-    %
+    
     \vspace{\fill}
-    %
+    
     % Add a third (!?) declaration of degree
     \ifthenelse{%
       \equal{\Degree}{BSc}%
@@ -534,35 +583,35 @@ the correct placement of the objects within the page.
     }{%
       \Large {Master Program}%
     }%
-    %
+    
     \vspace{1ex}%
-    %
+    
     {\normalsize Mechatronics \& Smart Technologies:}
-    %
+    
     \vspace{1ex}
-    %
+    
     {\normalsize Management Center Innsbruck}
-    % 
+     
     \vspace{8ex}
-    %
+    
     {\Large Supervisor} 
-    % 
+     
     \vspace{1ex}
-    %
+    
     {\Large \the\Supervisor}
-    %
+    
     \vspace{8ex}
-    %
+    
     {\Large Author}
-    %
+    
     \vspace{1ex}
-    %
+    
     {\Large \the\StudentName}
-    %
+    
     \vspace{1ex}
-    %
+    
     {\Large \the\StudentID}
-    %
+    
   \end{titlepage}
   %
   %
@@ -576,6 +625,79 @@ the correct placement of the objects within the page.
 }{}
 #+end_src
 
+*** Package: geometry
+
+#+begin_src latex
+\RequirePackage{geometry}
+#+end_src
+
+*** Package: siunitx
+
+#+begin_src latex
+\RequirePackage{siunitx}
+#+end_src
+
+*** Package: booktabs
+
+#+begin_src latex
+ \usepackage{array, booktabs, multirow}
+#+end_src
+
+*** Package: enumitem
+
+#+begin_src latex
+  \RequirePackage{enumitem}
+  % \def\labelitemi{$\blacksquare$}
+  \setlist[itemize]{label=$\blacksquare$}
+#+end_src
+
+
+*** Package: ams
+
+#+begin_src latex
+\RequirePackage{pgfplots}
+#+end_src
+
+*** Package: ams
+
+#+begin_src latex
+\RequirePackage{
+  amsmath,
+  amssymb
+}
+
+#+end_src
+
+#+begin_src latex
+\RequirePackage{listings}
+
+  \definecolor{codegreen}{rgb}{0,0.6,0}
+  \definecolor{codegray}{rgb}{0.5,0.5,0.5}
+  \definecolor{codepurple}{rgb}{0.58,0,0.82}
+  \definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+  \lstdefinestyle{mystyle}{
+    backgroundcolor       = \color{gray!10},
+    commentstyle          = \color{codegreen},
+    keywordstyle          = \color{magenta},
+    numberstyle           = \tiny\color{codegray},
+    stringstyle           = \color{codepurple},
+    basicstyle            = \ttfamily\footnotesize,
+    breakatwhitespace     = false,
+    breaklines            = true,
+    captionpos            = b,
+    keepspaces            = true,
+    numbers               = left,
+    numbersep             = 5pt,
+    showspaces            = false,
+    showstringspaces      = false,
+    showtabs              = false,
+    tabsize               = 2
+  }
+
+
+  \lstset{style=mystyle}
+#+end_src
 
 *** END: mcidoc
 
