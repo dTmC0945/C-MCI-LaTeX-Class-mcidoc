@@ -1,231 +1,158 @@
-#+TITLE: LaTeX Class for MCI (mcidoc)
-
-** Table of Contents :TOC_2:
-  - [[#introduction][Introduction]]
-  - [[#the-class][The Class]]
-  - [[#overleaf][Overleaf]]
-  - [[#future-upgradespatches][Future Upgrades/Patches]]
-
-** Introduction
-
-MCI LaTeX Template Re-Caffeinated!!
-
-version: 1.02
-
-Greetings!!!
-
-*NOTE:* As it currently stands, only the REPORT class is working correctly. The other classes
-are actively being developed and should be finished soon :)
+#+TITLE: mcidoc class
 
 
-This is a LaTeX document formatting designed to cater to all possible student requirements
-regarding document preparation, presentation, poster and thesis writing. All bundled up in
-on class called mcidoc. Aside from trying to standardise formatting across different report
-style, the goal here is also to have a place to have an UNOFFICIAL/OFFICIAL repo housing all
-the necessary formatted text.
+** Table of Contents :TOC_5:
+- [[#introduction][Introduction]]
+  - [[#purpose-of-making][Purpose of Making]]
+- [[#the-mcidoc-class][The mcidoc Class]]
+  - [[#class-header][Class Header]]
+  - [[#declaring-keys][Declaring Keys]]
+    - [[#internal-command-ifstate][INTERNAL COMMAND: IF@STATE]]
+  - [[#class-choice][Class Choice]]
+    - [[#thesis-class][Thesis Class]]
+    - [[#slide-class][Slide Class]]
+    - [[#report-class][Report Class]]
 
- *NOTE:* This class has been tested on different computers, different OSs and LuaTeX
-       and pdfTeX. However, as with everything, there will always be edge cases and 
-       if you let me know either anonymously, let me know via email or create an issue on
-       GitHub, I can squash the bugs or add any feature it may seem necessary.
+* Introduction
 
+This is a LaTeX document formatting designed to cater to all possible student
+requirements regarding:
+ - document preparation,
+ - presentation,
+ - poster,
+ - and thesis writing.
    
- *WARNING:* While I will try to help with any problem this class might have, it is by NO means
-          I am providing any kind of WARRANTY or TECHNICAL SUPPORT. There will be
-          documentation and some example documents which should compile without any
-          additional configuration as tested by the author. Nevertheless,
-          I can only help with the errors from code
-          and not with your personal LaTeX development environment (i.e., TeXStudio). 
+All the aforementioned documents are bundled up as a class called ~mcidoc~.
 
-This class is licenced under MIT License. TLDR; you are free to use, copy, modify, merge,
-publish, disribute the work here as you wish.
+** Purpose of Making
 
-** The Class
+ The main ethos of this class is to standardise and streamline document creation which abides
+ to the standards set by the institution with regards to:
+ - the font-size,
+ - page spacing,
+ - line spacing,
+ - caption style,
+ - languages specific settings
+ - header/footer styles
+and so on so forth.
+  
+A second goal it to create a repository to house a standard class to minimise any friction
+between your work and the presentation. Therefore care was given to how the class behaves
+to minimise the dependencies it needs and give you key/value pairs to modify the document
+as you see fit.
 
-The class is the heart of any LaTeX documentation and for mci a custom one is designed which
-is described below
 
-*** Document Class
+#+begin_quote
+[!TIP]
+NOTE: This class has been tested on different computers, different OSs and LuaTeX
+ : and pdfTeX. However, as with everything, there will always be edge cases and I am sure
+ : to that end, if you let me know anonymously or just let me know via email, I can 
+ : squash the bugs or add any feature it may seem necessary.
+#+end_quote 
+ 
+WARNING: While I will try to help with any problem this class might have, it is by no means
+: I am providing any kind of WARRANTY or TECHNICAL SUPPORT. There will be
+: documentation and some example documents which should compile without any
+: additional configuration. Nevertheless, I can only help with the errors from code
+: and not with your personal LaTeX development environment (i.e., TeXStudio).
 
-Below is an example execution of the class ~mcidoc~. The bevaviour of the class is the same as
-with other classes you may encounter (i.e., article, srcreprt) with it having a ~key~ and ~value~
-system.
+* The mcidoc Class
 
-All of its *global* options are available as follows:
+** Class Header
 
-#+begin_src latex
-\documentclass[   
-state       = Report,                       % (Report | Slide | Thesis | Poster)
-lang        = EN,                           % (DE     | EN) 
-degree      = BSc,                          % (BSc    | MSc)
-code-engine = listings,                     % (minted | listings | none)
-title-page  = A,                            % (A  | B)
-dept        = MECH                          % (MECH   | SBT)
-]{mcidoc} 
-#+end_src
-
-*NOTE:* Each state can have its own option and therefore it is recommended to read its respective
-      section to learn more about it.
-
-As you can see the class have a wide variety of options which all are shown in the commented
-lines (%).
-
-Let's go through each of them in detail and cover all their features.
-
-**** Key value: state
-
-This is the variable which controls HOW the document looks and feels, as each document has
-certain requirements (i.e., page geometry, text location, custom commands) which needs to be
-taken care of within its state
-
-The ~value~ of the key ~state~ are as follows:
-
-| KEY    | DESCRIPTION                                                                                                                                                                   |
-|--------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Report | The standard report class which is meant to be used in any lecture assignment. The document is based on scrreprt and does simple customisation on it to conform to standards. |
-| Slide  | Generates a slide with MCI logos and design language. Uses beamer as base                                                                                                     |
-| Thesis | Thesis structure based on scrbook and conforms to past thesis structures.                                                                                                     |
-| Poster | Generates a Poster in A3 format using MCI style (WIP)                                                                                                                         |
-
-These options are based on the following classess and therefore will accept
-their respective options:
-
-| STATE  | ORIGINAL CLASS |
-|--------+----------------|
-| Report | scrreprt       |
-| Slide  | beamer         |
-| Thesis | scrbook        |
-| Poster |                |
-
-Therefore one can do the following for the Report state:
+We start with defining the class header where we define the:
+ - Which version of LaTeX is required,
+ - Give an information about the package
 
 #+begin_src latex
-\documentclass[   
-state       = Report,                       % (Report | Slide | Thesis | Poster)
-lang        = EN,                           % (DE     | EN) 
-degree      = BSc,                          % (BSc    | MSc)
-code-engine = listings,                     % (minted | listings | none)
-title-page  = A,                            % (A  | B)
-dept        = MECH,                         % (MECH   | SBT)
-draft       = true                          % comes from KOMA scrreprt
-]{mcidoc} 
+\NeedsTeXFormat{LaTeX2e}[13-02-2025]  
+\ProvidesClass{mcidoc}[13-02-2025]{A documentclass for mci MECH Students}    
 #+end_src
 
-As can be seen we have added a ~draft~ option to the class which will draw small black boxes
-at the end of overly long lines.
-
-**** lang
-
-As can be seen this controls the way LaTeX interact with language specific formatting and
-typography. For this, [[https://mirror.kumi.systems/ctan/macros/latex/required/babel/base/babel.pdf][babel]] is used. It is quite a versatile language package which makes life
-easier (no need to write "o to get ö anymore)
-
-In addition all trivial stuff (such as figure/table captions, table of contents, chapter
-headers) are automatically translated to the correct language.  Following this, cover pages
-are also changed depending on the chosen language.
-
-The options are as follows:
-
-| KEY | DESCRIPTION     |
-|-----+-----------------|
-| EN  | English support |
-| DE  | German support  |
-
-**** degree
-
-Defines the degree which the document is written as. As you can imagine, there are two (2)
-options.
-
-This key changes some texts in the cover page on some document states.
-
-| KEY | DESCRIPTION |
-|-----+-------------|
-| BSc | Bachelor    |
-| MSc | Masters     |
-
-**** code-engine
-
-Coding makes the world go round and of course it is also important to showcase all your
-important code in your report/thesis and for that LaTeX got you covered. This class supports
-out of the box two (2) types of packages to showcase your good-looking code:
-
-| KEY      | DESCRIPTION                                       |
-|----------+---------------------------------------------------|
-| minted   | Loads§ the minted package and customised settings |
-| listings | Loads listings package and customised settings    |
-| none     | no code engine is loaded                          |
-
-
-It is a worthy discussion to ask why did I have to come up with two packages which do the
-same thing ?! Well,.... yeah but I have a legitimate reason you see. While minted is the
-far superior option, it requires what is called a "shell escape". This basically means that
-the minted package needs to access your shell interpreter to do its thing which can be seen
-as a security issue (which is a good reason). To enable this, one must run their LaTeX in
-shell escape mode and this can be a bit laborious so some might want to avoid this....
-
-listings on the other hand is pure-bred LaTeX solution and does not need any -shell-escape
-and can be used without modifications to your compilation.
-
-If you are going to use Overleaf (Why tho?) both options are valid so it is up to you as
-both were customised to look almost identical to each other.
-
-**** title-page
-
-Title pages are important as it is the first thing the assessor sees or anyone for that matter.
-To conform with the standards (i.e., previous works) the class supports two (2) options:
-
-| KEY | DESCRIPTION                                                          |
-|-----+----------------------------------------------------------------------|
-| A   | Apply the past accepted title pages                                  |
-| B   | Applies a slightly curated and opinionated version of the title page |
-
-Letter will suffice for naming them.
-
-**** dept
-
-The final *GLOBAL* option is choosing the department.
-
-| KEY  | DESCRIPTION                |
-|------+----------------------------|
-| MECH | Deparments of Mechatronics |
-| SBT  |                            |
-
-While I will add more information if any student wants to use this template which are not of
-the predefined department, they can write the command *BEFORE* the ~\MakeTitle~ command:
+We then define a value called ~\mci@version~ to have a
+version control
 
 #+begin_src latex
-\AddDeparmentHook{SW}{Silly Walks}
+\def\mci@version{1.00}                
 #+end_src
 
-** Overleaf
+** Declaring Keys
 
-WIP
+We now define the keys which is needed for the class to work and some
+information regarding it:
 
-** Future Upgrades/Patches
+#+begin_src latex
+\DeclareKeys{
+  state.store       = \DocState,         % Declare the document state (Thesis | Report | Slide)
+  lang.store        = \Lang,             % Define document language   (EN | DE)
+  degree.store      = \Degree,           % Define degree level        (BSc | MSc)
+  dept.store        = \Dept,             % Define department          (mech)
+  code-engine.store = \CodeEngine,       % Define code environment    (listings | minted)
+  title-page.store  = \TitlePageStyle,   % Define title page style    (standard | nouveau)
+  bib-active.store  = \KEY@BIBLIOGRAPHY, % (true | false)
+  bib-style.store   = \KEY@BIBSTYLE,     % (true | false)
+  column-type.store = \KEY@COLUMNTYPE,   % (true | false)
+}
+#+end_src
 
-These are the future updates for this class, which will be updated as time goes on. By no means
-there is a promise of certain features be implemented within a given time.
+And let's not forget to process the Keys.
 
-- [ ] Fix the Report subclass
-  - [ ] Fix the MCI text on the cover-page
-- [ ] Implement the Thesis subclass
-  - [ ] Fix the cover page alignment
-  - [ ] Apply the appendix page numbering
-  - [ ] Improve the german language text
-  - [ ] Add hooks to automatically add LOF and LOT to the main TOC
-  - [ ] Add a embargo option to the class
-  - [ ] Create a thesis LaTeX example
-- [ ] Implement the Slide subclass
-  - [ ] Finalise the coverpage for the slide
-  - [ ] Research the coverpages used for MCI
-  - [ ] Implement auto TOC for the class
-  - [ ] Possibly implement a progressbar as an option
-- [ ] Create a Poster subclass
-  - [ ] Define two standard LaTex template design
-  - [ ] Create a LaTeX example document
-  - [ ] Create documentation for this class
-- [ ] Overleaf
-  - [ ] Create overleaf examples
-  - [ ] Improve compilation time for overleaf
+#+begin_src latex
+\ProcessKeyOptions\relax        
+#+end_src
 
--DTMc
+*** INTERNAL COMMAND: IF@STATE
+
+We now need to define a non-user command to create a short-hand
+to select document state:
+
+ - #1 : The state of the document (i.e., Report, Thesis, ...)
+ - #2 : The action to be taken
+
+#+begin_src latex
+\newcommand{\If@State}[2]{%
+  \ifthenelse{\equal{\DocState}{#1}
+  }{%
+    #2
+  }{%
+    % 
+  }%
+}%
+#+end_src
+
+** Class Choice
+
+As you can see I am not really creating anything from scratch.
+No one does as almost every document class is a super set of one
+another. Currently there are three classes ~mcidoc~ uses to create
+the documents
+
+*** Thesis Class
+
+We load the KOMA-Script class and describe the following options.
+There are points worth discussing.
+
+- We set the font-size 10pt to not waste paper.
+- We set the value of ~twoside~ as true to allow margins to change
+  between even and odd.
+- We also set it to ~openright~ to make sure chapters are opening
+  on the RIGHT.
+
+#+begin_src latex
+\If@State{Thesis}{
+  \LoadClass[
+  chapterprefix = true,
+  DIV           = 11,
+  paper         = A4,
+  fontsize      = 10,
+  twoside       = true,
+  openright
+  ]{scrreprt}
+}
+#+end_src
+
+
+*** Slide Class
+
+
+*** Report Class
