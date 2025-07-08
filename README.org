@@ -7,19 +7,24 @@
 - [[#the-mcidoc-class][The mcidoc Class]]
   - [[#class-header][Class Header]]
   - [[#declaring-keys][Declaring Keys]]
+  - [[#load-packages][Load Packages]]
+    - [[#package-ifthen][Package: ifthen]]
     - [[#internal-command-ifstate][INTERNAL COMMAND: IF@STATE]]
   - [[#class-choice][Class Choice]]
     - [[#thesis-class][Thesis Class]]
     - [[#slide-class][Slide Class]]
     - [[#report-class][Report Class]]
   - [[#global-tokens][Global Tokens]]
-  - [[#language-control][Language Control]]
+  - [[#state-bibliography][STATE: Bibliography]]
+  - [[#state-language-control][STATE: Language Control]]
   - [[#defining-departments][Defining Departments]]
   - [[#language-support][Language Support]]
   - [[#thesis-specific-commands][Thesis Specific Commands]]
     - [[#newcommand-declarationofnovelty][NEWCOMMAND: DeclarationOfNovelty]]
     - [[#newcommand-thesisembargorequest][NEWCOMMAND: ThesisEmbargoRequest]]
     - [[#newcommand-tableofcontents][NEWCOMMAND: TableOfContents]]
+    - [[#newcommand-maketitlepage][NEWCOMMAND MakeTitlePage]]
+    - [[#end-mcidoc][END: mcidoc]]
 
 * Introduction
 
@@ -109,6 +114,18 @@ And let's not forget to process the Keys.
 
 #+begin_src latex
 \ProcessKeyOptions\relax        
+#+end_src
+
+** Load Packages
+
+*** Package: ifthen
+
+- SRC: https://ctan.org/pkg/ifthen?lang=en
+
+Allows conditional statements,
+
+#+begin_src latex
+\RequirePackage{ifthen}         
 #+end_src
 
 *** INTERNAL COMMAND: IF@STATE
@@ -240,8 +257,24 @@ It is the time to define some tokens to store the user input.
 \newtoks\SecondaryAssessor
 #+end_src
 
+** STATE: Bibliography
 
-** Language Control
+If the document requires references, this option automatically sets up the
+bibliography
+
+#+begin_src latex
+\ifthenelse{
+  \equal{\KEY@BIBLIOGRAPHY}{true}
+}{
+  \RequirePackage[
+  backend = bibtex,
+  style   = \KEY@BIBSTYLE,        
+  ]{biblatex}     
+}{}
+#+end_src
+
+
+** STATE: Language Control
 
 As MCI is an institution which uses more than one langauge to create documentation, the
 class has two options to make sure correct typography is set for each language
@@ -414,6 +447,138 @@ Here we define the departments supported by the ~mcidoc~ class:
 } 
 #+end_src
 
+*** NEWCOMMAND MakeTitlePage
+
+This command simply generates the cover page for the thesis and automates
+the correct placement of the objects within the page.
+
+- Takes NO arguments.
+
 #+begin_src latex
-}
+\newcommand\MakeTitlePage{
+  %
+  % Make sure the page has no header/footer
+  \pagestyle{empty}
+  %
+  % Break geometry and create a new one
+  \newgeometry{%
+    margin = 3cm,
+    top    = 3cm,
+  }%
+  % Put the title on centre-stage
+  \begin{titlepage}
+    \vspace*{15ex}
+    \begin{center}
+      \LARGE \noindent\kern-1pt\textbf{\the\Title}
+    \end{center}
+    % 
+    \centering
+    %
+    % Put the mci-logo on the page in upper right.x
+    %
+    \begin{tikzpicture}[remember picture, overlay]
+      \node at (7,5) {\includegraphics{mci-logo.pdf}};
+    \end{tikzpicture}
+
+    % Put the subtitle text whether it is M.Sc or B.Sc
+    \begin{center}
+      \ifthenelse{%
+        \equal{\Degree}{MSc}%
+      }{%
+        \ifthenelse{%
+          \equal{\Lang}{EN}%
+        }{%
+          \LARGE \textbf{Master Thesis}%
+        }{%
+          \LARGE \textbf{Master Artbeit}%
+        }%
+      }{%
+        \ifthenelse{%
+          \equal{\Lang}{EN}%
+        }{%
+          \LARGE \textbf{Bachelor Thesis}%
+        }{%
+          \LARGE \textbf{Bachelor Artbeit}%
+        }%
+      }%
+    \end{center}
+    %
+    \vspace{4ex}
+    % Add the fullfilment text
+    \ifthenelse{%
+      \equal{\Lang}{EN}%
+    }{%
+      \Large In partial fulfillment of the requirements for the degree%
+    }{%
+      \Large zur Erlangung des akademischen Grades%
+    }%
+    %
+    \vspace{1ex}
+    %
+    % Add which degree is it from.
+    \ifthenelse{%
+      \equal{\Degree}{BSc}%
+    }{%
+      \Large {\em Bachelor of Science in Engineering}%
+    }{%
+      \Large {\em Master of Science in Engineering}%
+    }%
+    %
+    \vspace{\fill}
+    %
+    % Add a third (!?) declaration of degree
+    \ifthenelse{%
+      \equal{\Degree}{BSc}%
+    }{%
+      \Large {Bachelor Program}%
+    }{%
+      \Large {Master Program}%
+    }%
+    %
+    \vspace{1ex}%
+    %
+    {\normalsize Mechatronics \& Smart Technologies:}
+    %
+    \vspace{1ex}
+    %
+    {\normalsize Management Center Innsbruck}
+    % 
+    \vspace{8ex}
+    %
+    {\Large Supervisor} 
+    % 
+    \vspace{1ex}
+    %
+    {\Large \the\Supervisor}
+    %
+    \vspace{8ex}
+    %
+    {\Large Author}
+    %
+    \vspace{1ex}
+    %
+    {\Large \the\StudentName}
+    %
+    \vspace{1ex}
+    %
+    {\Large \the\StudentID}
+    %
+  \end{titlepage}
+  %
+  %
+  \restoregeometry
+  %
+  \cleardoublepage
+}%
+#+end_src
+
+#+begin_src latex
+}{}
+#+end_src
+
+
+*** END: mcidoc
+
+#+begin_src latex
+\endinput
 #+end_src
