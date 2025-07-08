@@ -41,20 +41,22 @@ between your work and the presentation. Therefore care was given to how the clas
 to minimise the dependencies it needs and give you key/value pairs to modify the document
 as you see fit.
 
-
 #+begin_quote
 [!TIP]
 NOTE: This class has been tested on different computers, different OSs and LuaTeX
- : and pdfTeX. However, as with everything, there will always be edge cases and I am sure
- : to that end, if you let me know anonymously or just let me know via email, I can 
- : squash the bugs or add any feature it may seem necessary.
+and pdfTeX. However, as with everything, there will always be edge cases and I am sure
+to that end, if you let me know anonymously or just let me know via email, I can 
+squash the bugs or add any feature it may seem necessary.
 #+end_quote 
- 
+
+#+begin_quote
+[!CAUTION]
 WARNING: While I will try to help with any problem this class might have, it is by no means
-: I am providing any kind of WARRANTY or TECHNICAL SUPPORT. There will be
-: documentation and some example documents which should compile without any
-: additional configuration. Nevertheless, I can only help with the errors from code
-: and not with your personal LaTeX development environment (i.e., TeXStudio).
+I am providing any kind of WARRANTY or TECHNICAL SUPPORT. There will be
+documentation and some example documents which should compile without any
+additional configuration. Nevertheless, I can only help with the errors from code
+and not with your personal LaTeX development environment (i.e., TeXStudio).
+#+end_quote
 
 * The mcidoc Class
 
