@@ -12,6 +12,14 @@
     - [[#thesis-class][Thesis Class]]
     - [[#slide-class][Slide Class]]
     - [[#report-class][Report Class]]
+  - [[#global-tokens][Global Tokens]]
+  - [[#language-control][Language Control]]
+  - [[#defining-departments][Defining Departments]]
+  - [[#language-support][Language Support]]
+  - [[#thesis-specific-commands][Thesis Specific Commands]]
+    - [[#newcommand-declarationofnovelty][NEWCOMMAND: DeclarationOfNovelty]]
+    - [[#newcommand-thesisembargorequest][NEWCOMMAND: ThesisEmbargoRequest]]
+    - [[#newcommand-tableofcontents][NEWCOMMAND: TableOfContents]]
 
 * Introduction
 
@@ -153,8 +161,259 @@ There are points worth discussing.
 }
 #+end_src
 
-
 *** Slide Class
 
+We define a Slide Class based on the beamer class. This class while moslty uses ~beamer~
+has been modified for use with MCI documentation
+
+#+begin_src latex
+\If@State{Slide}{
+  \LoadClass[
+  ]{beamer}
+}
+#+end_src
 
 *** Report Class
+
+Last but certainly not least we define another class which is used for doing assignment
+works. This class is based on the scrreprt class from KOMA with additional options.
+
+This class behavse similar to that of the [[Thesis Class][Thesis]] class with an additional option of
+~columntype~. This option changes the way the document is presented by adding a second
+column.
+
+#+begin_src latex
+\If@State{Report}{
+  \ifthenelse{
+    \equal{\KEY@COLUMNTYPE}{one}
+  }{
+    \LoadClass[
+    chapterprefix = true,
+    DIV           = 22,
+    paper         = A4,
+    fontsize      = 10,
+    twoside       = false,
+    ]{scrreprt}
+  }{
+    \LoadClass[
+    chapterprefix = true,
+    DIV           = 22,
+    paper         = A4,
+    fontsize      = 10,
+    twoside       = false,
+    twocolumn
+    ]{scrreprt}
+    }
+}
+#+end_src
+
+We now end out options
+
+#+begin_src latex
+\ExecuteOptions{}
+#+end_src
+
+** Global Tokens
+
+It is the time to define some tokens to store the user input.
+
+#+begin_src latex
+\newtoks\StudentName
+\newtoks\StudentID
+
+\newtoks\Cohort
+\newtoks\Module
+\newtoks\Lecture
+\newtoks\Lecturer
+\newtoks\Group\Group{nil}
+
+\newtoks\ThesisTitle
+
+\newtoks\TitleHeader
+\newtoks\Title
+\newtoks\Semester
+
+\newtoks\Department 
+\newtoks\StudyProgram
+\newtoks\Supervisor
+\newtoks\PrimaryAssessor
+\newtoks\SecondaryAssessor
+#+end_src
+
+
+** Language Control
+
+As MCI is an institution which uses more than one langauge to create documentation, the
+class has two options to make sure correct typography is set for each language
+
+- *English* Here we define a control sequence to allow certain controls if the language
+  is German.
+  - #1 : Action to be taken if English.
+  
+#+begin_src latex
+\newcommand{\Lang@English}[1]{%
+  \ifthenelse{\equal{\Lang}{EN}%
+  }{%
+    #1
+  }{%
+  }%
+}%
+#+end_src
+
+
+- *German* Here we define a control sequence to allow certain controls if the language
+  is German.
+  - #1 : Action to be taken if German.
+
+#+begin_src latex
+\newcommand{\Lang@German}[1]{%
+  \ifthenelse{\equal{\Lang}{DE}
+  }{%
+    #1
+  }{%
+  }%
+}%
+#+end_src
+
+** Defining Departments
+
+Here we define the departments supported by the ~mcidoc~ class:
+
+#+begin_src latex
+\ifthenelse{%
+  \equal{\Dept}{MECH}%
+}{%
+  \Lang@English{\def\Department{Mechatronics}}%
+  % 
+  \Lang@German{\def\Department{Mechatronik}}
+}{}%
+#+end_src
+
+
+** Language Support
+
+#+begin_src latex
+\ifthenelse{\equal{\Lang}{EN}%
+}{%
+  \RequirePackage[english]{babel}    % <-- Allows english settings and typography
+}{%
+  \RequirePackage[ngerman]{babel}    % <-- Allows german settings and typography
+}%
+#+end_src
+
+
+** Thesis Specific Commands
+
+#+begin_src latex 
+ \ifthenelse{\equal{\DocState}{Thesis}
+  }{
+#+end_src
+
+*** NEWCOMMAND: DeclarationOfNovelty
+
+#+begin_src latex
+\newcommand\DeclarationOfNovelty{%
+  %
+  \ifthenelse{%
+	\equal{\Lang}{EN}%
+  }{%
+    %
+	\section*{Declaration in Lieu of Oath}
+    
+	I hereby declare, under oath, the thesis titled,
+	% 
+	\begin{center}
+      \textit{\the\ThesisTitle}
+	\end{center}
+	% 
+	has been my independent work and has not been aided
+    with any prohibited means as declared
+	by the program and/or the institution. \\
+
+	I declare, to the best of my knowledge and belief, that
+	all passages taken from published, unpublished sources
+    have been reproduced as original, slightly changed,
+    have been mentioned and sources have been cited
+    accordingly as required by academic academic standards
+    decreed by the institution and the program \\[5\baselineskip]
+
+	\rule{5cm}{0.2pt}\hfill\rule{5cm}{0.2pt}\\
+	\phantom{Date }Place, Date\hfill Signature\hspace{15mm}
+  }{%
+	\section*{Eidesstattliche Erklärung}
+	Ich erkl"are hiermit an Eides statt, dass ich die vorliegende
+    Arbeit selbst"andig angefertigt habe. Die aus fremden
+    Quellen direkt oder indirekt "ubernommenen Gedanken sind
+    als solche kenntlich gemacht. Die Arbeit wurde bisher weder
+    in gleicher noch in "ahnlicher Form einer anderen
+    Pr"ufungsbeh"orde vorgelegt und auch noch nicht
+    ver"offentlicht.\\[5\baselineskip]
+    
+	\rule{5cm}{0.2pt}\hfill\rule{5cm}{0.2pt}\\
+	\phantom{Datum }Ort, Datum\hfill Unterschrift\hspace{15mm} } \cleardoublepage }
+#+end_src
+
+*** NEWCOMMAND: ThesisEmbargoRequest
+
+#+begin_src latex
+\newcommand{\ThesisEmbargoRequest}[1][5]{
+  %
+	\ifthenelse{%
+		\equal{\Lang}{EN}
+	}{%
+		\section*{Preclusion from Public Access}
+        
+		I have requested preclusion from public
+        access for the work titled,
+		%
+		\begin{center}
+			\textit{\the\ThesisTitle}
+		\end{center}
+		%
+		which was approved by the \the\year\, study program,
+        and therefore has been blocked from
+		public domain until the
+        date of 31.07.\fpeval{\the\year + #1}.
+
+		\vspace{8ex}
+		\rule{5cm}{1pt}\hfill\rule{5cm}{1pt}\\
+		\phantom{GethsafMuco}Place, Date\hfill Signature\hspace{15mm}
+
+	}{
+		\section*{Ausschluss vom öffentlichen Zugang}
+		Ich habe den Ausschluss der öffentlichen
+        Zugänglichkeit für die Arbeit mit dem Titel
+		%
+		\begin{center}
+			\textit{\the\ThesisTitle}
+		\end{center}
+		%
+		beantragt, die vom Studienprogramm \the\year\, genehmigt
+        wurde und daher gesperrt wurde
+		bis zum Datum 31.07.\engord{\numexpr{\the\year + #1}\relax}
+        gemeinfrei.
+
+		\vspace{8ex}
+		\rule{5cm}{1pt}\hfill\rule{5cm}{1pt}\\
+		\phantom{Datum }Ort, Datum\hfill Unterschrift\hspace{15mm}}
+	\cleardoublepage
+  }
+#+end_src
+
+*** NEWCOMMAND: TableOfContents
+
+#+begin_src latex
+\newcommand{\TableOfContents}{
+  \tableofcontents
+  % 
+  \clearpage
+  \pagenumbering{arabic}
+  % 
+  \pagestyle{scrheadings}
+
+} 
+#+end_src
+
+#+begin_src latex
+}
+#+end_src
