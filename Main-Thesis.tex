@@ -1,0 +1,81 @@
+\documentclass[   
+state        = Thesis,                       % (Report | Thesis)
+lang         = EN,                           % (DE     | EN) 
+degree       = MSc,                          % (BSc    | MSc)
+dept         = MECH,                         % (MECH   | SBT)
+bib-active   = true,                         % (true   | false)
+bib-style    = ieee,                         % (ieee)
+column-type  = two,                          % (one    | two)
+]{mcidoc}
+
+% CUSTOM COMMANDS -----------------------------------------------------------------------------
+%       
+% Please enter any custom command/packages you require here for easy tracking 
+  
+% For example, bibliography setting are added. Bibtex is the standard but if you prefer
+% there are other options on the market such as biber. Style has been chosen as IEEE but if 
+% are from another discipline, please feel free to change it.
+
+
+ 
+ 
+\bibliography{references.bib}  % Here we add our file where we store our references.
+%      
+% ---------------------------------------------------------------------------------------------
+
+% DOCUMENT PARAMETERS -------------------------------------------------------------------------
+
+\Title{%
+  On the Study of Different Rotor Geometry Configuration for use in High-Speed
+  Induction Motors
+}% 
+ 
+\StudentName{Jason Smith} 
+\StudentID{2024000095} 
+            
+\StudyProgram{Mechatronics \& Smart Technologies}  
+\Supervisor{Colin Stevens}
+
+\begin{document} % ############################################################################
+                 
+\MakeTitlePage     
+ 
+\DeclarationOfNovelty
+
+\ThesisEmbargoRequest[5]
+ 
+\TableOfContents  
+ 
+% REPORT CONTENT ------------------------------------------------------------------------------
+               
+% ----      
+% Your report content should go here and should follow structure befitting of a scientific
+% report and should be written in a scientific format. For more information please look at
+% MCI guidelines on how it should be done.      
+% ----  
+             
+% Include Chapter - introduction
+\include{chapter/introduction.tex}   
+     
+% Include Chapter - literature survey  (contains minted code)
+%\include{chapter/literature-survey.tex}      
+                  
+% ---- 
+% Add as many chapters as you see fit for your content. For easy legibility and for dynamic
+% adjustment of content it would be suggested to write your files and place them similar to
+% the aforementioned examples.
+
+% REPORT POSTAMBLE ----------------------------------------------------------------------------
+
+% ----
+% In this section, please put all the thing you deem are necessary for the thesis but does have
+% no substance as materials (i.e., technical drawings, patents, massive code bases).
+% ----
+
+\printbibliography
+
+% \makeindex
+% \printnomenclature
+% \printglossaries
+
+\end{document} % ##############################################################################
