@@ -31,6 +31,9 @@
 \newtoks\PrimaryAssessor
 \newtoks\SecondaryAssessor
 
+\newtoks\Authors
+\newtoks\Affiliations
+
 \RequirePackage{ifthen}
 
 \RequirePackage{tikz}
@@ -82,6 +85,14 @@
     }
 }
 
+\If@State{Poster}{
+    \LoadClass[
+    25pt
+    margin=0in,
+    a0paper,
+    ]{tikzposter}
+}
+
 \ExecuteOptions{}
 
 \ifthenelse{%
@@ -129,11 +140,9 @@
 
 \newcommand\DeclarationOfNovelty{%
 
-% 
 \ifthenelse{%
   \equal{\KEY@LANGUAGE}{EN}%
 }{%
-  %
 
 \section*{Declaration in Lieu of Oath}
 
@@ -288,9 +297,9 @@ gemeinfrei.
         }%
       }%
     \end{center}
-    
+
     \vspace{4ex}
-    
+
     % Add the fullfilment text
     \ifthenelse{%
       \equal{\KEY@LANGUAGE}{EN}%
@@ -299,9 +308,9 @@ gemeinfrei.
     }{%
       \Large zur Erlangung des akademischen Grades%
     }%
-    
+
     \vspace{1ex}
-    
+
     % Add which degree is it from.
     \ifthenelse{%
       \equal{\KEY@DEGREE}{BSc}%
@@ -310,9 +319,9 @@ gemeinfrei.
     }{%
       \Large {\em Master of Science in Engineering}%
     }%
-    
+
     \vspace{\fill}
-    
+
     % Add a third (!?) declaration of degree
     \ifthenelse{%
       \equal{\KEY@DEGREE}{BSc}%
@@ -321,35 +330,35 @@ gemeinfrei.
     }{%
       \Large {Master Program}%
     }%
-    
+
     \vspace{1ex}%
-    
+
     {\normalsize Mechatronics \& Smart Technologies:}
-    
+
     \vspace{1ex}
-    
+
     {\normalsize Management Center Innsbruck}
-     
+
     \vspace{8ex}
-    
+
     {\Large Supervisor} 
-     
+
     \vspace{1ex}
-    
+
     {\Large \the\Supervisor}
-    
+
     \vspace{8ex}
-    
+
     {\Large Author}
-    
+
     \vspace{1ex}
-    
+
     {\Large \the\StudentName}
-    
+
     \vspace{1ex}
-    
+
     {\Large \the\StudentID}
-    
+
   \end{titlepage}
   %
   %
@@ -386,7 +395,7 @@ autooneside  = false
     \newgeometry{
       margin = 3cm,
       top    = 3cm} 
-    
+
     \begin{titlepage}
       % 
       \begin{tikzpicture}[overlay, remember picture]
@@ -406,9 +415,9 @@ autooneside  = false
 
       \end{flushleft}
       %
-      
+
       \vspace{\fill}
-      
+
       \newcolumntype{b}{X}
       \newcolumntype{s}{>{\hsize=.5\hsize}X}
       \newcolumntype{g}{>{\hsize=.8\hsize}X}
@@ -473,12 +482,187 @@ autooneside  = false
 ]{scrlayer-scrpage}
 
 \clearpairofpagestyles
-
+ 
 \ihead{\MakeUppercase{\leftmark}}
 \ohead{\rightmark}
 \ofoot{\thepage}
 \ifoot{\the\StudentName}
 \renewcommand{\headfont}{\normalfont}
+
+}{}
+
+\ifthenelse{\equal{\KEY@DOCUMENTSTATE}{Poster}
+ }{
+
+\renewcommand\TP@maketitle{%
+  
+  \begin{tikzpicture}[overlay, remember picture]
+    \draw[fill=mci2,draw=none]
+    (current page.north west) rectangle
+    ([xshift=0cm, yshift=-20cm]current page.north east);
+
+    \node[%
+    execute at begin node = \linespread{1.5}\selectfont,
+    font=\Huge,
+    text width=60cm,
+    align=left,
+    ] at ([xshift=32.5cm, yshift=-2cm]current page.north west) {\bf \textcolor{white}{\the\Title}};
+ 
+    \draw[line width=4pt,draw=mci2!70!white]
+    ([xshift=2.5cm, yshift=-11cm]current page.north west) -- ([xshift=-22cm, yshift=-11cm]current page.north east);
+ 
+    \node[font=\LARGE,text width=60cm, align=left] at
+    ([xshift=32.5cm, yshift=-12cm]current page.north west) {\it \textcolor{white}{\the\Authors}};
+
+   
+     \node[font=\Large,text width=60cm, align=left] at
+    ([xshift=32.5cm, yshift=-15cm]current page.north west) {\textcolor{white}{\the\Affiliations}};
+
+      \draw[fill=mci2!95,draw=none]
+      (current page.north east) rectangle
+      ([xshift=-15cm, yshift=-20cm]current page.north east);
+
+      
+      \draw[fill=mci2!90,draw=none]
+      (current page.north east) rectangle
+      ([xshift=-7.5cm, yshift=-20cm]current page.north east);
+
+      \draw[fill=mci2!75,draw=none] 
+      (current page.north east) rectangle
+      ([xshift=-2.5cm, yshift=-20cm]current page.north east);
+
+      \node[rotate=90, align=left, text width=20cm] at
+      ([xshift=-2.25cm, yshift=-9cm]current page.north east) {\textcolor{mci2!70!black}{\Department}};
+
+% 
+\ifthenelse{%
+  \equal{\KEY@LANGUAGE}{EN}
+}{%
+      \node at
+      ([xshift=-11cm, yshift=-9cm]current page.north east)
+      {\includegraphics[scale=2]{/Users/danielmcguiness/GitHub/C-MCI-LaTeX-Class-mcidoc/img/mci-logo-neg-EN.pdf}};
+      }
+ 
+\ifthenelse{%
+  \equal{\KEY@LANGUAGE}{DE}
+}{%
+      \node at
+      ([xshift=-11cm, yshift=-9cm]current page.north east)
+      {\includegraphics[scale=2]{/Users/danielmcguiness/GitHub/C-MCI-LaTeX-Class-mcidoc/img/mci-logo-neg-DE.pdf}};
+      }
+      
+  \end{tikzpicture}
+  ~
+  \begin{tikzpicture}
+  \draw[fill=none, draw=none]
+    (current page.north west) rectangle
+    ([xshift=-25cm, yshift=-20cm]current page.north east);
+  \end{tikzpicture}
+}
+
+\usetheme{Simple}
+\usetitlestyle{Empty}
+
+% We use one of the mci colours for the header
+\definecolor{mci2}{HTML}{004983}
+
+\AtEndOfClass{
+  \usepackage[scaled]{helvet}
+  \renewcommand\familydefault{\sfdefault} 
+  \usepackage[T1]{fontenc}
+}
+
+\defineblockstyle{Minimal}{
+  titlewidthscale   = 1,
+  bodywidthscale    = 1,
+  titleleft, 
+  titleoffsetx      = 0pt,
+  titleoffsety      = 0pt,
+  bodyoffsetx       = 0pt,
+  bodyoffsety       = 0pt,
+  bodyverticalshift = 0pt,
+  roundedcorners    = 0,
+  linewidth         = 0.1cm,
+  titleinnersep     = 1cm,
+  bodyinnersep      = 1cm 
+}{
+  \begin{scope}[line width=\blocklinewidth, rounded corners=\blockroundedcorners]
+    \ifBlockHasTitle %
+      \draw[draw=none]
+      (blockbody.south west) rectangle (blocktitle.north east);
+      \draw[draw=gray, dotted] 
+      (blocktitle.south west) -- (blocktitle.south east);%
+    \else
+      \draw[draw=none]
+      (blockbody.south west) rectangle (blockbody.north east);
+    \fi
+  \end{scope}
+}
+
+\newcounter{tablecounter}
+\newenvironment{tikztable}[1][]{
+  \def \rememberparameter{#1}
+  \vspace{10pt}
+  \refstepcounter{tablecounter}
+  \begin{center}
+  }{
+    \ifx\rememberparameter\@empty
+    \else
+    \\[10pt]
+    {\small Tab.~\thetablecounter: \rememberparameter}
+    \fi
+  \end{center}
+}
+
+\newcommand{\MakeTitlePage}{
+  \node[above right,
+  outer sep=0pt,
+  minimum width=\paperwidth,
+  minimum height=3cm,
+  align=center,font=\normalsize,
+  draw=none,fill=gray!30,
+  ultra thick] at ([shift={(0.5*\pgflinewidth,0.5*\pgflinewidth)}]bottomleft) {%
+    MCI | 6020 Innsbruck / Austria, Universit\"atsstra{\ss}e 15 | + 42 512 2070 | office@mci.edu
+  };
+
+  \node[above right,
+  outer sep=0pt,
+  minimum height=1.8cm,
+  minimum width=7cm,
+  align=left,font=\normalsize,
+  draw=none, fill=gray!30] at ([yshift=3cm]bottomleft) {};
+
+  \node[above right,
+  outer sep=0pt,
+  minimum height=1.8cm,
+  minimum width=0.9cm,
+  align=left,font=\normalsize,
+  draw=none, fill=gray!15] at ([xshift=7cm, yshift=3cm]bottomleft) {};
+
+  \node[above right,
+  outer sep=0pt,
+  minimum height=0.9cm,
+  minimum width=1.8cm,
+  align=left,font=\normalsize,
+  draw=none, fill=gray!15] at ([xshift=7cm, yshift=3cm]bottomleft) {};
+
+  \node[above right,
+  outer sep=0pt,
+  minimum height=0.9cm,
+  minimum width=0.9cm,
+  align=left,font=\normalsize,
+  draw=none, fill=gray!25] at ([xshift=7cm, yshift=3cm]bottomleft) {};
+
+  \node[above right,
+  outer sep=0pt,
+  minimum height=1cm,
+  align=left,font=\normalsize,
+  draw=none] at ([xshift=-1cm, yshift=-0.9cm]bottomleft) {%
+	\includegraphics[scale=1.2]{%
+      /Users/danielmcguiness/GitHub/C-MCI-LaTeX-Class-mcidoc/img/mci-logo.pdf}
+  };
+  \maketitle
+}
 
 }{}
 
@@ -534,4 +718,4 @@ autooneside  = false
     showtabs              = false,
     tabsize               = 2
   }
-  \lstset{style=mainStyle}
+  \lstset{style=mainStyle} % \(^.^)/
