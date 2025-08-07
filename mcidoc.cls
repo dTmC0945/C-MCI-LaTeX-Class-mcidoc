@@ -540,7 +540,7 @@ autooneside  = false
 }{%
       \node at
       ([xshift=-11cm, yshift=-9cm]current page.north east)
-      {\includegraphics[scale=2]{/Users/danielmcguiness/GitHub/C-MCI-LaTeX-Class-mcidoc/img/mci-logo-neg-EN.pdf}};
+      {\includegraphics[scale=2]{img/mci-logo-neg-EN.pdf}};
       }
  
 \ifthenelse{%
@@ -548,7 +548,7 @@ autooneside  = false
 }{%
       \node at
       ([xshift=-11cm, yshift=-9cm]current page.north east)
-      {\includegraphics[scale=2]{/Users/danielmcguiness/GitHub/C-MCI-LaTeX-Class-mcidoc/img/mci-logo-neg-DE.pdf}};
+      {\includegraphics[scale=2]{img/mci-logo-neg-DE.pdf}};
       }
       
   \end{tikzpicture}
@@ -659,7 +659,7 @@ autooneside  = false
   align=left,font=\normalsize,
   draw=none] at ([xshift=-1cm, yshift=-0.9cm]bottomleft) {%
 	\includegraphics[scale=1.2]{%
-      /Users/danielmcguiness/GitHub/C-MCI-LaTeX-Class-mcidoc/img/mci-logo.pdf}
+      img/mci-logo.pdf}
   };
   \maketitle
 }
