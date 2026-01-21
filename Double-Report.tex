@@ -1,12 +1,12 @@
 \documentclass[   
-state        = Report,                       % (Report | Slide    | Thesis)
+state        = Paper,                        % (Report | Slide    | Thesis)
 lang         = EN,                           % (DE     | EN) 
 degree       = MSc,                          % (BSc    | MSc)
 dept         = MECH,                         % (MECH   | SBT)
 bib-active   = true,                         % (true   | false)
 bib-style    = ieee,                         % (ieee)
 column-type  = two,                          % (one    | two)
-]{mcidoc}
+]{mcidoc}  
 
 % CUSTOM COMMANDS -----------------------------------------------------------------------------
 %       
@@ -19,10 +19,11 @@ column-type  = two,                          % (one    | two)
 \bibliography{references.bib}  % Here we add our file where we store our references.
 %      
 % ---------------------------------------------------------------------------------------------
- 
+
 % DOCUMENT PARAMETERS -------------------------------------------------------------------------
 
-\TitleHeader{Laboratory Report 3}%   
+\TitleHeader{Laboratory Report 3}%
+
 
 \Title{%
   On the Study of Different Rotor Geometry Configuration for use in High-Speed
@@ -41,22 +42,26 @@ column-type  = two,                          % (one    | two)
 
 \Supervisor{Colin Stevens}%
 
+
 \begin{document} % ############################################################################
 
-\MakeTitlePage     
 
-\TableOfContents           
 
+  % \begin{abstract}
+  %   dsdwdw
+  % \end{abstract}
+  
 % REPORT CONTENT ------------------------------------------------------------------------------
-
-% ----      
+ 
+% ----       
 % Your report content should go here and should follow structure befitting of a scientific
 % report and should be written in a scientific format. For more information please look at
 % MCI guidelines on how it should be done.      
 % ----  
 
+  
 % Include Chapter - introduction
-\include{chapter/introduction.tex}   
+\include{chapter/Introduction-double-column.tex}   
 
 % ---- 
 % Add as many chapters as you see fit for your content. For easy legibility and for dynamic
@@ -69,8 +74,6 @@ column-type  = two,                          % (one    | two)
 % In this section, please put all the thing you deem are necessary for the thesis but does have
 % no substance as materials (i.e., technical drawings, patents, massive code bases).
 % ----
-
-\printbibliography
 
 % \makeindex
 % \printnomenclature
