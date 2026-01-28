@@ -61,18 +61,18 @@
 \pretocmd{\printbibliography}{\section*{Bibliography}}{}{}
 
 \renewcommand{\thesection}{\@Roman{\c@section}}
-\renewcommand{\theequation}{\@arabic\c@section}
+\renewcommand{\theequation}{\arabic{equation}}
 
-\renewcommand{\sectionlinesformat}[4]{%
-    %\@tempswafalse
-        \ifstr{#1}{section}{%
-                \centering\mbox{\@hangfrom{{#3}{#4}}}
-        }
-        {\ifstr{#1}{subsection}{%
-                \centering\mbox{\@hangfrom{{#3}{#4}}}%
-        }
-    {\@hangfrom{\hskip#2#3}{#4}}}%
-}
+% \renewcommand{\sectionlinesformat}[4]{%
+%     %\@tempswafalse
+%         \ifstr{#1}{section}{%
+%                 \centering\mbox{\@hangfrom{{#3}{#4}}}
+%         }
+%         {\ifstr{#1}{subsection}{%
+%                 \centering\mbox{\@hangfrom{{#3}{#4}}}%
+%         }
+%     {\@hangfrom{\hskip#2#3}{#4}}}%
+% }
 
 \usepackage{multicol}
 
