@@ -11,3 +11,5 @@
 *.el
 .DS_Store
 *blx.bib    
+
+**/auto/**

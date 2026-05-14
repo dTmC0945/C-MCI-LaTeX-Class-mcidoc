@@ -1,7 +1,24 @@
-\chapter{Introduction}
+% 
+% #INFO: A sample chapter for use in showing the operation of `mcidoc'.
+%
+% Copyright (C) 2023-2026 D. T. McGuiness
+%
+% COPYRIGHT NOTICE:
+% -----------------
+% It may be distributed and/or modified under the conditions of the LaTeX Project Public
+% License (LPPL), either version 1.3c of this license or (at your option) any later version.
+% The latest version of this license is in the file
+%
+% https://www.latex-project.org/lppl.txt
+% 
+% This file is part of `mcidoc' and all files in that bundle must be distributed together.
+% 
+% ---------------------------------------------------------------------------------------------
+% 
+%
+\chapter{Introduction} % ----------------------------------------------------------------------
 
-\section{The Need for Speed}
-
+\section{The Need for Speed} % ----------------------------------------------------------------
 
 In recent years, improvements in manufacturing, transportation and process industry
 technologies bring about an increase in optimal operation speed in drive systems. In this
@@ -9,12 +26,13 @@ respect, recently developed high speed gear-less or direct-drive electrical driv
 increase in interest based on the reduction in the total structural volume of the drive
 system. Due to the significant development of cost-effective, fast switching and compact
 variable frequency drives technology, wide speed range operations of different type AC motors
-has become feasible. The speed definition of an induction motor can be seen in Eq.\ \ref{eq:speed}
-
+has become feasible. The speed definition of an induction motor can be seen in
+Eq.~\ref{eq:speed},
+%
 \begin{equation}  \label{eq:speed}
-  n = \frac{120 f}{p},
+  n = \frac{120 f}{p}.
 \end{equation}
-
+%
 In literature, there are several descriptions for the term "high-speed".  As a mechanical
 engineer, peripheral speed over \SI{150}{\meter\per\second} is considered to be high speed
 \cite{gieras2011performance}. From the motor manufacturer's point of view, a two-pole machine
@@ -59,7 +77,7 @@ areas. \\
 
 Below are the advantages of SRIM compared to CRIM:
 
-\begin{itemize}[itemsep=0pt]
+\begin{itemize}
 \item Structural and Mechanical integrity, Rigiditiy, Reliability and Strength of
   Material
 \item High thermal properties
@@ -78,6 +96,7 @@ have contributed to the development and the theory of solid rotor construction, 
 interest was seen the 1990s for using solid rotor structure for high speed applications.
 
 \begin{figure}[!t]
+  \caption{The authors interest in the topic as years go on.}
   \begin{tikzpicture}
     \begin{axis}[width=15cm, height=6cm,
       minor tick num   = 2,
@@ -102,7 +121,7 @@ interest was seen the 1990s for using solid rotor structure for high speed appli
       };
     \end{axis}
   \end{tikzpicture}
-  \caption{The authors interest in the topic as years go on.}
+  
 \end{figure}
 
 As the rotor does not contain any trace of copper \footnote{the rotor
@@ -123,39 +142,8 @@ different types of rotors are investigated and compared using finite element ana
 cage, smooth solid, axially slitted, coated is designed using a finite-element
 analysis (FEA). All rotors are designed with similar geometries and construction parameters
 to minimise the effect of unwanted effects.
-
-\begin{lstlisting}[language=C++]  
-  // C++ program to find all string
-  // which are greater than given length k 
-
-  #include <bits/stdc++.h> 
-  using namespace std;
-
-  // function find string greater than
-  // length k 
-  void string_k(string s, int k) 
-  {
-    // create an empty string
-    string w = "";
-    // iterate the loop till every space
-    for (int i = 0; i < s.size(); i++) {
-      if (s[i] != ' ')
-
-      // append this sub string in
-      // string w
-      w = w + s[i];
-      else {
-
-        // if length of current sub
-        // string w is greater than 
-        // k then print
-        if (w.size() > k)
-        cout << w << " "; 
-        w = "";
-      }
-    }
-  }
-\end{lstlisting}
+ 
+\lstinputlisting[linerange={6-32},language=C++,caption={Descriptive Caption Text}]{codes/string_comparator.cpp}
 
 The number of turns per stator slot is selected so as to obtain the
 same stator current in rated operation. All four motors were analyzed using FEA

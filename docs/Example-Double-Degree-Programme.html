@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.3, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Example Double Degree Programme (mcidoc Student Documentation)</title>
+
+<meta name="description" content="Example Double Degree Programme (mcidoc Student Documentation)">
+<meta name="keywords" content="Example Double Degree Programme (mcidoc Student Documentation)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Thesis-Specific-Options.html" rel="up" title="Thesis Specific Options">
+<link href="Example-Company-Based-Thesis.html" rel="next" title="Example Company Based Thesis">
+<link href="Table-of-Contents.html" rel="prev" title="Table of Contents">
+<style type="text/css">
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+div.example {margin-left: 3.2em}
+span:hover a.copiable-link {visibility: visible}
+</style>
+<link rel="stylesheet" type="text/css" href="https://www.gnu.org/software/gnulib/manual.css">
+
+
+</head>
+
+<body lang="en">
+<div class="subsection-level-extent" id="Example-Double-Degree-Programme">
+<p class="nav-panel">
+<span class="nav-button"><span class="nav-label">Next: </span><span class="nav-link"><a href="Example-Company-Based-Thesis.html" accesskey="n" rel="next">Example: Company Based Thesis</a></span></span>, <span class="nav-button"><span class="nav-label">Previous: </span><span class="nav-link"><a href="Table-of-Contents.html" accesskey="p" rel="prev">Table of Contents</a></span></span>, <span class="nav-button"><span class="nav-label">Up: </span><span class="nav-link"><a href="Thesis-Specific-Options.html" accesskey="u" rel="up">Thesis Specific Options</a></span></span><span class="nav-button"> &nbsp; </span><span class="nav-button">[<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</span></p>
+<hr>
+<h4 class="subsection" id="Example_003a-Double-Degree-Programme"><span>2.3.4 Example: Double Degree Programme<a class="copiable-link" href="#Example_003a-Double-Degree-Programme"> &para;</a></span></h4>
+
+<p>The following setting is defined for the student <code class="code">Karl Hendrix</code> doing a double
+degree with ASU (Appalachian State University). An example <code class="code">\SetMCI</code> option would
+be as follows:
+</p>
+<div class="example user-latex">
+<pre class="example-preformatted">\SetMCI{%
+  StudentName    = {%
+    Name = {Karl Hendrix}
+  },%  
+  StudentID      = {52414238},
+  Degree         = MSc, 
+  Language       = EN, 
+  Department     = MECH, 
+  Thesis = { %        
+    Title          = {The Effects of Amplifier Gain on Guitar Pedal Distortion},
+    StudyProgram   = {Smart Technologies},
+    Supervisor     = {%                    % &lt;- The MCI Supervisor
+      Prefix  = {Prof.},  
+      Name    = {David R. M. Jazz}, 
+      Postfix = {},
+    },%          
+    Double-Degree  = {  
+      Institution     = {ASU},             % &lt;- The University code for ASU
+      Student-Number  = {6712345}, 
+      Supervisor     = {%                  % &lt;- Supervisor at ASU
+        Prefix  = {Prof.},   
+        Name    = {Colin Stevens},
+        Postfix = {},
+    },%       
+    },      
+    Embargo        = {31.07.2031},         % &lt;- An embargo request
+    Bibliography   = {%     
+      Location     = {references.bib},     % &lt;- Bibliograpy resides in the root
+    },    
+  },     
+}
+</pre></div>
+
+</div>
+<hr>
+<p class="nav-panel">
+<span class="nav-button"><span class="nav-label">Next: </span><span class="nav-link"><a href="Example-Company-Based-Thesis.html">Example: Company Based Thesis</a></span></span>, <span class="nav-button"><span class="nav-label">Previous: </span><span class="nav-link"><a href="Table-of-Contents.html">Table of Contents</a></span></span>, <span class="nav-button"><span class="nav-label">Up: </span><span class="nav-link"><a href="Thesis-Specific-Options.html">Thesis Specific Options</a></span></span><span class="nav-button"> &nbsp; </span><span class="nav-button">[<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</span></p>
+
+
+
+</body>
+</html>
