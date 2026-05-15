@@ -39,7 +39,7 @@
 \newtoks\TitleHeader%
 \newtoks\Semester%
 \newtoks\StudentName%
-\newtoks\StudentID%
+\newtoks\StudentID% 
 %
 \newtoks\Department%
 \newtoks\StudyProgram%
@@ -90,6 +90,7 @@
 	Institution                      = {unset},
 	Student-Number/.store in         = \Thesis@DD@StudentNumber,
 	Student-Number                   = {unset},
+	% Settings for the Double Degree Supervisor
 	/Thesis/Double-Degree/Supervisor/.cd,
 	Prefix/.store in                 = \Thesis@DD@Supervisor@Prefix,
 	Prefix                           = {unset},
@@ -125,8 +126,10 @@
 	Novelty                          = {set},
 	Embargo/.store in                = \Thesis@EmbargoRequest,
 	Embargo                          = {unset},
-	CoverLogo/.store in              = \Thesis@CoverLogo,
-	CoverLogo                        = {set},
+	Location/.store in               = \Thesis@Location,
+	Location                         = {Innsbruck},
+	Date/.store in                   = \Thesis@Date,
+	Date                             = {\the\day.\the\month.\the\year},
 	% ---
 	/Student/.cd,
 	Prefix/.store in                 = \Student@Prefix,
@@ -170,16 +173,16 @@
 	%%%% The Primary control mechanism on how the document is configured.
 	\pgfkeys{%
 		%
-		/StudentName/.code            = \pgfqkeys{/Student}{##1},
-		/Thesis/.code                 = \pgfqkeys{/Thesis}{##1},
-		/Thesis/ToC/.code             = \pgfqkeys{/Thesis/ToC}{##1},
-		/Thesis/Supervisor/.code      = \pgfqkeys{/Thesis/Supervisor}{##1},
-		/Thesis/Double-Degree/.code   = \pgfqkeys{/Thesis/Double-Degree}{##1},
+		/StudentName/.code                     = \pgfqkeys{/Student}{##1},
+		/Thesis/.code                          = \pgfqkeys{/Thesis}{##1},
+		/Thesis/ToC/.code                      = \pgfqkeys{/Thesis/ToC}{##1},
+		/Thesis/Supervisor/.code               = \pgfqkeys{/Thesis/Supervisor}{##1},
+		/Thesis/Double-Degree/.code            = \pgfqkeys{/Thesis/Double-Degree}{##1},
 		/Thesis/Double-Degree/Supervisor/.code = \pgfqkeys{/Thesis/Double-Degree/Supervisor}{##1},
-		/Thesis/Reviewer/.code        = \pgfqkeys{/Thesis/Reviewer}{##1},
-		/Thesis/Bibliography/.code    = \pgfqkeys{/Thesis/Bibliography}{##1},
-		/Report/ToC/.code             = \pgfqkeys{/Report/ToC}{##1},
-		/Report/.code                 = \pgfqkeys{/Report}{##1},
+		/Thesis/Reviewer/.code                 = \pgfqkeys{/Thesis/Reviewer}{##1},
+		/Thesis/Bibliography/.code             = \pgfqkeys{/Thesis/Bibliography}{##1},
+		/Report/ToC/.code                      = \pgfqkeys{/Report/ToC}{##1},
+		/Report/.code                          = \pgfqkeys{/Report}{##1},
 		#1,
 	}%
 }% 
@@ -378,7 +381,7 @@
 				% Add the bottom signature place
 				\vspace*{\fill}
 				\rule{5cm}{0.2pt}\hfill\rule{5cm}{0.2pt}\\
-				\noindent\parbox{5cm}{\centering{Innsbruck, \the\day.\the\month.\the\year}}
+				\noindent\parbox{5cm}{\centering{\Thesis@Location,\ \Thesis@Date}}
 				\hfill%
 				\parbox{5cm}{\centering{​Signature}}
 
@@ -403,7 +406,7 @@
 
 				\vspace*{\fill}
 				\rule{5cm}{0.2pt}\hfill\rule{5cm}{0.2pt}\\
-				\noindent\parbox{5cm}{\centering{Innsbruck, \the\day.\the\month.\the\year}}%
+				\noindent\parbox{5cm}{\centering{\Thesis@Location,\ \Thesis@Date}}%
 				\hfill%
 				\parbox{5cm}{\centering{​Unterschrift}}
 
@@ -432,7 +435,7 @@
 				% Add the bottom signature place
 				\vspace{\fill}
 				\noindent\rule{5cm}{0.2pt}\hfill\rule{5cm}{0.2pt}\\
-				\noindent\parbox{5cm}{\centering{Innsbruck, \the\day.\the\month.\the\year}}
+				\noindent\parbox{5cm}{\centering{\Thesis@Location,\ \Thesis@Date}}
 				\hspace*{\fill}%
 				\parbox{5cm}{\centering{Signature}}
 			}{%
@@ -447,7 +450,7 @@
 				% Add the bottom signature place
 				\vspace{\fill}
 				\noindent\rule{5cm}{1pt}\hfill\rule{5cm}{1pt}\\
-				\noindent\parbox{5cm}{\centering{Innsbruck, \the\day.\the\month.\the\year}}
+				\noindent\parbox{5cm}{\centering{\Thesis@Location,\ \Thesis@Date}}
 				\hspace*{\fill}%
 				\parbox{5cm}{\centering{​Unterschrift}}
 			}%
@@ -455,6 +458,10 @@
 		}%
 	}%
 	% 
+	% Here we define a new `boolean' to check if the user has requested an
+	% acknowledgments. We also set it for false as its original state.
+	\newif\ifacknowledgments%
+	%\acknowledgementsfalse%
 	% 
 	% 
 	\NewDocumentEnvironment{Abstract}{m}{%
@@ -474,15 +481,31 @@
 	% 
 	% 
 	% 
+	\NewDocumentEnvironment{Acknowledgments}{}{%
+		% -- Environment to print out the acknowledgments.
+		% -- Here we need to make sure `\ifacknowledgements' needs to be
+		% -- set `globally' as the toggle seems to be restricted by the
+		% -- `NewDocumentEnvironemt' command.
+		\global\let\ifacknowledgments\iftrue%
+		\def\acknowledgements@filename{aux-\jobname-acknowledgement.ack}
+		\typeout{Writing the file \acknowledgements@filename}
+		\VerbatimOut{\acknowledgements@filename}%
+	}{%
+		\endVerbatimOut%
+	}%
+	% 
+	% 
+	% 
 	\NewDocumentCommand{\Th@Abstracts}{}{
 		% -- Define how the abstract is printed.
 		% -- A significant hurdle to tackle was the recalling of the
 		% -- function when the content was defined after. To remedy this,
 		% -- auxiliary files were used, and depending on the language either
 		% -- english or both english plus german is printed.
-		\ifthenelse{\equal{\Global@Language}{EN}}{
-			\foreach \ii / \jj in {english/en}{
+		\ifthenelse{\equal{\Global@Language}{EN}}{%
+			\foreach \ii / \jj in {english/en}{%
 					\begin{otherlanguage}{\ii}
+						\renewcaptionname{english}{\abstractname}{Abstract}
 						\begin{abstract}
 							\input{aux-\jobname-abstract-\jj.abs}
 						\end{abstract}
@@ -490,8 +513,9 @@
 				}%
 		}{}
 		%%%% 
-		\ifthenelse{\equal{\Global@Language}{DE}}{
-			\foreach \ii / \jj in {german/de, english/en}{
+		\ifthenelse{\equal{\Global@Language}{DE}}{%
+			\foreach \ii / \jj in {german/de, english/en}{%
+					\renewcaptionname{german}{\abstractname}{Zusammenfassung}
 					\begin{otherlanguage}{\ii}
 						\begin{abstract}
 							\input{aux-\jobname-abstract-\jj.abs}
@@ -502,11 +526,42 @@
 	}%
 	% 
 	% 
-	\NewDocumentCommand{\Preamble}{O{}}{
+	% 
+	\NewDocumentCommand{\Th@Acknowledgments}{}{
+		% -- Define how the acknowledgment is printed
+		\ifthenelse{\equal{\Global@Language}{EN}}{
+			\bgroup%
+			\renewcaptionname{english}{\abstractname}{Acknowledgements}
+			\begin{otherlanguage}{english}
+				\begin{abstract}
+					\input{aux-\jobname-acknowledgement.ack}
+				\end{abstract}
+			\end{otherlanguage}
+			\egroup%
+		}{}
+		%%%%
+		\ifthenelse{\equal{\Global@Language}{DE}}{
+			\bgroup%
+			\renewcaptionname{german}{\abstractname}{Danksagung}
+			\begin{otherlanguage}{german}
+				\begin{abstract}
+					\input{aux-\jobname-acknowledgement.ack}
+				\end{abstract}
+			\end{otherlanguage}
+			\egroup%
+		}{}
+	}%
+	% 
+	% 
+	% 
+	\NewDocumentCommand{\Th@Preamble}{O{}}{
 		% -- A collection command to print all necessary preamble.
 		\MakeTitlePage
 		\Th@ThesisEmbargoRequest[#1]
 		\Th@DeclarationOfNovelty
+		\ifacknowledgments%
+			\Th@Acknowledgments
+		\fi%
 		\Th@Abstracts
 		\TableOfContents
 	}
@@ -722,7 +777,7 @@
 	}%
 	%
 	\AddToHook{begindocument/end}{%
-		\Preamble[\Thesis@EmbargoRequest]%
+		\Th@Preamble[\Thesis@EmbargoRequest]%
 	}%
 	\AddToHook{enddocument}{%
 		\ifthenelse{\equal{\Thesis@Bibliography@Print}{unset}}{}{\printbibliography}%
@@ -979,37 +1034,37 @@
 \definecolor{backcolour}{rgb}{0.95,0.95,0.95}
 
 
-	\lstdefinestyle{mainStyle}{
-		% How/what to match
-		sensitive=true,
-		% Border (above and below)
-		frame=single,
-		% Extra margin on line (align with paragraph)
-		%xleftmargin=\parindent,
-		breakatwhitespace     = false,
-		% Put extra space under caption
-		belowcaptionskip=1\baselineskip,
-		% -- Style Defitions
- backgroundcolor=\color{backcolour},   
-    commentstyle=\color{codegreen},
-    keywordstyle=\color{magenta},
-    numberstyle=\tiny\color{codegray},
-    stringstyle=\color{codepurple},
-    basicstyle=\ttfamily\footnotesize,
-  % Break long lines into multiple lines?
-  breaklines=true,
-  captionpos=t, % Set caption-style at bottom.
-  % Show a character for spaces?
-  showstringspaces=false,
-  tabsize=2,
-   keepspaces=true,                 
-    numbers=left,       
-    numbersep=5pt,
-     showspaces=false,                
-    showstringspaces=false,
-    showtabs=false,
- % numbers               = left,
-  numbersep=3mm,      
+\lstdefinestyle{mainStyle}{
+	% How/what to match
+	sensitive=true,
+	% Border (above and below)
+	frame=single,
+	% Extra margin on line (align with paragraph)
+	%xleftmargin=\parindent,
+	breakatwhitespace     = false,
+	% Put extra space under caption
+	belowcaptionskip=1\baselineskip,
+	% -- Style Defitions
+	backgroundcolor=\color{backcolour},
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\ttfamily\footnotesize,
+	% Break long lines into multiple lines?
+	breaklines=true,
+	captionpos=t, % Set caption-style at bottom.
+	% Show a character for spaces?
+	showstringspaces=false,
+	tabsize=2,
+	keepspaces=true,
+	numbers=left,
+	numbersep=5pt,
+	showspaces=false,
+	showstringspaces=false,
+	showtabs=false,
+	% numbers               = left,
+	numbersep=3mm,
 }
 \lstset{style=mainStyle}
 

@@ -34,53 +34,55 @@
     Name = {Colin Stevens}
   },%  
   StudentID      = {2314808},
-  Degree         = MSc, 
-  Language       = EN, 
+  Degree         = MSc,  
+  Language       = EN,  
   Department     = MECH, 
-  % 
+  %    
   % -------------------------------------------------------------------------------------------
-  %  
+  %   
   Thesis = { %        
     Title          =  {On the Study of Different \& Rotor Geometry Configuration
                       for use in High-Speed Induction Motors},
     StudyProgram   = {Mechatronik, Design \& Innovation},
     %%  
     Supervisor     = {%  
-      %%Company = {Ministry of Typography},
+      %% Company = {Ministry of Typography},
       Prefix  = {Prof.},  
       Name    = {Colin Stevens}, 
-      Postfix = {Ph.D},
+      Postfix = {Ph.D}, 
     },%          
     %%        
     % Reviewer     = {%  
     %   Prefix     = Dan,
     %   Name       = Colin Stevens,
     %   Postfix    = Esh.,  
-    % },%     
-    Double-Degree  = {  
-      Institution     = {ESILV},
-      Student-Number  = {11111111111}, 
-      Supervisor     = {%  
-        Prefix  = {Prof.},   
-        Name    = {Colin Stevens},
-        Postfix = {},
-    },%       
-    },       
+    % },%    
+    % Double-Degree  = {  
+    %   Institution     = {ASU},
+    %   Student-Number  = {11111111111}, 
+    %   Supervisor     = {%  
+    %     Prefix  = {Prof.},   
+    %     Name    = {Colin Stevens},
+    %     Postfix = {},
+    % },%       
+    % },       
     %%  
-    Embargo        = {31.07.2031}, 
+    Embargo        = {31.07.2031},
+    Location       = {Istanbul},
+    Date           = {21.05.2002},
     %%     
     Bibliography   = {%     
       State        = set,  
       Location     = {references.bib},  
       Print        = set,     
-    },    
+    },        
   },     
   Report = {
     Title          = {On the Study of Different \& Rotor Geometry Configuration
                       for use in High-Speed Induction Motors},
     Lecture        = {Drive Technologies},
     },
-}                                              
+ }                                               
 %   
 % CUSTOM COMMANDS -----------------------------------------------------------------------------
 % 
@@ -94,7 +96,7 @@
 
 \makeatletter  
 \RequirePackage[
-backend = bibtex,
+backend = bibtex,  
 style   = ieee, 
 ]{biblatex}
 
@@ -102,10 +104,12 @@ style   = ieee,
 \bibliography{\Thesis@Bibliography@Location} 
 \makeatother   
 
-% ABSTRACTS -----------------------------------------------------------------------------------
+% ABSTRACTS & ACKNOWLEDGMENTS -----------------------------------------------------------------
  
+
+
 \begin{Abstract}{EN}    
-      
+        
   Abstracts contain most of the following kinds of information in brief form. The body of your
   paper will, of course, develop and explain these ideas much more fully. As you will see in
   the samples below, the proportion of your abstract that you devote to each kind of
@@ -116,11 +120,11 @@ style   = ieee,
   guidelines for what to include in the abstract for different kinds of papers—for empirical
   studies, literature reviews or meta-analyses, theoretical papers, methodological papers, and
   case studies.
-   
-\end{Abstract}    
-        
-\begin{Abstract}{DE}  
-     
+       
+\end{Abstract}     
+          
+\begin{Abstract}{DE}    
+      
   Abstracts contain most of the following kinds of information in brief form. The body of your
   paper will, of course, develop and explain these ideas much more fully. As you will see in
   the samples below, the proportion of your abstract that you devote to each kind of
@@ -132,18 +136,39 @@ style   = ieee,
   studies, literature reviews or meta-analyses, theoretical papers, methodological papers, and
   case studies. 
     
-\end{Abstract}   
-   
-\begin{document} % ############################################################################
+\end{Abstract}     
 
+\begin{Acknowledgments}  
+
+  I extend my deepest gratitude to my supervisor, Professor Jane Smith, for her unwavering
+  support and insightful critiques throughout my research journey. Her deep commitment to
+  academic excellence and meticulous attention to detail have significantly shaped this
+  dissertation. I am equally thankful to the members of my thesis committee, Dr. John Doe and
+  Dr. Emily White, for their constructive feedback and essential suggestions that enhanced the
+  quality of my work.
+
+  My appreciation also goes to the faculty and staff in the Department of Biology at University
+  College London, whose resources and assistance have been invaluable. I would also like to
+  acknowledge my peers for their camaraderie and the stimulating discussions that inspired me
+  throughout my academic journey. Their collective wisdom and encouragement have been a
+  cornerstone of my research experience.
+
+  Finally, my sincere thanks to the technical staff whose expertise in managing laboratory
+  equipment was crucial for my experiments. Their patience and readiness to assist at all times
+  have left a profound impact on the completion of my project.
+  
+\end{Acknowledgments}
+
+\begin{document} % ############################################################################
+ 
 % NOTE ----------------------------------------------------------------------------------------
 % Your primary thesis content should go here and should follow structure befitting of a
 % scientific report and should be written in a scientific format.
 %
 % For more information please look at MCI guidelines on how it should be done.
 % ---------------------------------------------------------------------------------------------
-
-% Include Chapter - introduction 
+     
+% Include Chapter - introduction  
 \include{chapter/introduction.tex}
 % Include Chapter - literature survey  
 \include{chapter/literature-survey.tex}
