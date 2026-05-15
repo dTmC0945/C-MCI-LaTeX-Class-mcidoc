@@ -34,34 +34,59 @@ strong.def-name {font-family: monospace; font-weight: bold}
 <hr>
 <h3 class="section" id="Thesis-Specific-Options-1"><span>2.3 Thesis Specific Options<a class="copiable-link" href="#Thesis-Specific-Options-1"> &para;</a></span></h3>
 
-<dl class="first-defvr first-defvar-alias-first-defvr def-block">
-<dt class="defvr defvar-alias-defvr def-line" id="index-_002fThesis_002fToC_002fPrimary"><span class="category-def">Variable: </span><span><strong class="def-name">/Thesis/ToC/Primary</strong><a class="copiable-link" href="#index-_002fThesis_002fToC_002fPrimary"> &para;</a></span></dt>
-<dd><p>Prints the main Table of Contents. Default is <code class="code">set</code> and is the first table of
-content to be printed right after the abstract.
+<p>The following options are used in the thesis mode only. Some options may have
+the same name as other states (such as the <code class="code">Report</code> and <code class="code">Thesis</code> both have their own
+version of <code class="code">Title</code>) These options will only be described under the parent option
+in which they were invoked. The following are the global options for the <code class="code">Thesis</code>
+state:
 </p>
-<p>Default is <code class="code">set</code>.
+
+<dl class="first-deffn def-block">
+<dt class="deffn def-line" id="index-_002fThesis_002fTitle"><span class="category-def">Option: </span><span><strong class="def-name">/Thesis/Title</strong> <var class="def-var-arguments">mandatory</var><a class="copiable-link" href="#index-_002fThesis_002fTitle"> &para;</a></span></dt>
+<dd><p>Set the title for the Thesis.
 </p></dd></dl>
 
-<dl class="first-defvr first-defvar-alias-first-defvr def-block">
-<dt class="defvr defvar-alias-defvr def-line" id="index-_002fThesis_002fToC_002fFigures"><span class="category-def">Variable: </span><span><strong class="def-name">/Thesis/ToC/Figures</strong><a class="copiable-link" href="#index-_002fThesis_002fToC_002fFigures"> &para;</a></span></dt>
-<dd><p>Prints the <strong class="strong">List of Figures</strong> right after Table of Contents on a newpage.
-</p>
-<p>Default is <code class="code">set</code>.
-</p>
-<p>If user has no figures within their document, this should changed to <code class="code">unset</code>.
+<dl class="first-deffn def-block">
+<dt class="deffn def-line" id="index-_002fThesis_002fStudyProgram"><span class="category-def">Option: </span><span><strong class="def-name">/Thesis/StudyProgram</strong> <var class="def-var-arguments">mandatory</var><a class="copiable-link" href="#index-_002fThesis_002fStudyProgram"> &para;</a></span></dt>
+<dd><p>Set the study program for the Thesis.
 </p></dd></dl>
 
-<dl class="first-defvr first-defvar-alias-first-defvr def-block">
-<dt class="defvr defvar-alias-defvr def-line" id="index-_002fThesis_002fToC_002fTables"><span class="category-def">Variable: </span><span><strong class="def-name">/Thesis/ToC/Tables</strong><a class="copiable-link" href="#index-_002fThesis_002fToC_002fTables"> &para;</a></span></dt>
-<dd><p>Prints the <strong class="strong">List of Tables</strong> right after <strong class="strong">Contents</strong> on a newpage if
-<code class="code">/Thesis/ToC/Figures</code> is <code class="code">unset</code> or right after <code class="code">/Thesis/ToC/Figures</code> and on the
-same page if space if available.
+<dl class="first-deffn def-block">
+<dt class="deffn def-line" id="index-_002fThesis_002fLocation"><span class="category-def">Option: </span><span><strong class="def-name">/Thesis/Location</strong> <var class="def-var-arguments">optional</var><a class="copiable-link" href="#index-_002fThesis_002fLocation"> &para;</a></span></dt>
+<dd><p>Set the location in which <code class="code">Preclusion from Public Access</code>, and <code class="code">Declaration In
+  Lieu of Oath</code> are signed.
 </p>
-<p>Default is <code class="code">set</code>.
-</p>
-<p>If user has no table within their document, this should changed to <code class="code">unset</code>.
+<p>Default is <code class="code">Innsbruck</code>
 </p></dd></dl>
 
+<dl class="first-deffn def-block">
+<dt class="deffn def-line" id="index-_002fThesis_002fData"><span class="category-def">Option: </span><span><strong class="def-name">/Thesis/Data</strong> <var class="def-var-arguments">optional</var><a class="copiable-link" href="#index-_002fThesis_002fData"> &para;</a></span></dt>
+<dd><p>Set the date in which <code class="code">Preclusion from Public Access</code>, and <code class="code">Declaration In
+  Lieu of Oath</code> are signed.
+</p>
+<p>Default is the date in which the document is compiled.
+</p></dd></dl>
+
+<dl class="first-deffn def-block">
+<dt class="deffn def-line" id="index-_002fThesis_002fEmbargo"><span class="category-def">Option: </span><span><strong class="def-name">/Thesis/Embargo</strong> <var class="def-var-arguments">optional</var><a class="copiable-link" href="#index-_002fThesis_002fEmbargo"> &para;</a></span></dt>
+<dd><p>Set the end date for the embargo of the thesis.
+</p>
+<p>The entered date must be in the format <code class="code">dd.mm.yyyy</code>.
+</p>
+<p>Default is <code class="code">unset</code>.
+</p></dd></dl>
+
+
+<ul class="mini-toc">
+<li><a href="Custom-Environments-and-Commands.html" accesskey="1">Custom Environments and Commands</a></li>
+<li><a href="Supervisor.html" accesskey="2">Supervisor</a></li>
+<li><a href="Reviewer.html" accesskey="3">Reviewer</a></li>
+<li><a href="Table-of-Contents.html" accesskey="4">Table of Contents</a></li>
+<li><a href="Example-Double-Degree-Programme.html" accesskey="5">Example: Double Degree Programme</a></li>
+<li><a href="Example-Company-Based-Thesis.html" accesskey="6">Example: Company Based Thesis</a></li>
+<li><a href="Example-BSc-Thesis-in-English.html" accesskey="7">Example: BSc Thesis in English</a></li>
+<li><a href="Example-MasterArbeit-auf-Deutsch.html" accesskey="8">Example: MasterArbeit auf Deutsch</a></li>
+</ul>
 </div>
 <hr>
 <p class="nav-panel">

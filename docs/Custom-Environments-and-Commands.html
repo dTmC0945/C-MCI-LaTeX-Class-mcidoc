@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.3, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Custom Environments and Commands (mcidoc Student Documentation)</title>
+
+<meta name="description" content="Custom Environments and Commands (mcidoc Student Documentation)">
+<meta name="keywords" content="Custom Environments and Commands (mcidoc Student Documentation)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Thesis-Specific-Options.html" rel="up" title="Thesis Specific Options">
+<link href="Supervisor.html" rel="next" title="Supervisor">
+<style type="text/css">
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+dt.def-line {font-size: 1rem}
+span:hover a.copiable-link {visibility: visible}
+strong.def-name {font-family: monospace; font-weight: bold}
+</style>
+<link rel="stylesheet" type="text/css" href="https://www.gnu.org/software/gnulib/manual.css">
+
+
+</head>
+
+<body lang="en">
+<div class="subsection-level-extent" id="Custom-Environments-and-Commands">
+<p class="nav-panel">
+<span class="nav-button"><span class="nav-label">Next: </span><span class="nav-link"><a href="Supervisor.html" accesskey="n" rel="next">Supervisor</a></span></span>, <span class="nav-button"><span class="nav-label">Up: </span><span class="nav-link"><a href="Thesis-Specific-Options.html" accesskey="u" rel="up">Thesis Specific Options</a></span></span><span class="nav-button"> &nbsp; </span><span class="nav-button">[<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</span></p>
+<hr>
+<h4 class="subsection" id="Custom-Environments-and-Commands-1"><span>2.3.1 Custom Environments and Commands<a class="copiable-link" href="#Custom-Environments-and-Commands-1"> &para;</a></span></h4>
+
+<p>There are a few commands and environments defined specifically for the <code class="code">Thesis</code>
+class which are as follows:
+</p>
+
+<dl class="first-deffn def-block">
+<dt class="deffn def-line" id="index-Abstract"><span class="category-def">Environment: </span><span><strong class="def-name">Abstract</strong> <var class="def-var-arguments">marg:language</var><a class="copiable-link" href="#index-Abstract"> &para;</a></span></dt>
+<dd><p>Generate an abstract after <strong class="strong">Declaration in Lieu of Oath</strong> if <strong class="strong">Acknowledgements</strong>
+is not inserted, else the abstract is inserted right after <strong class="strong">Acknowledgements</strong>.
+</p>
+<p>The abstract(s) is/are printed before the main Table of contents.
+</p>
+<p>The mandatory argument <code class="code">{language}</code> controls which language is used. Currently
+<code class="code">EN</code> and <code class="code">DE</code> are supported. Based on the chosen <code class="code">/Language</code>, The following actions
+are taken.
+</p>
+<ol class="enumerate">
+<li> If English is chosen (<code class="code">EN</code>), then only the English abstract is printed with
+the title <strong class="strong">Abstract</strong>.
+</li><li> If German is chosen (<code class="code">DE</code>), then first the German abstract with the title
+<strong class="strong">Zusammenfassung</strong> is printed, then the English abstract is printed with
+the title <strong class="strong">Abstract</strong> is printed.
+</li></ol>
+
+<p><strong class="strong">NOTE:</strong> This is a <strong class="strong">mandatory</strong> environment.
+</p>
+<p><strong class="strong">TeXnician&rsquo;s Note:</strong> Abstracts are written to external files with the name
+<code class="code">aux-\jobname-abstract-&lt;lang&gt;.abs</code> where <code class="code">&lt;lang&gt;</code> is the lowercase of <code class="code">/Language</code>.
+The printing of this is achieved by the <code class="code">\VerbatimOut</code> to preserve the user
+entered macros.
+</p></dd></dl>
+
+<dl class="first-deffn def-block">
+<dt class="deffn def-line" id="index-Acknowledgments"><span class="category-def">Environment: </span><span><strong class="def-name">Acknowledgments</strong><a class="copiable-link" href="#index-Acknowledgments"> &para;</a></span></dt>
+<dd><p>Generate the <strong class="strong">Acknowledgements</strong> page for the thesis. This is printed right
+before any abstract on the thesis.
+</p>
+<p><strong class="strong">NOTE:</strong> This is an <strong class="strong">optional</strong> environment.
+</p>
+<p><strong class="strong">TeXnician&rsquo;s Note:</strong> The <strong class="strong">Acknowledgments</strong> are written to external files with the
+name <code class="code">aux-\jobname-acknowledgement.ack</code>.  The printing of this is achieved by
+the <code class="code">\VerbatimOut</code> to preserve the user entered macros. To control whether the
+acknowledgement is to be printed a globally defined <code class="code">\ifacknowledgments</code> is
+used. This must be set global to allow it to be seen by the internal command
+<code class="code">\Th@Preamble</code>.
+</p></dd></dl>
+
+</div>
+<hr>
+<p class="nav-panel">
+<span class="nav-button"><span class="nav-label">Next: </span><span class="nav-link"><a href="Supervisor.html">Supervisor</a></span></span>, <span class="nav-button"><span class="nav-label">Up: </span><span class="nav-link"><a href="Thesis-Specific-Options.html">Thesis Specific Options</a></span></span><span class="nav-button"> &nbsp; </span><span class="nav-button">[<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</span></p>
+
+
+
+</body>
+</html>
