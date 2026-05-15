@@ -29,28 +29,6 @@
 %
 \ProcessKeyOptions\relax%
 %
-\newtoks\Cohort%
-\newtoks\Module%
-\newtoks\Lecture%
-\newtoks\Lecturer%
-\newtoks\Group\Group{nil}%
-%
-\newtoks\Title%
-\newtoks\TitleHeader%
-\newtoks\Semester%
-\newtoks\StudentName%
-\newtoks\StudentID% 
-%
-\newtoks\Department%
-\newtoks\StudyProgram%
-\newtoks\Supervisor%
-\newtoks\PrimaryAssessor%
-\newtoks\SecondaryAssessor%
-\newtoks\Department%
-% 
-\newtoks\Authors%
-\newtoks\Affiliations%
-%
 % ---------------------------------------------------------------------------------------------
 %
 \RequirePackage{ifthen}
@@ -228,7 +206,6 @@
 		paper         = A4,
 		fontsize      = 10,
 		twoside       = false,
-		%twocolumn
 	]{scrreprt}
 }{}
 %
@@ -253,17 +230,6 @@
 	\LoadClass[
 		10pt,
 		t]{beamer}
-}
-
-%
-\If@State{Paper}{
-	\LoadClass[
-		chapterprefix = true,
-		DIV           = 22,
-		paper         = A4,
-		fontsize      = 10,
-		twoside       = false,
-	]{scrreprt}
 }
 %
 \ExecuteOptions{}
@@ -794,10 +760,14 @@
 
 	\clearpairofpagestyles%
 
-	\ihead{\MakeUppercase{\leftmark}}
+	\ihead{\leftmark}
 	\ohead{\rightmark}
 	\ofoot{\thepage}
-	\ifoot{\the\StudentName}
+	\ifoot{%
+		\ifthenelse{\equal{\Student@Prefix}{unset}}{}{\Student@Prefix}
+		\Student@Name%
+		\ifthenelse{\equal{\Student@Postfix}{unset}}{}{, \Student@Postfix}
+	}
 	\renewcommand{\headfont}{\normalfont}
 
 	% Here we define how the chapter heading will be shown where the number will be
@@ -837,16 +807,47 @@
 	%  
 	\renewcommand\raggedchapter{\raggedleft}
 	%
+	% Control how much the text should be stretched. Ideally for thesis, keep
+	% this at `1.5' for easy reading.
+	\RequirePackage{setspace}
+	\setstretch{1.5}
+	%
 }{}
 
 % END OF THESIS CLASS -------------------------------------------------------------------------
 
 \usepackage{setspace}
 
+% BEGINNING OF PAPER CLASS --------------------------------------------------------------------
 
+\ifthenelse{\equal{\KEY@DOCUMENTSTATE}{Paper}}{%
+	%
+	\RequirePackage{geometry}
+	%
+	% The document needs to be formatted using `\doublecolumn'.
+	\AddToHook{begindocument/end}{\twocolumn}
+	%
+	%
+	%
+	% Set the page-geometry to conform to `IEEE' standard.
+	\newgeometry{%
+		top    = 2.54cm,%
+		bottom = 2.54cm,%
+		left   = 2.54cm,%
+		right  = 2.54cm,%
+	}%
+	%
+	\RequirePackage{setspace}
+	\setstretch{1.25}
+}
+
+% END OF PAPER CLASS --------------------------------------------------------------------------
+%
+%
+%
 % BEGINNING OF REPORT CLASS -------------------------------------------------------------------
 
-\ifthenelse{\equal{\KEY@DOCUMENTSTATE}{Report}}{
+\ifthenelse{\equal{\KEY@DOCUMENTSTATE}{Report}}{%
 	\definecolor{mci2}{HTML}{004983}
 
 	\NewDocumentCommand{\MakeTitlePage}{}{
@@ -974,7 +975,7 @@
 	\ihead{\MakeUppercase{\leftmark}}
 	\ohead{\rightmark}
 	\ofoot{\thepage}
-	\ifoot{\the\StudentName}
+	\ifoot{\Global@StudentName}
 	\renewcommand{\headfont}{\normalfont}
 	\renewcommand*\chapterheadstartvskip{}
 	\renewcommand*\chapterheadendvskip{%
@@ -984,8 +985,7 @@
 }{}
 
 
-\RequirePackage{setspace}
-\setstretch{1.5}
+
 
 \RequirePackage{geometry}
 
