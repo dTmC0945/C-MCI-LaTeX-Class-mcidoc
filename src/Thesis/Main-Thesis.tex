@@ -14,19 +14,19 @@
 % This file is part of `mcidoc' and all files in that bundle must be distributed together.
 % 
 % ---------------------------------------------------------------------------------------------
-%  
-\documentclass[state=Thesis]{../mcidoc}
+%    
+\documentclass[state=Notes]{../mcidoc} 
 %
 % DOCUMENT CONFIGURATION ----------------------------------------------------------------------
-%
+%  
 % As stated in the `mcidoc' documentation, `\SetMCI' is the primary way in which the document
 % is changed into a form that is usable to the user. For more information about which options
 % are available for configuration, please visit the documentation at
 %
 % LINK: https://dtmc0945.github.io/C-MCI-LaTeX-Class-mcidoc/
-% 
-\SetMCI{%
-  %  
+%  
+\SetMCI{% 
+  %   
   % GLOBAL SETTINGS -- ------------------------------------------------------------------------
   % LINK: https://dtmc0945.github.io/C-MCI-LaTeX-Class-mcidoc/Global-Options.html
   % 
@@ -39,7 +39,7 @@
   Degree         = MSc,   
   Language       = EN,  
   Department     = MECH, 
-  %      
+  %       
   % -------------------------------------------------------------------------------------------
   % 
   Thesis = { %        
@@ -107,7 +107,7 @@ style   = ieee,
 \makeatother   
 
 % ABSTRACTS & ACKNOWLEDGMENTS -----------------------------------------------------------------
-   
+    
 \begin{Abstract}{EN}    
          
   Abstracts contain most of the following kinds of information in brief form. The body of your
@@ -119,12 +119,12 @@ style   = ieee,
   Psychological Association, which is widely used in the social sciences, gives specific
   guidelines for what to include in the abstract for different kinds of papers—for empirical
   studies, literature reviews or meta-analyses, theoretical papers, methodological papers, and
-  case studies.
+  case studies. 
        
-\end{Abstract}     
-           
-\begin{Abstract}{DE}    
-      
+\end{Abstract}      
+            
+\begin{Abstract}{DE}     
+       
   Abstracts contain most of the following kinds of information in brief form. The body of your
   paper will, of course, develop and explain these ideas much more fully. As you will see in
   the samples below, the proportion of your abstract that you devote to each kind of
@@ -135,9 +135,9 @@ style   = ieee,
   guidelines for what to include in the abstract for different kinds of papers—for empirical
   studies, literature reviews or meta-analyses, theoretical papers, methodological papers, and
   case studies. 
-    
+     
 \end{Abstract}     
-
+ 
 \begin{Acknowledgments}  
 
   I extend my deepest gratitude to my supervisor, Professor Jane Smith, for her unwavering
@@ -146,7 +146,7 @@ style   = ieee,
   dissertation. I am equally thankful to the members of my thesis committee, Dr. John Doe and
   Dr. Emily White, for their constructive feedback and essential suggestions that enhanced the
   quality of my work.
-
+   
   My appreciation also goes to the faculty and staff in the Department of Biology at University
   College London, whose resources and assistance have been invaluable. I would also like to
   acknowledge my peers for their camaraderie and the stimulating discussions that inspired me
@@ -156,35 +156,35 @@ style   = ieee,
   Finally, my sincere thanks to the technical staff whose expertise in managing laboratory
   equipment was crucial for my experiments. Their patience and readiness to assist at all times
   have left a profound impact on the completion of my project.
-  
+   
 \end{Acknowledgments}
-
+ 
 \begin{document} % ############################################################################
-  
+   
 % NOTE ----------------------------------------------------------------------------------------
 % Your primary thesis content should go here and should follow structure befitting of a
 % scientific report and should be written in a scientific format.
 %
 % For more information please look at MCI guidelines on how it should be done.
 % ---------------------------------------------------------------------------------------------
-      
+        
 % Include Chapter - introduction  
-% \include{chapter/introduction.tex}
+\include{chapter/introduction.tex}
 % Include Chapter - literature survey  
 % \include{chapter/literature-survey.tex}
     
-\include{chapter/Solid-Rotor-Technology.tex}
-
+%\include{chapter/Solid-Rotor-Technology.tex}
+ 
 % Include Chapter - Finite Element Method
 % \include{chapter/Finite-Element-Method}   
 % Include Chapter - Conclusion and Future Work
 % \include{chapter/Conclusion-and-Future-Work} 
-                            
+                             
 % NOTE ----------------------------------------------------------------------------------------
 % Add as many chapters as you see fit for your content. For easy legibility and dynamic
 % adjustment of content try to write a `file per chapter' such as the example shown above.
 % ---------------------------------------------------------------------------------------------
-  
+          
 \end{document} % ##############################################################################
 %   
 %%% Local Variables: 

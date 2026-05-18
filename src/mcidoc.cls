@@ -22,7 +22,7 @@
 \ProvidesClass{mcidoc}[12-01-2026 A documentclass for MCI MECH Students]
 %
 \DeclareKeys{
-	state.store       = \KEY@DOCUMENTSTATE,
+	state.store       = \class@state,
 }
 %
 \def\mcidoc@version{2026.SS}
@@ -172,7 +172,7 @@
 	% -- class.
 	% -- #1 : Defined `state'
 	% -- #2 : Execute code.
-	\ifthenelse{\equal{\KEY@DOCUMENTSTATE}{#1}
+	\ifthenelse{\equal{\class@state}{#1}
 	}{%
 		#2
 	}{%
@@ -225,7 +225,22 @@
 }{}
 %
 %
-%
+% 
+\If@State{Notes}{
+	% Load the default class for state `Thesis'
+	\LoadClass[%
+		chapterprefix = true,%
+		DIV           = 11,%
+		paper         = A4,%
+		fontsize      = 10,%
+		twoside       = false,%
+		parskip       = full,
+		abstract      = true,
+	]{scrreprt}%
+}{}
+% 
+% 
+% 
 \If@State{Slide}{
 	\LoadClass[
 		10pt,
@@ -311,7 +326,7 @@
 %
 % BEGINNING OF THESIS CLASS -------------------------------------------------------------------
 
-\ifthenelse{\equal{\KEY@DOCUMENTSTATE}{Thesis}
+\ifthenelse{\equal{\class@state}{Thesis}
 }{
 	% Add this so the titlePage is automatically inserted
 	\NewDocumentCommand{\Th@DeclarationOfNovelty}{}{%
@@ -820,7 +835,7 @@
 
 % BEGINNING OF PAPER CLASS --------------------------------------------------------------------
 
-\ifthenelse{\equal{\KEY@DOCUMENTSTATE}{Paper}}{%
+\ifthenelse{\equal{\class@state}{Paper}}{%
 	%
 	\RequirePackage{geometry}
 	%
@@ -839,15 +854,67 @@
 	%
 	\RequirePackage{setspace}
 	\setstretch{1.25}
-}
+	%
+	% Here we disable `Thesis' state commands if they are accidentally
+	% used.
+
+}{}
 
 % END OF PAPER CLASS --------------------------------------------------------------------------
+
+% BEGINNING OF NOTES CLASS --------------------------------------------------------------------
 %
+% #INFO: A `state' for students to write their lecture notes.
 %
-%
+\ifthenelse{\equal{\class@state}{Notes}}{%
+	% 
+	\RequirePackage{verbatim}
+	\RequirePackage{geometry}
+	\RequirePackage{setspace}
+	\setstretch{1.5}
+	% 
+	% 
+	%
+	% % Set the page-geometry to conform to `IEEE' standard.
+	% \newgeometry{%
+	% 	top    = 2.54cm,%
+	% 	bottom = 2.54cm,%
+	% 	left   = 2.54cm,%
+	% 	right  = 2.54cm,%
+	% }%
+	%
+	%
+	%
+	\RequirePackage[
+		automark,
+		headsepline,
+		footsepline,
+		autooneside  = false
+	]{scrlayer-scrpage}
+
+	\clearpairofpagestyles%
+
+	\ihead{\leftmark}
+	\ohead{\rightmark}
+	\ofoot{\thepage}
+	\ifoot{%
+		\ifthenelse{\equal{\Student@Prefix}{unset}}{}{\Student@Prefix}
+		\Student@Name%
+		\ifthenelse{\equal{\Student@Postfix}{unset}}{}{, \Student@Postfix}
+	}
+	\renewcommand{\headfont}{\normalfont}
+	% 
+	\NewDocumentEnvironment{Abstract}{m}{\expandafter\comment}{\expandafter\endcomment}
+	\NewDocumentEnvironment{Acknowledgments}{}{\expandafter\comment}{\expandafter\endcomment}
+}{}
+
+% END OF NOTES CLASS --------------------------------------------------------------------------
+
+
+
 % BEGINNING OF REPORT CLASS -------------------------------------------------------------------
 
-\ifthenelse{\equal{\KEY@DOCUMENTSTATE}{Report}}{%
+\ifthenelse{\equal{\class@state}{Report}}{%
 	\definecolor{mci2}{HTML}{004983}
 
 	\NewDocumentCommand{\MakeTitlePage}{}{
@@ -1080,6 +1147,12 @@
 }{%
 	An unsupported `deparment' was chosen. Please use a supported option.  }
 
+\DocumentationError{state-error}{%
+	An unsupported option for was entered as the `State'
+	options for `mcidoc' class.
+}{%
+	An unsupported `deparment' was chosen. Please use a supported option.  }
+
 \DocumentationError{lang-error}{%
 	An unsupported option for `Language' was chosen
 	in `\SetMCI'. Please use a supported option.
@@ -1099,28 +1172,36 @@
 % 
 
 \ExplSyntaxOn%
+\clist_new:N \l_some_clist
+\clist_set:Nn \l_some_clist {EN,DE}
+\tl_set:Nx \l_element_b_str { \Global@Language}
 % 
 \NewDocumentCommand{\IfStringInList}{mmmm}{%
 	% -- Control how the error messages are checked based on a given
 	% -- predefined list.
-	% -- #1 : The list of allowed items,
-	% -- #2 : The item to be checked within the list,
+	% -- #1 : The item to be checked within the list,
+	% -- #2 : The list of allowed items,
 	% -- #3 : The action if correct,
 	% -- #4 : The action if wrong.
-	{ \clist_if_in:noTF {#2} {#1} {#3} {#4} }
+	{ \clist_if_in:NoTF {#1} {#2} {#3} {#4} }
 }
 % 
 \AtEndDocument{
-	\IfStringInList { \Global@Degree }
-	{BSc, MSc} {}
-	{\msg_fatal:nn { mcidoc } { option / degree-error }}
+	% \IfStringInList { \Global@Degree }
+	% {BSc, MSc} {}
+	% {\msg_fatal:nn { mcidoc } { option / degree-error }}
 
-	\IfStringInList { \Global@Department }
-	{MECH} {}
-	{\msg_fatal:nn { mcidoc } { option / dept-error }}
+	% \IfStringInList { \class@state }
+	% {Report, Thesis, Slide, Poster, Paper, Notes} {}
+	% {\msg_fatal:nn { mcidoc } { option / state-error }}
 
-	\IfStringInList { \Global@Language }
-	{EN, DE} {}
+	% \IfStringInList { \Global@Department }
+	% {MECH} {}
+	% {\msg_fatal:nn { mcidoc } { option / dept-error }}
+
+	\IfStringInList  \l_some_clist
+	{\l_element_b_str }
+	{}
 	{\msg_fatal:nn { mcidoc } { option / lang-error }}
 }
 %
