@@ -15,7 +15,7 @@
 % 
 % ---------------------------------------------------------------------------------------------
 %    
-\documentclass[state=Notes]{../mcidoc} 
+\documentclass[state=Thesis]{../mcidoc} 
 %
 % DOCUMENT CONFIGURATION ----------------------------------------------------------------------
 %  
@@ -26,65 +26,39 @@
 % LINK: https://dtmc0945.github.io/C-MCI-LaTeX-Class-mcidoc/
 %  
 \SetMCI{% 
-  %   
-  % GLOBAL SETTINGS -- ------------------------------------------------------------------------
-  % LINK: https://dtmc0945.github.io/C-MCI-LaTeX-Class-mcidoc/Global-Options.html
-  % 
+  %%%%
   StudentName    = {%
-    Prefix= {ref.},
-    Name = {Colin Stevens},
-    Postfix = {Ph.d},
-  },%  
+    Prefix       = {Prof.},
+    Name         = {Colin Stevens}, 
+    Postfix      = {Esq.}, 
+  },%
+  %%%%
   StudentID      = {2314808},
   Degree         = MSc,   
-  Language       = EN,  
-  Department     = MECH, 
-  %       
-  % -------------------------------------------------------------------------------------------
-  % 
-  Thesis = { %        
-    Title          =  {On the Study of Different \& Rotor Geometry Configuration
-      for use in High-Speed Induction Motors},
+  Language       = EN,   
+  Department     = MECH,
+  Title          = {On the Study of Different \& Rotor Geometry Configurations},
+  %%%% 
+  Thesis = { %         
     StudyProgram   = {Mechatronik, Design \& Innovation},
     %% 
     Supervisor     = {%  
-      %% Company = {Ministry of Typography},
-      Prefix  = {Prof.},  
+      Prefix  = {Prof.},   
       Name    = {Colin Stevens}, 
       Postfix = {Ph.D}, 
-    },%          
-    %% 
-    % Reviewer     = {%  
-    % Prefix     = Dan,
-    % Name       = Colin Stevens,
-    % Postfix    = Esh.,  
-    % },%    
-    %   Double-Degree  = {  
-    %   Institution     = {ASU},
-    %   Student-Number  = {11111111111}, 
-    %   Supervisor     = {%  
-    %   Prefix  = {Prof.},   
-    %   Name    = {Colin Stevens},
-    %   Postfix = {},
-    % },%       
-    % },       
-    %%   
+    },%
+    %%%% 
     Embargo        = {31.07.2031},
     Location       = {Istanbul},
     Date           = {21.05.2002},
-    %% 
+    %%%% 
     Bibliography   = {%     
       State        = set,  
       Location     = {references.bib},  
       Print        = set,     
-    },        
-  },     
-  Report = {
-    Title          = {On the Study of Different \& Rotor Geometry Configuration
-      for use in High-Speed Induction Motors},
-    Lecture        = {Drive Technologies},
-  }, 
- }                                                  
+    },         
+  },    
+} 
 %        
 % CUSTOM COMMANDS -----------------------------------------------------------------------------
 % 
@@ -108,7 +82,7 @@ style   = ieee,
 
 % ABSTRACTS & ACKNOWLEDGMENTS -----------------------------------------------------------------
     
-\begin{Abstract}{EN}    
+\begin{Abstract}{EN}     
          
   Abstracts contain most of the following kinds of information in brief form. The body of your
   paper will, of course, develop and explain these ideas much more fully. As you will see in
@@ -121,9 +95,9 @@ style   = ieee,
   studies, literature reviews or meta-analyses, theoretical papers, methodological papers, and
   case studies. 
        
-\end{Abstract}      
+\end{Abstract}       
             
-\begin{Abstract}{DE}     
+\begin{Abstract}{DE}      
        
   Abstracts contain most of the following kinds of information in brief form. The body of your
   paper will, of course, develop and explain these ideas much more fully. As you will see in
@@ -136,7 +110,7 @@ style   = ieee,
   studies, literature reviews or meta-analyses, theoretical papers, methodological papers, and
   case studies. 
      
-\end{Abstract}     
+ \end{Abstract}     
  
 \begin{Acknowledgments}  
 
@@ -160,31 +134,31 @@ style   = ieee,
 \end{Acknowledgments}
  
 \begin{document} % ############################################################################
-   
+
 % NOTE ----------------------------------------------------------------------------------------
 % Your primary thesis content should go here and should follow structure befitting of a
 % scientific report and should be written in a scientific format.
 %
 % For more information please look at MCI guidelines on how it should be done.
 % ---------------------------------------------------------------------------------------------
-        
+
 % Include Chapter - introduction  
 \include{chapter/introduction.tex}
 % Include Chapter - literature survey  
 % \include{chapter/literature-survey.tex}
-    
+
 %\include{chapter/Solid-Rotor-Technology.tex}
- 
+
 % Include Chapter - Finite Element Method
 % \include{chapter/Finite-Element-Method}   
 % Include Chapter - Conclusion and Future Work
 % \include{chapter/Conclusion-and-Future-Work} 
-                             
+
 % NOTE ----------------------------------------------------------------------------------------
 % Add as many chapters as you see fit for your content. For easy legibility and dynamic
 % adjustment of content try to write a `file per chapter' such as the example shown above.
 % ---------------------------------------------------------------------------------------------
-          
+
 \end{document} % ##############################################################################
 %   
 %%% Local Variables: 
@@ -198,4 +172,4 @@ style   = ieee,
 %
 % Main-Thesis.tex ends here.
 %
-                       
+

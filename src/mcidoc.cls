@@ -96,8 +96,6 @@
 	Postfix/.default                 = {},
 	% Thesis General Settings
 	/Thesis/.cd,
-	Title/.store in                  = \Thesis@Title,
-	Title                            = {Thesis Title},
 	StudyProgram/.store in           = \Thesis@StudyProgram,
 	StudyProgram                     = {Mechatronics \& Smart Technologies},
 	Novelty/.store in                = \Thesis@DeclarationOfNovelty,
@@ -128,6 +126,8 @@
 	StudentName                      = {Jason Brigham},
 	StudentID/.store in              = \Global@StudentID,
 	StudentID                        = {2024000095},
+	Title/.store in                  = \Global@Title,
+	Title                            = {Notes Title},
 	% ---
 	% Setting to the Table of Contents
 	/Report/ToC/.cd,
@@ -142,6 +142,12 @@
 	Title/.store in                  = \Report@Title,
 	Title                            = {Thesis Title},
 	Lecture/.store in                = \Report@Lecture,
+	Lecture                          = {unset},
+	% ---
+	/Notes/.cd,
+	Title/.store in                  = \Notes@Title,
+	Title                            = {Notes Title},
+	Lecture/.store in                = \Notes@Lecture,
 	Lecture                          = {unset},
 }
 %
@@ -342,7 +348,7 @@
 				I, {\Global@StudentName}, hereby declare, under oath, that this %
 				\LanguageCondition{EN}{\Global@Degree}{BSc}{bachelor's} %
 				\LanguageCondition{EN}{\Global@Degree}{MSc}{master's} %
-				thesis with the title ``{\Thesis@Title}'' has been my independent work and has
+				thesis with the title ``{\Global@Title}'' has been my independent work and has
 				not been aided with any prohibited means. I declare, to the best of my
 				knowledge and belief, that all passages taken from published and unpublished
 				sources or documents have been reproduced, whether as original, slightly
@@ -373,7 +379,7 @@
 				vorliegende %
 				\LanguageCondition{DE}{\Global@Degree}{BSc}{Bachelor}%
 				\LanguageCondition{DE}{\Global@Degree}{MSc}{Master}%
-				arbeit mit dem Titel {\glqq{\Thesis@Title}\grqq} selbständig angefertigt
+				arbeit mit dem Titel {\glqq{\Global@Title}\grqq} selbständig angefertigt
 				habe. Die aus fremden Quellen direkt oder indirekt übernommenen Gedanken sind
 				als solche kenntlich gemacht.
 
@@ -583,7 +589,7 @@
 		\begin{titlepage}%
 			%
 			\begin{center}%
-				\LARGE\noindent\textbf{\Thesis@Title}
+				\LARGE\noindent\textbf{\Global@Title}
 			\end{center}%
 			% 
 			\centering
@@ -906,9 +912,80 @@
 	% 
 	\NewDocumentEnvironment{Abstract}{m}{\expandafter\comment}{\expandafter\endcomment}
 	\NewDocumentEnvironment{Acknowledgments}{}{\expandafter\comment}{\expandafter\endcomment}
+	%
+	%
+	%
+	\NewDocumentCommand{\MakeTitlePage}{}{
+		% -- Generate a Title Page for the `Notes' Class.
+
+		\pagestyle{empty} % Define page style as empty (i.e., no header & footer)
+
+		% Define new geometry for the title page (this will be reset later)
+		\newgeometry{
+			margin = 3cm,
+			top    = 3cm
+		}
+
+		\begin{titlepage}
+			% 
+			\begin{center}
+				% 
+				% Include
+				\bgroup%
+				\large%
+				\IfEqCase{\Global@Language}{%
+					{DE}{MCI\,\,\textbar\,\,%
+						Die Unternehmerische Hochschule\textsuperscript{\textregistered}}
+					{EN}{MCI\,\,\textbar\,\,%
+						The Entrepreneurial School\textsuperscript{\textregistered}}}[]
+				\hfill\textcolor{gray!75!black}{\Global@Degree} \\[1cm]
+				{\Huge\bfseries\Global@Title}
+				\egroup\\[0.4cm]
+				{\Large Lecture Notes} \\[\baselineskip]
+				{\Large\Notes@Lecture}
+				\normalsize
+
+			\end{center}
+			%
+			\vspace{\fill}
+			%
+		\end{titlepage}
+		\restoregeometry%
+		\cleardoublepage%
+	}
+
+	\NewDocumentCommand{\TableOfContents}{}{
+		% -- Define the way all Table of Contents are displayed.
+		% -- An alteration is made by the assumption, the thesis will not be
+		% -- printed. To decrease the amount of unnecessary white pages `\relax'
+		% -- command is used for the `\listoftables'.
+		\ifthenelse{\equal{\Thesis@ToC@Primary}{set}}{\tableofcontents}{}
+		\begingroup
+		\ifthenelse{\equal{\Thesis@ToC@Figures}{set}}{\listoffigures}{}
+		\ifthenelse{\equal{\Thesis@ToC@Tables}{set}}{\let\clearpage\relax\listoftables}{}
+		\endgroup
+		\clearpage
+		\pagenumbering{arabic}
+		\pagestyle{scrheadings}
+	}
+	%
+	%
+	%
+	\NewDocumentCommand{\Preamble}{}{
+		% -- A collection command to print all necessary preamble.
+		\MakeTitlePage
+		\TableOfContents
+	}
+	%
+	%
+	\AddToHook{begindocument/end}{%
+		\Preamble%
+	}%
+	%
+	%
 }{}
 
-% END OF NOTES CLASS --------------------------------------------------------------------------
+% END OF NOTES CLASS -------------------------------------------------------------------------
 
 
 
@@ -927,6 +1004,10 @@
 			margin = 3cm,
 			top    = 3cm
 		}
+
+		\begin{tikzpicture}
+			\draw (0,0) circle (3cm);
+		\end{tikzpicture}
 
 		\begin{titlepage}
 			% 

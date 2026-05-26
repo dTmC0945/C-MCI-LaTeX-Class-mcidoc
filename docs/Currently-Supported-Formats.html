@@ -13,11 +13,13 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
 <link href="index.html" rel="start" title="Top">
+<link href="Command-Index.html" rel="index" title="Command Index">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="Introduction.html" rel="up" title="Introduction">
-<link href="Purpose-of-Making.html" rel="prev" title="Purpose of Making">
+<link href="Reading-the-Commands-and-Environments.html" rel="prev" title="Reading the Commands and Environments">
 <style type="text/css">
 a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+div.example {margin-left: 3.2em}
 dt.def-line {font-size: 1rem}
 span:hover a.copiable-link {visibility: visible}
 strong.def-name {font-family: monospace; font-weight: bold}
@@ -32,20 +34,37 @@ ul.mark-bullet {list-style-type: disc}
 <body lang="en">
 <div class="section-level-extent" id="Currently-Supported-Formats">
 <p class="nav-panel">
-<span class="nav-button"><span class="nav-label">Previous: </span><span class="nav-link"><a href="Purpose-of-Making.html" accesskey="p" rel="prev">Purpose of Making</a></span></span>, <span class="nav-button"><span class="nav-label">Up: </span><span class="nav-link"><a href="Introduction.html" accesskey="u" rel="up">Introduction</a></span></span><span class="nav-button"> &nbsp; </span><span class="nav-button">[<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</span></p>
+<span class="nav-button"><span class="nav-label">Previous: </span><span class="nav-link"><a href="Reading-the-Commands-and-Environments.html" accesskey="p" rel="prev">Reading the Commands and Environments</a></span></span>, <span class="nav-button"><span class="nav-label">Up: </span><span class="nav-link"><a href="Introduction.html" accesskey="u" rel="up">Introduction</a></span></span><span class="nav-button"> &nbsp; </span><span class="nav-button">[<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</span><span class="nav-button">[<a href="Command-Index.html" title="Index" rel="index">Index</a>]</span></p>
 <hr>
-<h3 class="section" id="Currently-Supported-Formats-1"><span>1.2 Currently Supported Formats<a class="copiable-link" href="#Currently-Supported-Formats-1"> &para;</a></span></h3>
+<h3 class="section" id="Currently-Supported-Formats-1"><span>1.3 Currently Supported Formats<a class="copiable-link" href="#Currently-Supported-Formats-1"> &para;</a></span></h3>
 
 <p>As mentioned previously the following <code class="code">state</code>&rsquo;s are supported
 </p>
 <ul class="itemize mark-bullet">
 <li><strong class="strong">Thesis:</strong> The primary way the thesis is written. Supports different options
 depending on the grade of the language requirements.
-</li><li><strong class="strong">Report:</strong> Used in creating reports for lectures and lab sessions. Examples
-include writing a homework submission, or writing a lab report. 
-</li></ul>
 
-<p>All the aforementioned documents are bundled up as a class called <code class="code">mcidoc</code>.<a class="footnote" id="DOCF3" href="#FOOT3"><sup>3</sup></a>
+<p>To enable it, please write:
+</p>
+<div class="example">
+<pre class="example-preformatted">\documentclass[state=Thesis]{...}
+</pre></div>
+
+<p>where <code class="code">...</code> described the path to the <code class="code">mcidoc.cls</code>.
+</p>
+</li><li><strong class="strong">Report:</strong> Used in creating reports for lectures and lab sessions. Examples
+include writing assignments, or lab reports.
+
+<p>To enable it, please write:
+</p>
+<div class="example">
+<pre class="example-preformatted">\documentclass[state=Report]{...}
+</pre></div>
+
+<p>where <code class="code">...</code> described the path to the <code class="code">mcidoc.cls</code>.
+</p></li></ul>
+
+<p>All the aforementioned documents are bundled up as a class called <code class="code">mcidoc</code>.
 </p>
 <table class="cartouche"><tr><th>
 Important</th></tr><tr><td>
@@ -53,8 +72,12 @@ Important</th></tr><tr><td>
 the complile being LuaTeX. However, as with everything, there will always be
 edge cases and I am sure to that end, if you encounter any error please create
 an issue in <a class="uref" href="https://github.com/dTmC0945/C-MCI-LaTeX-Class-mcidoc/tree/main">Github Repo</a>.
+</p>
+<p><strong class="strong">TeXnician&rsquo;s Note:</strong> This class is designed with LuaTeX in mind as it requires the
+use of the LaTeX3 Kernel which comes precompiled with the engine. If one so
+wishes, they can force the use of <code class="code">pdftex</code> to compile the document but additional
+packages would then be required for the compilation process.
 </p></td></tr></table>
-
 
 <table class="cartouche"><tr><th>
 Warning</th></tr><tr><td>
@@ -66,27 +89,20 @@ code and not with your personal LaTeX development environment (i.e., TeXStudio).
 </p></td></tr></table>
 
 
-<dl class="first-defvr first-defvar-alias-first-defvr def-block">
-<dt class="defvr defvar-alias-defvr def-line" id="index-state"><span class="category-def">Variable: </span><span><strong class="def-name">state</strong><a class="copiable-link" href="#index-state"> &para;</a></span></dt>
+<dl class="first-deffn def-block">
+<dt class="deffn def-line" id="index-state"><span class="category-def">documentclass-value: </span><span><strong class="def-name">state</strong><a class="copiable-link" href="#index-state"> &para;</a></span></dt>
 <dd><p>A configuration option to change the overall behaviour of <code class="code">mcidoc</code> class. This
 value can take different options based on which formats are supported, which
 are shown at the beginning of this section.
 </p>
-<p>The behaviour of the documentclass can be changed by setting <code class="code">state=&lt;val&gt;</code> of
+<p>The behaviour of the documentclass can be changed by setting <code class="code">state=val</code> of
 the optional argument of the <code class="code">mcidoc</code> documentclass.
 </p></dd></dl>
 
 </div>
-<div class="footnotes-segment">
-<hr>
-<h4 class="footnotes-heading">Footnotes</h4>
-
-<h5 class="footnote-body-heading"><a id="FOOT3" href="#DOCF3">(3)</a></h5>
-<p>Of course.</p>
-</div>
 <hr>
 <p class="nav-panel">
-<span class="nav-button"><span class="nav-label">Previous: </span><span class="nav-link"><a href="Purpose-of-Making.html">Purpose of Making</a></span></span>, <span class="nav-button"><span class="nav-label">Up: </span><span class="nav-link"><a href="Introduction.html">Introduction</a></span></span><span class="nav-button"> &nbsp; </span><span class="nav-button">[<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</span></p>
+<span class="nav-button"><span class="nav-label">Previous: </span><span class="nav-link"><a href="Reading-the-Commands-and-Environments.html">Reading the Commands and Environments</a></span></span>, <span class="nav-button"><span class="nav-label">Up: </span><span class="nav-link"><a href="Introduction.html">Introduction</a></span></span><span class="nav-button"> &nbsp; </span><span class="nav-button">[<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</span><span class="nav-button">[<a href="Command-Index.html" title="Index" rel="index">Index</a>]</span></p>
 
 
 

@@ -13,6 +13,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
 <link href="index.html" rel="start" title="Top">
+<link href="Command-Index.html" rel="index" title="Command Index">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="Configuring-the-Document.html" rel="up" title="Configuring the Document">
 <link href="Global-Options.html" rel="next" title="Global Options">
@@ -30,19 +31,19 @@ ul.mark-bullet {list-style-type: disc}
 <body lang="en">
 <div class="section-level-extent" id="Notational-Information">
 <p class="nav-panel">
-<span class="nav-button"><span class="nav-label">Next: </span><span class="nav-link"><a href="Global-Options.html" accesskey="n" rel="next">Global Options</a></span></span>, <span class="nav-button"><span class="nav-label">Up: </span><span class="nav-link"><a href="Configuring-the-Document.html" accesskey="u" rel="up">Configuring the Document</a></span></span><span class="nav-button"> &nbsp; </span><span class="nav-button">[<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</span></p>
+<span class="nav-button"><span class="nav-label">Next: </span><span class="nav-link"><a href="Global-Options.html" accesskey="n" rel="next">Global Options</a></span></span>, <span class="nav-button"><span class="nav-label">Up: </span><span class="nav-link"><a href="Configuring-the-Document.html" accesskey="u" rel="up">Configuring the Document</a></span></span><span class="nav-button"> &nbsp; </span><span class="nav-button">[<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</span><span class="nav-button">[<a href="Command-Index.html" title="Index" rel="index">Index</a>]</span></p>
 <hr>
 <h3 class="section" id="Notational-Information-1"><span>2.1 Notational Information<a class="copiable-link" href="#Notational-Information-1"> &para;</a></span></h3>
 
-<p>Before options are described, it is worth explaining the slight notational
-quirks the <code class="code">documentclass</code> has.
+<p>Before options for the <code class="code">~\SetMCI{..}</code> are described, it is worth explaining the
+slight notational quirks used in defining the command.
 </p>
-<p>Majority, if not all, of the options given by <code class="code">\SetMCI</code> and are by default either
-as <code class="code">set</code> or <code class="code">unset</code> unless specified otherwise.
+<p>For most, if not all, options given by <code class="code">\SetMCI</code> and are by default either as <code class="code">set</code>
+or <code class="code">unset</code> unless specified otherwise within the documentation.
 </p>
 <ul class="itemize mark-bullet">
 <li>If a feature is <code class="code">set</code> by default, then the option will be executed as long as
-the user does not alter its value.
+the user does not alter its value to <code class="code">unset</code>.
 </li><li>Conversely, if a <code class="code">\SetMCI</code> value is <code class="code">unset</code>, then it will not show in the document
 or alter anything within the document as long as the user does not change its
 behavior.
@@ -55,6 +56,9 @@ behavior.
 </tbody>
 </table>
 
+<p>Some options on the other hand can take different values which are explained
+in detail where they are relevant.
+</p>
 <p>Throughout the documentation, various configuration to the <code class="code">\SetMCI</code> command is
 given in the form of <code class="code">/root/parent/child</code> for clarity.
 </p>
@@ -82,14 +86,13 @@ where the value is entered.
 <pre class="example-preformatted">...  \SetMCI{ Degree = {}, } ...
 </pre></div>
 
-
 <p>where again, <code class="code">...</code> designates the code prior and after the <code class="code">\SetMCI</code> command, and <code class="code">{}</code>
 is where the value is entered.
 </p>
 </div>
 <hr>
 <p class="nav-panel">
-<span class="nav-button"><span class="nav-label">Next: </span><span class="nav-link"><a href="Global-Options.html">Global Options</a></span></span>, <span class="nav-button"><span class="nav-label">Up: </span><span class="nav-link"><a href="Configuring-the-Document.html">Configuring the Document</a></span></span><span class="nav-button"> &nbsp; </span><span class="nav-button">[<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</span></p>
+<span class="nav-button"><span class="nav-label">Next: </span><span class="nav-link"><a href="Global-Options.html">Global Options</a></span></span>, <span class="nav-button"><span class="nav-label">Up: </span><span class="nav-link"><a href="Configuring-the-Document.html">Configuring the Document</a></span></span><span class="nav-button"> &nbsp; </span><span class="nav-button">[<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</span><span class="nav-button">[<a href="Command-Index.html" title="Index" rel="index">Index</a>]</span></p>
 
 
 
