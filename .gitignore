@@ -9,7 +9,9 @@
 *.synctex.gz
 *.toc
 *.el
-.DS_Store
+*.abs
+*.ack
+*.DS_Store
 *blx.bib    
 
 **/auto/**

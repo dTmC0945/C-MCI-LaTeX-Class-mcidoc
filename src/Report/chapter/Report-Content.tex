@@ -1,0 +1,53 @@
+
+
+\chapter{Introduction to Compound Machines and of course this is a very long title}
+
+\section{Introduction} %#######################################################################
+
+DC Compound motor is a combination of the structures of both series and shunt motors. It has a
+series field in series with the armature just like the series motor and a shunt field parallel
+to armature. Depending on the location of this shunt field, motor is either called a
+short-shunt, or long-shunt. Desired charateristics from both motors which are the torque
+characteristic of the series motor and the speed regulation of the shunt motor are achieved by
+this combination. Different structures and diagram of the shunt motor can be seen in Figure 1.
+ 
+\subsection{Cumulative Compound Motors} %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Compound motors can either be wound as long-shunt or short-shunt. In the Fig. 1 (a), the polarity of the shunt field voltage is in such a way that shunt field flux supports the series field flux. In the Fig.1 (b), the shunt field flux direction is in a way that field opposes the series field flux. Both of these shunt fields are called as short-shunt because of the connection points to the armature. Short shunt field windings are connected directly parallel to the armature so the armature voltage excites the short shunt windings. On the other hand, long shunt windings are connected as in Fig.1 (c) to the whole machine so that the terminal voltage excites the shunt winding.
+In cumulative compound machines, the shunt field is always connected so as to support the series field flux with the shunt field flux, hence the cumulative name. This type of compound motor is the most popular one as it has
+
+both the high starting torque of the series machines and the good speed regulation of the shunt machines. When using this connection type, motor can both start with a heavy load like a series machine and the speed change is smooth under varying loads as is a characteristic of shunt machine. The shunt motor can provide smooth operation at full speed, but it cannot start with a large load attached, and the series motor can start with a heavy load, but its speed cannot be controlled. The cumulative compound motor takes the best characteristics of both the series motor and shunt motor, which makes it acceptable for most applications.
+
+\subsection{Differential Compound Motors} %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Differential compound motors differ from the cumulative by its connection direction of field winding. In Fig.1 the nodes Fl and F2 are connected in reverse polarity to the armature. In the differential compound motor the shunt field is connected so that its magnetic field opposes the magnetic fields in the armature and series field. When the shunt field's polarity is reversed like this, its field will oppose the other fields and the characteristics of the shunt motor are not as evident in this motor. This means that the motor will tend to overspeed when the load is reduced just like a series motor. Its speed will also drop more than the cumulative compound motor when the load increases at full rpm. These two characteristics make the differential motor less desirable than the cumulative motor for most applications.
+
+\subsection{Compound Interpole (Aux. Winding) Motors} %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Interpoles or the auxillary windings are the windings connected behind the series field windings in order to overcome the effects of the armature reaction. This winding is made of the same gauge wire and connected in series with the armature. These windings counter effect the EMF built up as a result of the armature reaction and also prevent arcs at brushes. This means less maintenance in the long run. Also, interpoles allow armature to draw higher currents and drive larger loads.
+The interpole polarity must be tested carefully so as not to oppose the direction of series winding. Otherwise the motor will overheat and series winding may also be damaged.
+
+
+\section{Speed Control} %######################################################################
+
+The speed of a compound motor can be changed easily via changing the applied voltage to the motor terminals. By changing the polarity at the terminals, rotation direction can also be changed. But if the motor has interpoles (auxillary windings), their connection should be reversed too.
+
+% Figure 2
+
+Figure 2 shows the characteristic curves of the compound motors. The increase in the differential compound machines is because of the reverse direction of the shunt field flux. As the armature current increases, this causes a field weakening and the motor starts to rotate faster to maintain the induced voltage. Also the speed drop of the cumulative machine is because as the armature current increases after a certain point, the supporting field flux causes the rotor to slow down to again maintain the induced voltage at armature at the same rate.
+
+\section{Mathematical Model} %#################################################################
+
+Compound DC Machine is another kind of DC machine, where the field windings and the armature windings are excited by the same source. However, in these kinds of machines there are two field windings, which are connected to armature winding in series and parallel separately. The schematic diagram for these kinds of machines is shown in Figure 3.
+
+Generally, in Compound Machines the shunt field, which is parallel to the armature winding, dominates the operating characteristics of the machine while the series field has secondary influence. Depending on influence of the series field Compound Machines can be separated into two types; 
+	Cumulative Compound DC Machines 
+	Differential Compound DC Machines.
+In Cumulative Compound DC Machines, the series field is connected in a way to increase the flux produced by shunt field. In this case the machine is used as a generator:
+ϕ_total=ϕ_shunt+ϕ_series	( 1 )
+In Differential Compound DC Machines, the series field is connected to oppose the flux produced by the shunt field. In this case the machine is often used as a motor:
+ϕ_total=ϕ_shunt-ϕ_series	( 2 )
+
+
+The voltage equations for a general Compound Dc Machine can be written as:
+

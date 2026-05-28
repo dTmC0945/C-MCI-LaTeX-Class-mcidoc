@@ -138,11 +138,26 @@
 	Tables/.store in                 = \Report@ToC@Tables,
 	Tables                           = {set},
 	% ---
+	% Settings for the Supervisor
+	/Report/Supervisor/.cd,
+	Prefix/.default                  = {},
+	Prefix/.store in                 = \Report@Supervisor@Prefix,
+	Name/.store in                   = \Report@Supervisor@Name,
+	Name                             = {Alistair M. Corwell},
+	Postfix/.store in                = \Report@Supervisor@Postfix,
+	Postfix/.default                 = {},
+	% --
 	/Report/.cd,
 	Title/.store in                  = \Report@Title,
 	Title                            = {Thesis Title},
 	Lecture/.store in                = \Report@Lecture,
 	Lecture                          = {unset},
+	Cohort/.store in                 = \Report@Cohort,
+	Cohort                           = {unset},
+	Group/.store in                  = \Report@Group,
+	Group                            = {unset},
+	Mode/.store in                   = \Report@Mode,
+	Mode                             = {Assignment},
 	% ---
 	/Notes/.cd,
 	Title/.store in                  = \Notes@Title,
@@ -227,6 +242,7 @@
 		twoside       = false,%
 		parskip       = full,
 		abstract      = true,
+		headings=chapterprefix
 	]{scrreprt}%
 }{}
 %
@@ -328,6 +344,9 @@
 	}{}%
 }%
 %
+%
+% We need this package to control how the header text is controlled.
+\RequirePackage[fit, breakwords]{truncate}
 %
 %
 % BEGINNING OF THESIS CLASS -------------------------------------------------------------------
@@ -883,7 +902,7 @@
 	%
 	% % Set the page-geometry to conform to `IEEE' standard.
 	% \newgeometry{%
-	% 	top    = 2.54cm,%
+	% 	top    = 2.54cm,% 
 	% 	bottom = 2.54cm,%
 	% 	left   = 2.54cm,%
 	% 	right  = 2.54cm,%
@@ -994,6 +1013,83 @@
 \ifthenelse{\equal{\class@state}{Report}}{%
 	\definecolor{mci2}{HTML}{004983}
 
+	% 
+	% Control how much the text should be stretched. Ideally for thesis, keep
+	% this at `1.5' for easy reading.
+	\RequirePackage{setspace}
+	\setstretch{1.5}
+	% 
+
+	% Here we adjust the way chapters are written to minimise the space between top paper
+	% and the content below.
+	\RedeclareSectionCommand[%
+		beforeskip = \dimexpr3.3\baselineskip+1\parskip\relax,
+		innerskip  = 0pt,% <- space between chapter number and chapter title
+		afterskip  = 0pt
+	]{chapter}
+
+	% Next we adjust the chapter fonts and push content to RHS.
+	\renewcommand{\raggedchapter}{\raggedleft}%
+	\renewcommand{\chapterformat}{%
+		\textcolor{mci2}{%
+			\fontsize{20pt}{20pt}%
+			\selectfont Chapter %
+				{\fontsize{80pt}{80pt}\selectfont\thechapter}%
+		}%
+	}%
+	% Finally we reconfigure the chapter headline.
+	\renewcommand{\chapterlineswithprefixformat}[3]{%
+		#2#3%
+		\vspace*{-\baselineskip}
+		\textcolor{gray!50}{\rule{\textwidth}{.25pt}}\par\nobreak
+	}%
+
+	\RedeclareSectionCommands[
+		beforeskip=0pt plus 1ex minus .2ex,
+		afterskip=1sp plus .2ex
+	]{section,subsection}
+	\renewcommand*{\sectionformat}{\thesection\hspace*{1em}}
+	\renewcommand*{\subsectionformat}{\thesubsection\hspace*{1em}}
+	\renewcommand*\chapterheadstartvskip{}
+	\renewcommand*\chapterheadendvskip{%
+		\vspace*{1\baselineskip plus .1\baselineskip minus .167\baselineskip}}
+
+	\NewDocumentEnvironment{Abstract}{m}{%
+		% -- Environment to store the text for abstract. Depending on
+		% -- on the language store it in individual files and later
+		% -- recall these. Requires `latexmk' for proper compilation
+		% -- #1 : Language setting
+		\IfEqCase{#1}{%
+			{EN}{\def\abstract@filename{aux-\jobname-abstract-en.abs}}
+			{DE}{\def\abstract@filename{aux-\jobname-abstract-de.abs}}
+		}[\ClassError{mcidoc}{Undefined Language Option: #1}{}]
+		\typeout{Writing the file \abstract@filename}
+		\VerbatimOut{\abstract@filename}%
+	}{%
+		\endVerbatimOut%
+	}% 
+
+	\NewDocumentCommand{\Th@Abstracts}{}{
+		% -- Define how the abstract is printed.
+		% -- A significant hurdle to tackle was the recalling of the
+		% -- function when the content was defined after. To remedy this,
+		% -- auxiliary files were used, and depending on the language either
+		% -- english or both english plus german is printed.
+		\ifthenelse{\equal{\Global@Language}{EN}}{%
+			\foreach \ii / \jj in {english/en}{%
+					\begin{otherlanguage}{\ii}
+						\input{aux-\jobname-abstract-\jj.abs}
+					\end{otherlanguage}
+				}%
+		}{}
+		%%%% 
+		\ifthenelse{\equal{\Global@Language}{DE}}{%
+			\foreach \ii / \jj in {german/de, english/en}{%
+					\input{aux-\jobname-abstract-\jj.abs}
+				}%
+		}{}
+	}%
+
 	\NewDocumentCommand{\MakeTitlePage}{}{
 		% -- Generate a Title Page for the `Report' Class.
 
@@ -1005,15 +1101,10 @@
 			top    = 3cm
 		}
 
-		\begin{tikzpicture}
-			\draw (0,0) circle (3cm);
-		\end{tikzpicture}
-
 		\begin{titlepage}
 			% 
 			\begin{flushleft}
-				% 
-				% Include
+				% 			
 				\bgroup%
 				\large%
 				\IfEqCase{\Global@Language}{%
@@ -1022,9 +1113,9 @@
 					{EN}{MCI\,\,\textbar\,\,%
 						The Entrepreneurial School\textsuperscript{\textregistered}}}[]
 				\hfill\textcolor{gray!75!black}{\Global@Degree} \\[1cm]
-				{\Huge\textbf{\textcolor{mci2}{\Report@Title}}}
-				\egroup\\[0.4cm]
-				{\Large\the\Cohort} \\[\baselineskip]
+				{\Huge\textbf{\textcolor{mci2}{\Global@Title}}}
+				\egroup\\[1cm]
+				{\Large\Report@Cohort} \\[\baselineskip]
 				{\Large\Report@Lecture}
 				\normalsize
 
@@ -1037,23 +1128,23 @@
 			\newcolumntype{s}{>{\hsize=.5\hsize}X}
 			\newcolumntype{g}{>{\hsize=\hsize}X}
 
-			\Lang@English{
-
+			\Lang@English{%
 				\vspace{-6ex}
 				\begin{table}[!b]
 					\centering
 					\large
 					\renewcommand{\arraystretch}{1.5}%
 					\begin{tabularx}{\textwidth}{sb}
-						\noindent\rule{\textwidth}{0.1mm}                        \\
-						\textbf{Author(s)}                     & \Student@Name   \\
-						\textbf{Student ID(s)}\phantom{Circus} &                 \\
-						\textbf{Laboratory Supervisor}         & \the\Supervisor \\
-						\textbf{Cohort}                        & \the\Cohort     \\
-						\ifthenelse{\equal{\the\Group}{nil}}{}{
-							\textbf{Group}                         & \the\Group   \\
+						\noindent\textcolor{gray!75!black}{\rule{\textwidth}{0.1mm}} \\
+						\textbf{Author(s)}                     & \Student@Name       \\
+						\textbf{Student ID(s)}\phantom{Circus} & \Global@StudentID   \\
+						\IfEqCase{\Report@Mode}{%
+							{Assignment}{\textbf{Supervisor}}
+							{Lab}{\textbf{Lab Supervisor}}}[] & a                       \\
+						\textbf{Cohort}                        & \Report@Cohort      \\
+						\ifthenelse{\equal{\Report@Group}{unset}}{}{
+							\textbf{Group}                         & \Report@Group   \\
 						}
-						\textbf{Lecturer}                      & \the\Lecturer   \\
 					\end{tabularx}
 				\end{table}
 			}
@@ -1085,13 +1176,14 @@
 		% -- Define the way all Table of Contents are displayed.
 		% -- An alteration is made by the assumption, the thesis will not be
 		% -- printed. To decrease the amount of unnecessary white pages `\relax'
-		% -- command is used for the `\listoftables'.
-		\ifthenelse{\equal{\Thesis@ToC@Primary}{set}}{\tableofcontents}{}
+		% -- command is used for the `\tableofcontents'.
+		\ifthenelse{\equal{\Thesis@ToC@Primary}{set}}{\let\clearpage\relax\tableofcontents}{}
 		\begingroup
 		\ifthenelse{\equal{\Thesis@ToC@Figures}{set}}{\listoffigures}{}
-		\ifthenelse{\equal{\Thesis@ToC@Tables}{set}}{\let\clearpage\relax\listoftables}{}
+		\ifthenelse{\equal{\Thesis@ToC@Tables}{set}}{\listoftables}{}
 		\endgroup
 		\clearpage
+		\newpage
 		\pagenumbering{arabic}
 		\pagestyle{scrheadings}
 	}
@@ -1100,8 +1192,8 @@
 	%
 	\NewDocumentCommand{\Preamble}{}{
 		% -- A collection command to print all necessary preamble.
-		\MakeTitlePage
-		\TableOfContents
+		\MakeTitlePage%
+		\TableOfContents%
 	}
 	%
 	%
@@ -1110,26 +1202,34 @@
 		\Preamble%
 	}%
 
-
+	% HEADER / FOOTER SETTINGS ----------------------------------------------------------------
+	%
 	\RequirePackage[
 		automark,
-		headsepline,
-		footsepline,
-		autooneside  = false
+		headsepline = 0.25pt,
+		footsepline = 0.25pt,
+		autooneside = false,
 	]{scrlayer-scrpage}
-
+	%
+	% Change the colors of the line
+	\addtokomafont{headsepline}{\color{gray!50}}
+	\addtokomafont{footsepline}{\color{gray!50}}
+	%
 	\clearpairofpagestyles
-
-	\ihead{\MakeUppercase{\leftmark}}
+	%
+	% Redefine the Chapter header so the prefix is bold
+	\renewcommand{\chaptermark}[1]{%
+		\markboth{\textcolor{black}{\textbf{Chapter \thechapter}}\ \ \ #1}{}
+	}%
+	% We now control the text of header/footer. Here, we make sure the chapter
+	% text is `truncated' so the text does not overflow. Default is set to `0.65'
+	\ihead{\truncate{0.65 \textwidth}{\leftmark}}
 	\ohead{\rightmark}
 	\ofoot{\thepage}
 	\ifoot{\Global@StudentName}
-	\renewcommand{\headfont}{\normalfont}
-	\renewcommand*\chapterheadstartvskip{}
-	\renewcommand*\chapterheadendvskip{%
-		\vspace*{1\baselineskip plus .1\baselineskip minus .167\baselineskip}}
-
-
+	% 
+	\renewcommand{\headfont}{\normalfont} % Change the font on the header.
+	%
 }{}
 
 

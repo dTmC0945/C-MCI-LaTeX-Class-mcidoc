@@ -1,0 +1,80 @@
+%  
+% #INFO: An example of writing Thesis with LaTeX using `mcidoc'
+%
+% Copyright (C) 2023-2026 -DTMc
+%
+% COPYRIGHT NOTICE:
+% -----------------
+% It may be distributed and/or modified under the conditions of the LaTeX Project Public
+% License (LPPL), either version 1.3c of this license or (at your option) any later version.
+% The latest version of this license is in the file
+%
+% https://www.latex-project.org/lppl.txt
+% 
+% This file is part of `mcidoc' and all files in that bundle must be distributed together.
+% 
+% ---------------------------------------------------------------------------------------------
+%    
+\documentclass[state=Report]{../mcidoc} 
+     
+\SetMCI{% 
+  %%%%
+  StudentName    = {%
+    Prefix       = {Prof.},
+    Name         = {Colin Stevens},  
+    Postfix      = {Esq.}, 
+  },% 
+  %%%%
+  StudentID      = {2314808},
+  Degree         = MSc,   
+  Language       = EN,   
+  Department     = MECH,
+  Title          = {On the Study of Different \& Rotor Geometry Configurations},
+  %%%% 
+  Report         = {
+    Mode         = Lab,
+    Lecture      = Drive Technologies,
+    Cohort       = 2011,
+    % Supervisor   = {
+    %   Prefix       = {Prof.},
+    %   Name         = {Colin Stevens},  
+    %   Postfix      = {Esq.}, 
+    % },
+  }, 
+}   
+%          
+% CUSTOM COMMANDS -----------------------------------------------------------------------------
+ 
+\RequirePackage{siunitx}  
+\RequirePackage{tabularx} 
+\RequirePackage{pgfplots}
+\RequirePackage{array, booktabs, multirow} 
+             
+\makeatletter   
+\RequirePackage[  
+backend = bibtex,   
+style   = ieee, 
+]{biblatex}      
+   
+% Here we add our file where we store our references.
+\bibliography{\Thesis@Bibliography@Location} 
+\makeatother   
+            
+\begin{document} % ############################################################################
+ 
+% Include Chapter - Report Content
+\include{chapter/Report-Content.tex}
+   
+\end{document} % ##############################################################################
+%      
+%%% Local Variables: 
+%%% coding: utf-8 
+%%% mode: latex
+%%% TeX-command-extra-options: "-shell-escape"
+%%% TeX-master: t
+%%% TeX-engine: luatex
+%%% End:
+% ---------------------------------------------------------------------------------------------
+%
+% Main-Thesis.tex ends here.
+%
