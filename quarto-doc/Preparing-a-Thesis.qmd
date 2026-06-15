@@ -1,0 +1,14 @@
+
+# Preparing a Thesis
+
+
+
+## Writing the Abstract(s)
+
+Depending on the language requirements the thesis must either have:
+
+-   An abstract in English (`EN` only)
+-   An abstract in German and then in English (`DE` only)
+
+For example the following environment generatex an abstract for the
+english section of the astract.

@@ -1,0 +1,132 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "mcidoc LaTeX Class Documentation",
+    "section": "",
+    "text": "1 index\nThis file documents the mcidoc, a LaTeX class for producing guideline compliant documentation for M.Sc and B.Sc students.\nThis is Version 2026.SS, last updated on 15.06.2026, of The mcidoc Manual, for use with LuaHBTeX, Version 1.24.0 (TeX Live 2026) .\nCopyright 2026, D.T. McGuiness, Ph.D\n\nThis program may be distributed and/or modified under the conditions of the LaTeX Project Public License, either version 1.1 of this license or (at your option) any later version. The latest version of this license is in http://www.latex-project.org/lppl.txt and version 1.1 or later is part of all distributions of LaTeX version 1999/06/01 or later.\nThis program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>index</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#compilation-instructions",
+    "href": "index.html#compilation-instructions",
+    "title": "mcidoc LaTeX Class Documentation",
+    "section": "1.1 Compilation Instructions",
+    "text": "1.1 Compilation Instructions\nBelow are the code snippet for compiling and then moving the documentation to its respective GitHub Repo.\n#!/bin/sh\n\nORGXMANUAL=\"2025-06-12-mcidoc-Student-Documentation\"\n\nemacs -Q --batch --eval \"\n    (progn\n      (require 'org)\n      (require 'ox-texinfo)\n      (dolist (file command-line-args-left)\n        (with-current-buffer (find-file-noselect file)\n          (org-texinfo-export-to-texinfo))))\" \\\n              \"${PWD}/${ORGXMANUAL}.org\"\n\n\n# makeinfo --latex \"${ORGXMANUAL}.texi\"\n\nmakeinfo \\\n    --html \"${ORGXMANUAL}.texi\" \\\n    --css-ref=\"https://www.gnu.org/software/gnulib/manual.css\"\n\nmakeinfo \\\n    --pdf \"${ORGXMANUAL}.texi\" \n\nrm -rf \"2.texi *.aux *.fn *.fns *.vr *.vrs\"\n\ncp -r \"${PWD}/${ORGXMANUAL}_html/\" \"${HOME}/GitHub/C-MCI-LaTeX-Class-mcidoc/docs\"\n\ncp -r \"${PWD}/${ORGXMANUAL}.pdf\" \\\n   \"${HOME}/GitHub/C-MCI-LaTeX-Class-mcidoc/docs/mcidoc.pdf\"\n\nrm -rf \"${PWD}/${ORGXMANUAL}_html/\"\nrm -rf \"${PWD}/${ORGXMANUAL}.pdf\"\n# mv ros_html ~/Downloads/test",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>index</span>"
+    ]
+  },
+  {
+    "objectID": "Introduction.html",
+    "href": "Introduction.html",
+    "title": "2  Introduction",
+    "section": "",
+    "text": "2.1 Purpose of Making\nmcidoc is a LaTeX document class designed to provide students studying at MCI Mechatonics with all their documentation needs, whether it is to write a simple report or to write a their graduation thesis whether it is a single or a double degree.\nAs it stands the following document types are supported and are implemented for both english and german.\nAll these aforementioned sub-classess will be explained in the following sections.\nThere are three (3) reasons for the creation of this class.\nThe first, is to standardise and streamline document creation which abides to the standards set by the MCI with regards to:\nand so on so forth.\nIts second purpose is to create a repository to house a standardised class to minimise any friction between the work of the student and the representation of the content.\nAs a sidenote, mcidoc was also designed with customisation in mind by configuring its settings through the options presented in the \\documentclass and using the macro \\SetMCI{} which all its features are explained in this documentation.\nThe last purpose is perhaps more in line of streamlining. While LaTeX is an excellent typesetting language with is very powerful capabilities, it is nevertheless a language with its quirks and customs that may not prove to be very useful outside of its own domain and therefore the user should not be worried of these quirks.\nThe user should only be responsible of the content they create. The form of the documentation, and how the content is presented is taken care of the class designer.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "Introduction.html#purpose-of-making",
+    "href": "Introduction.html#purpose-of-making",
+    "title": "2  Introduction",
+    "section": "",
+    "text": "Font-size, figure captions, bibliography, …\nMargin spacing, header and footer spacing, text information, …\nSpacing between lines, linebreak settings, spacing of headers, …\nLanguage determined grammatical rules (when to hypenate and caption text and proper quoatation marks)\nSimple error-correction codes to minimise wrong entering of values,\n\n\n\n\nCare was given to how the class behaves to minimise its interaction with other packages the end-user might need for their work. The class only patches certain commands but never redefines them.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "Introduction.html#reading-the-commands-and-environments",
+    "href": "Introduction.html#reading-the-commands-and-environments",
+    "title": "2  Introduction",
+    "section": "2.2 Reading the Commands and Environments",
+    "text": "2.2 Reading the Commands and Environments\nThroughout the document you will see code explanations as given below. Please read these options to get a better understanding of how the custom commands and environments are operated.\n\nAllows global configuration of the document. Takes various key=val options based on the documentclass state and other sub configurations. Here the key is the configuation option, and val is the value it takes.\nThis command must be invoked after the documentclass but before \\begin{document}.\n\nFor example, in the above the Command specifies that it is a LaTeX macro (i.e., \\SetMCI) and that it takes a single mandatory argument (marg) with the value of key=val. Below this command description is a detailed information about the command and relevant information.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "Introduction.html#currently-supported-formats",
+    "href": "Introduction.html#currently-supported-formats",
+    "title": "2  Introduction",
+    "section": "2.3 Currently Supported Formats",
+    "text": "2.3 Currently Supported Formats\nAs mentioned previously the following state’s are supported\n\nThesis: The primary way the thesis is written. Supports different options depending on the grade of the language requirements.\nTo enable it, please write:\nwhere ... described the path to the mcidoc.cls.\nReport: Used in creating reports for lectures and lab sessions. Examples include writing assignments, or lab reports.\nTo enable it, please write:\nwhere ... described the path to the mcidoc.cls.\n\nAll the aforementioned documents are bundled up as a class called mcidoc.\n\nThis class has been tested on different computers running Windows and macOS with the complile being LuaTeX. However, as with everything, there will always be edge cases and I am sure to that end, if you encounter any error please create an issue in Github Repo.\nTeXnician’s Note: This class is designed with LuaTeX in mind as it requires the use of the LaTeX3 Kernel which comes precompiled with the engine. If one so wishes, they can force the use of pdftex to compile the document but additional packages would then be required for the compilation process.\n\n\nWhile I will try to help with any problem this class might have, it is by no means I am providing any kind of WARRANTY or TECHNICAL SUPPORT. There will be documentation and some example documents which should compile without any additional configuration. Nevertheless, I can only help with the errors from code and not with your personal LaTeX development environment (i.e., TeXStudio).\n\n\nA configuration option to change the overall behaviour of mcidoc class. This value can take different options based on which formats are supported, which are shown at the beginning of this section.\nThe behaviour of the documentclass can be changed by setting state=val of the optional argument of the mcidoc documentclass.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "Configuring-the-Document.html",
+    "href": "Configuring-the-Document.html",
+    "title": "3  Configuring the Document",
+    "section": "",
+    "text": "3.1 Notational Information\nThe entire configuration is handled by a single command \\SetMCI which the end user can change the behaviour by changing specific keys defined within. The accesible options changes depending on the state the mcidoc is in whereas some options are global and are accesible across all states of mcidoc.cls.\nBefore options for the ~\\SetMCI{..} are described, it is worth explaining the slight notational quirks used in defining the command.\nFor most, if not all, options given by \\SetMCI and are by default either as set or unset unless specified otherwise within the documentation.\nSome options on the other hand can take different values which are explained in detail where they are relevant.\nThroughout the documentation, various configuration to the \\SetMCI command is given in the form of /root/parent/child for clarity.\nFor example the /Thesis/Supervisor/Postfix option can be invoked in the documentation as such:\nwhere ... designates the code prior and after the \\SetMCI command, and {} is where the value is entered.\nAlternativey, the option /Degree can be set as follows:\nwhere again, ... designates the code prior and after the \\SetMCI command, and {} is where the value is entered.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Configuring the Document</span>"
+    ]
+  },
+  {
+    "objectID": "Configuring-the-Document.html#notational-information",
+    "href": "Configuring-the-Document.html#notational-information",
+    "title": "3  Configuring the Document",
+    "section": "",
+    "text": "If a feature is set by default, then the option will be executed as long as the user does not alter its value to unset.\nConversely, if a \\SetMCI value is unset, then it will not show in the document or alter anything within the document as long as the user does not change its behavior.\n\n\n\n\nPROPERTY\nRESULT\n\n\n\n\nset\nEnable a feature\n\n\nunset\nDisable a feature",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Configuring the Document</span>"
+    ]
+  },
+  {
+    "objectID": "Configuring-the-Document.html#global-options",
+    "href": "Configuring-the-Document.html#global-options",
+    "title": "3  Configuring the Document",
+    "section": "3.2 Global Options",
+    "text": "3.2 Global Options\nThe following options are available across different states:\nTeXnician’s Note: These options are defined as \\Global@ prefix.\n\nSets the Degree of the document which can change some subtitles of the documentation.\nCurrent supported values are: BSc, MSc.\n\n\nSets the Language of the document which changes the typographical rules of the document and correctly sets the document titles and labels.\nCurrent supported values are: EN (english), DE (german).\n\n\nSets the Deparment of the document.\nCurrent supported values are: MECH (Mechatronics).\n\n\nSets the Student Number (i.e., Matrikelnummer) of the document.\nAs it is a FH, the number must begin with the digit 5.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Configuring the Document</span>"
+    ]
+  },
+  {
+    "objectID": "Configuring-the-Document.html#thesis-specific-options",
+    "href": "Configuring-the-Document.html#thesis-specific-options",
+    "title": "3  Configuring the Document",
+    "section": "3.3 Thesis Specific Options",
+    "text": "3.3 Thesis Specific Options\nThe following options are used in the thesis mode only. Some options may have the same name as other states. In those cases, these options will only be described under the parent option in which they were invoked.\nThe following are the global options for the Thesis state:\n\nSet the title for the Thesis.\n\n\nSet the study program for the Thesis.\n\n\nSet the location in which Preclusion from Public Access, and Declaration In   Lieu of Oath are signed.\nDefault is Innsbruck.\n\n\nSet the date in which Preclusion from Public Access, and Declaration In   Lieu of Oath are signed.\nDefault is the date in which the document is compiled.\nTo change it the user can enter a date in the form {DD.MM.YYYY}.\n\n\nSet the end date for the embargo of the thesis.\nThe entered date must be in the format dd.mm.yyyy.\nDefault is unset.\n\n\n3.3.1 Custom Environments and Commands\nThere are a few commands and environments defined specifically for the Thesis class which are as follows:\n\nGenerate an abstract after Declaration in Lieu of Oath if Acknowledgements is not inserted, else the abstract is inserted right after Acknowledgements.\nThe abstract(s) is/are printed before the main Table of contents.\nThe mandatory argument {language} controls which language is used. Currently EN and DE are supported. Based on the chosen /Language, The following actions are taken.\n\nIf English is chosen (EN), then only the English abstract is printed with the title Abstract.\nIf German is chosen (DE), then first the German abstract with the title Zusammenfassung is printed, then the English abstract is printed with the title Abstract is printed.\n\nNOTE: This is a mandatory environment.\nTeXnician’s Note: Abstracts are written to external files with the name aux-\\jobname-abstract-&lt;lang&gt;.abs where &lt;lang&gt; is the lowercase of /Language. The printing of this is achieved by the \\VerbatimOut to preserve the user entered macros.\n\n\nGenerate the Acknowledgements page for the thesis. This is printed right before any abstract on the thesis.\nNOTE: This is an optional environment.\nTeXnician’s Note: The Acknowledgments are written to external files with the name aux-\\jobname-acknowledgement.ack. The printing of this is achieved by the \\VerbatimOut to preserve the user entered macros. To control whether the acknowledgement is to be printed a globally defined \\ifacknowledgments is used. This must be set global to allow it to be seen by the internal command \\Th@Preamble.\n\n\n\n3.3.2 Supervisor\nSupervisor is the primary person when the student is conducting their thesis. This person can be an internal (i.e., MCI Lecturer, Researcher) or could be someone from a company.\nAn example of this options is shown as below:\n\nInserts the company name which the supervisor belongs to. This option should only be used if the supervisor is outside MCI as using this option will require the insertion of the Reviewer option as well.\nDefault is unset.\n\n\nPrints prefix honorifics for the supervisor, if there is any. For example titles such as Dr. or Dipl-Eng should be added here.\nDefault is unset.\n\n\nPrints the name of the supervisor.\nDefault is unset.\n\n\nPrints post honorifics of the supervisor. For example, titles such as Ph.D should be added here\nDefault is unset.\n\n\n\n3.3.3 Reviewer\nReviewer is the examiner when the student is conducting their thesis with a company. The reviewer can be considered as a liason between the student and the MCI.\nAn example usage of this is shown below\n...             % &lt;- Previously the Supervisor was\n...             % defined so we add the Reviewer\nReviewer     = {%  \n     Prefix     = {Rev.},\n     Name       = {Ted Marshall},\n     Postfix    = {Esq.},  \n   },%\n...\n\nPrints prefix honorifics for the Reviewer, if there is any. For example titles such as Dr. or Dipl-Eng should be added here.\nDefault is unset.\n\n\nPrints the name of the reviewer.\nDefault is unset.\n\n\nPrints post honorifics of the reviewer. For example, titles such as Ph.D should be added here\nDefault is unset.\n\n\n\n3.3.4 Table of Contents\nAllows the control of how the table of contents is printed.\n\nPrints the main Table of Contents. Default is set and is the first table of content to be printed right after the abstract.\nDefault is set.\n\n\nPrints the List of Figures right after Table of Contents on a newpage.\nDefault is set.\nIf user has no figures within their document, this should changed to unset.\n\n\nPrints the List of Tables right after Contents on a newpage if /Thesis/ToC/Figures is unset or right after /Thesis/ToC/Figures and on the same page if space if available.\nDefault is set.\nIf user has no table within their document, this should changed to unset.\n\n\n\n3.3.5 Example: Double Degree Programme\nThe following setting is defined for the student Karl Hendrix doing a double degree with ASU (Appalachian State University). An example \\SetMCI option would be as follows:\n\n\n3.3.6 Example: Company Based Thesis\n\n\n3.3.7 Example: BSc Thesis in English\n\n\n3.3.8 Example: MasterArbeit auf Deutsch",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Configuring the Document</span>"
+    ]
+  },
+  {
+    "objectID": "Preparing-a-Thesis.html",
+    "href": "Preparing-a-Thesis.html",
+    "title": "4  Preparing a Thesis",
+    "section": "",
+    "text": "4.1 Writing the Abstract(s)\nDepending on the language requirements the thesis must either have:\nFor example the following environment generatex an abstract for the english section of the astract.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Preparing a Thesis</span>"
+    ]
+  },
+  {
+    "objectID": "Preparing-a-Thesis.html#writing-the-abstracts",
+    "href": "Preparing-a-Thesis.html#writing-the-abstracts",
+    "title": "4  Preparing a Thesis",
+    "section": "",
+    "text": "An abstract in English (EN only)\nAn abstract in German and then in English (DE only)",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Preparing a Thesis</span>"
+    ]
+  },
+  {
+    "objectID": "Command-Index.html",
+    "href": "Command-Index.html",
+    "title": "7  Command Index",
+    "section": "",
+    "text": ":INDEX: cp :END:\nBelow are the index entries of all relevant mcidoc commands, keys, and arguments.",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Command Index</span>"
+    ]
+  }
+]

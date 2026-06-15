@@ -1,0 +1,131 @@
+
+# Introduction
+
+`mcidoc` is a LaTeX document class designed to provide students studying at **MCI
+Mechatonics** with all their documentation needs, whether it is to write a simple
+report or to write a their graduation thesis whether it is a single or a
+double degree.
+
+As it stands the following document types are supported and are implemented
+for both **english** and **german.**
+
+-   Thesis
+-   Report
+-   Paper (WIP)
+-   Notes (WIP)
+-   Slide (WIP)
+-   Poster (WIP)
+
+All these aforementioned sub-classess will be explained in the following
+sections.
+
+
+## Purpose of Making
+
+There are three (3) reasons for the creation of this class.
+
+The first, is to standardise and streamline document creation which abides to
+the standards set by the MCI with regards to:
+
+-   Font-size, figure captions, bibliography, &#x2026;
+-   Margin spacing, header and footer spacing, text information, &#x2026;
+-   Spacing between lines, linebreak settings, spacing of headers, &#x2026;
+-   Language determined grammatical rules (when to hypenate and caption text and
+    proper quoatation marks)
+-   Simple error-correction codes to minimise wrong entering of values,
+
+and so on so forth.
+
+Its second purpose is to create a repository to house a **standardised** class to
+minimise any friction between the work of the student and the representation of
+the content.
+
+> Care was given to how the class behaves to minimise its interaction with other
+> packages the end-user might need for their work. The class only patches certain
+> commands but never redefines them.
+
+As a sidenote, `mcidoc` was also designed with customisation in mind by
+configuring its settings through the options presented in the `\documentclass` and
+using the macro `\SetMCI{}` which all its features are explained in this
+documentation.
+
+The last purpose is perhaps more in line of streamlining. While LaTeX is an
+excellent typesetting language with is very powerful capabilities, it is
+nevertheless a language with its quirks and customs that may not prove to be
+very useful outside of its own domain and therefore the user should not be
+worried of these quirks.
+
+The user should only be responsible of the content they create. The form of the
+documentation, and how the content is presented is taken care of the class
+designer.
+
+
+## Reading the Commands and Environments
+
+Throughout the document you will see code explanations as given below. Please
+read these options to get a better understanding of how the custom commands
+and environments are operated.
+
+::: {.deffn}
+Allows global configuration of the document. Takes various `key=val` options
+based on the documentclass state and other sub configurations. Here the `key` is
+the configuation option, and `val` is the value it takes.
+
+This command **must** be invoked **after** the `documentclass` but before
+`\begin{document}`.
+:::
+
+For example, in the above the *Command* specifies that it is a LaTeX macro (i.e.,
+`\SetMCI`) and that it takes a single **mandatory argument** (*marg*) with the value of
+`key=val`. Below this command description is a detailed information about the
+command and relevant information.
+
+
+## Currently Supported Formats
+
+As mentioned previously the following `state`'s are supported
+
+-   **Thesis:** The primary way the thesis is written. Supports different options
+    depending on the grade of the language requirements.
+    
+    To enable it, please write:
+    
+    where `...` described the path to the `mcidoc.cls`.
+
+-   **Report:** Used in creating reports for lectures and lab sessions. Examples
+    include writing assignments, or lab reports.
+    
+    To enable it, please write:
+    
+    where `...` described the path to the `mcidoc.cls`.
+
+All the aforementioned documents are bundled up as a class called `mcidoc`.
+
+::: {.cartouche}
+This class has been tested on different computers running Windows and macOS with
+the complile being LuaTeX. However, as with everything, there will always be
+edge cases and I am sure to that end, if you encounter any error please create
+an issue in [Github Repo](https://github.com/dTmC0945/C-MCI-LaTeX-Class-mcidoc/tree/main).
+
+**TeXnician's Note:** This class is designed with LuaTeX in mind as it requires the
+use of the LaTeX3 Kernel which comes precompiled with the engine. If one so
+wishes, they can force the use of `pdftex` to compile the document but additional
+packages would then be required for the compilation process.
+:::
+
+::: {.cartouche}
+While I will try to help with any problem this class might have, it is by no
+means I am providing any kind of WARRANTY or TECHNICAL SUPPORT. There will be
+documentation and some example documents which should compile without any
+additional configuration. Nevertheless, I can only help with the errors from
+code and not with your personal LaTeX development environment (i.e., TeXStudio).
+:::
+
+::: {.deffn}
+A configuration option to change the overall behaviour of `mcidoc` class. This
+value can take different options based on which formats are supported, which
+are shown at the beginning of this section.
+
+The behaviour of the documentclass can be changed by setting `state=val` of
+the optional argument of the `mcidoc` documentclass.
+:::

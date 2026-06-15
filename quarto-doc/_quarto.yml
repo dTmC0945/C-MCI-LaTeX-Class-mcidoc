@@ -1,0 +1,49 @@
+# 
+# #INFO: YAML file for the documentation
+# 
+# -----------------------------------------------------------------------------
+# 
+# Author: DTMc
+# 
+# This file is part of lms.
+# 
+# mcidoc is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later
+# version.
+# 
+# mcidoc is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
+# A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+# 
+# -----------------------------------------------------------------------------
+
+project: 
+  type: book
+
+book: 
+  title:  "mcidoc LaTeX Class Documentation"
+  author: "D. T. McGuiness, Ph.D"
+  date:   "15/06/2026"
+  chapters:
+    - "index.qmd"
+    - "Introduction.qmd"
+    - "Configuring-the-Document.qmd"
+    - "Preparing-a-Thesis.qmd"
+    - "Preparing-a-Lab-Report.qmd"
+    - "Preparing-a-Presentation.qmd"
+    - "Command-Index.qmd"
+bibliography: "references.bib"
+
+format: 
+  html: 
+    theme: [cosmo, brand]
+    highlight-style: pygments
+    
+  pdf: 
+    documentclass: scrreprt
+
+# -----------------------------------------------------------------------------
+# _quarto.yml ends here.
+# 
+# 

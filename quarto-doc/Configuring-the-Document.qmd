@@ -1,0 +1,285 @@
+
+# Configuring the Document
+
+The entire configuration is handled by a single command `\SetMCI` which the end
+user can change the behaviour by changing specific keys defined within. The
+accesible options changes depending on the `state` the `mcidoc` is in whereas some
+options are **global** and are accesible across all `states` of `mcidoc.cls`.
+
+
+## Notational Information
+
+Before options for the `~\SetMCI{..}` are described, it is worth explaining the
+slight notational quirks used in defining the command.
+
+For most, if not all, options given by `\SetMCI` and are by default either as `set`
+or `unset` unless specified otherwise within the documentation.
+
+-   If a feature is `set` by default, then the option will be executed as long as
+    the user does not alter its value to `unset`.
+-   Conversely, if a `\SetMCI` value is `unset`, then it will not show in the document
+    or alter anything within the document as long as the user does not change its
+    behavior.
+
+| PROPERTY | RESULT             |
+|----------|--------------------|
+| `set`    | Enable a feature   |
+| `unset`  | Disable a feature  |
+
+Some options on the other hand can take different values which are explained
+in detail where they are relevant.
+
+Throughout the documentation, various configuration to the `\SetMCI` command is
+given in the form of `/root/parent/child` for clarity.
+
+For example the `/Thesis/Supervisor/Postfix` option can be invoked in the
+documentation as such:
+
+where `...` designates the code prior and after the `\SetMCI` command, and `{}` is
+where the value is entered.
+
+Alternativey, the option `/Degree` can be set as follows:
+
+where again, `...` designates the code prior and after the `\SetMCI` command, and `{}`
+is where the value is entered.
+
+
+## Global Options
+
+The following options are available across different states:
+
+**TeXnician's Note:** These options are defined as `\Global@` prefix.
+
+::: {.deffn}
+Sets the **Degree** of the document which can change some subtitles of the
+documentation.
+
+Current supported values are: `BSc`, `MSc`.
+:::
+
+::: {.deffn}
+Sets the **Language** of the document which changes the typographical rules
+of the document and correctly sets the document titles and labels.
+
+Current supported values are: `EN` (english), `DE` (german).
+:::
+
+::: {.deffn}
+Sets the **Deparment** of the document.
+
+Current supported values are: `MECH` (Mechatronics).
+:::
+
+::: {.deffn}
+Sets the **Student Number** (i.e., Matrikelnummer) of the document.
+
+As it is a FH, the number **must** begin with the digit `5`. 
+:::
+
+
+## Thesis Specific Options
+
+The following options are used in the thesis mode only. Some options may have
+the same name as other states. In those cases, these options will only be
+described under the parent option in which they were invoked.
+
+The following are the global options for the `Thesis` state:
+
+::: {.deffn}
+Set the title for the Thesis.
+:::
+
+::: {.deffn}
+Set the study program for the Thesis.
+:::
+
+::: {.deffn}
+Set the location in which `Preclusion from Public Access`, and `Declaration In
+  Lieu of Oath` are signed.
+
+Default is `Innsbruck`.
+:::
+
+::: {.deffn}
+Set the date in which `Preclusion from Public Access`, and `Declaration In
+  Lieu of Oath` are signed.
+
+Default is the date in which the document is compiled.
+
+To change it the user can enter a date in the form `{DD.MM.YYYY}`.
+:::
+
+::: {.deffn}
+Set the end date for the embargo of the thesis.
+
+The entered date must be in the format `dd.mm.yyyy`.
+
+Default is `unset`.
+:::
+
+
+### Custom Environments and Commands
+
+There are a few commands and environments defined specifically for the `Thesis`
+class which are as follows:
+
+::: {.deffn}
+Generate an abstract after **Declaration in Lieu of Oath** if **Acknowledgements**
+is not inserted, else the abstract is inserted right after **Acknowledgements**.
+
+The abstract(s) is/are printed before the main Table of contents.
+
+The mandatory argument `{language}` controls which language is used. Currently
+`EN` and `DE` are supported. Based on the chosen `/Language`, The following actions
+are taken.
+
+1.  If English is chosen (`EN`), then only the English abstract is printed with
+    the title **Abstract**.
+2.  If German is chosen (`DE`), then first the German abstract with the title
+    **Zusammenfassung** is printed, then the English abstract is printed with
+    the title **Abstract** is printed.
+
+**NOTE:** This is a **mandatory** environment.
+
+**TeXnician's Note:** Abstracts are written to external files with the name
+`aux-\jobname-abstract-<lang>.abs` where `<lang>` is the lowercase of `/Language`.
+The printing of this is achieved by the `\VerbatimOut` to preserve the user
+entered macros.
+:::
+
+::: {.deffn}
+Generate the **Acknowledgements** page for the thesis. This is printed right
+before any abstract on the thesis.
+
+**NOTE:** This is an **optional** environment.
+
+**TeXnician's Note:** The **Acknowledgments** are written to external files with the
+name `aux-\jobname-acknowledgement.ack`.  The printing of this is achieved by
+the `\VerbatimOut` to preserve the user entered macros. To control whether the
+acknowledgement is to be printed a globally defined `\ifacknowledgments` is
+used. This must be set global to allow it to be seen by the internal command
+`\Th@Preamble`.
+:::
+
+
+### Supervisor
+
+Supervisor is the primary person when the student is conducting their
+thesis. This person can be an internal (i.e., MCI Lecturer, Researcher) or could
+be someone from a company.
+
+An example of this options is shown as below:
+
+::: {.deffn}
+Inserts the company name which the supervisor belongs to. This option should
+only be used if the supervisor is **outside** MCI as using this option will
+require the insertion of the [Reviewer](#org0561b9f) option as well.
+
+Default is `unset`.
+:::
+
+::: {.deffn}
+Prints prefix honorifics for the supervisor, if there is any. For example
+titles such as Dr. or Dipl-Eng should be added here.
+
+Default is `unset`.
+:::
+
+::: {.deffn}
+Prints the name of the supervisor. 
+
+Default is `unset`.
+:::
+
+::: {.deffn}
+Prints post honorifics of the supervisor. For example, titles such as Ph.D
+should be added here
+
+Default is `unset`.
+:::
+
+
+### Reviewer
+
+Reviewer is the examiner when the student is conducting their thesis
+with a company. The reviewer can be considered as a liason between the
+student and the MCI.
+
+An example usage of this is shown below
+
+```latex
+...             % <- Previously the Supervisor was
+...             % defined so we add the Reviewer
+Reviewer     = {%  
+     Prefix     = {Rev.},
+     Name       = {Ted Marshall},
+     Postfix    = {Esq.},  
+   },%
+...
+```
+
+::: {.deffn}
+Prints prefix honorifics for the Reviewer, if there is any. For example titles
+such as Dr. or Dipl-Eng should be added here.
+
+Default is `unset`.
+:::
+
+::: {.deffn}
+Prints the name of the reviewer. 
+
+Default is `unset`.
+:::
+
+::: {.deffn}
+Prints post honorifics of the reviewer. For example, titles such as Ph.D
+should be added here
+
+Default is `unset`.
+:::
+
+
+### Table of Contents
+
+Allows the control of how the table of contents is printed.
+
+::: {.defvar}
+Prints the main Table of Contents. Default is `set` and is the first table of
+content to be printed right after the abstract.
+
+Default is `set`.
+:::
+
+::: {.defvar}
+Prints the **List of Figures** right after Table of Contents on a newpage.
+
+Default is `set`.
+
+If user has no figures within their document, this should changed to `unset`.
+:::
+
+::: {.defvar}
+Prints the **List of Tables** right after **Contents** on a newpage if
+`/Thesis/ToC/Figures` is `unset` or right after `/Thesis/ToC/Figures` and on the
+same page if space if available.
+
+Default is `set`.
+
+If user has no table within their document, this should changed to `unset`.
+:::
+
+
+### Example: Double Degree Programme
+
+The following setting is defined for the student `Karl Hendrix` doing a double
+degree with ASU (Appalachian State University). An example `\SetMCI` option would
+be as follows:
+
+
+### Example: Company Based Thesis
+
+
+### Example: BSc Thesis in English
+
+
+### Example: MasterArbeit auf Deutsch

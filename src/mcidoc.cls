@@ -520,8 +520,13 @@
 		}{}
 		%%%% 
 		\ifthenelse{\equal{\Global@Language}{DE}}{%
+<<<<<<< Updated upstream
 			\foreach \ii / \jj in {german/de, english/en}{%
 					\renewcaptionname{german}{\abstractname}{Zusammenfassung}
+=======
+			\foreach \ii / \jj in {ngerman/de, english/en}{%
+					\renewcaptionname{ngerman}{\abstractname}{Zusammenfassung}
+>>>>>>> Stashed changes
 					\begin{otherlanguage}{\ii}
 						\begin{abstract}
 							\input{aux-\jobname-abstract-\jj.abs}
@@ -548,8 +553,13 @@
 		%%%%
 		\ifthenelse{\equal{\Global@Language}{DE}}{
 			\bgroup%
+<<<<<<< Updated upstream
 			\renewcaptionname{german}{\abstractname}{Danksagung}
 			\begin{otherlanguage}{german}
+=======
+			\renewcaptionname{ngerman}{\abstractname}{Danksagung}
+			\begin{otherlanguage}{ngerman}
+>>>>>>> Stashed changes
 				\begin{abstract}
 					\input{aux-\jobname-acknowledgement.ack}
 				\end{abstract}
@@ -1033,8 +1043,12 @@
 	\renewcommand{\chapterformat}{%
 		\textcolor{mci2}{%
 			\fontsize{20pt}{20pt}%
+<<<<<<< Updated upstream
 			\selectfont Chapter %
 				{\fontsize{80pt}{80pt}\selectfont\thechapter}%
+=======
+			\selectfont Chapter\ \thechapter%
+>>>>>>> Stashed changes
 		}%
 	}%
 	% Finally we reconfigure the chapter headline.
@@ -1084,7 +1098,11 @@
 		}{}
 		%%%% 
 		\ifthenelse{\equal{\Global@Language}{DE}}{%
+<<<<<<< Updated upstream
 			\foreach \ii / \jj in {german/de, english/en}{%
+=======
+			\foreach \ii / \jj in {ngerman/de, english/en}{%
+>>>>>>> Stashed changes
 					\input{aux-\jobname-abstract-\jj.abs}
 				}%
 		}{}

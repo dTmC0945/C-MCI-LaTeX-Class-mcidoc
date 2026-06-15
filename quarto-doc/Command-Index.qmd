@@ -1,0 +1,8 @@
+
+# Command Index
+
+:INDEX:    cp
+:END:
+
+Below are the index entries of all relevant `mcidoc` commands, keys, and
+arguments.
