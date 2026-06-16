@@ -36,9 +36,10 @@
 \usetikzlibrary{calc}
 \RequirePackage{xstring}
 \RequirePackage{fancyvrb}
-\RequirePackage[ngerman, english]{babel}
+\RequirePackage[ngerman]{babel}
 \RequirePackage[T1]{fontenc}
 \RequirePackage{Gudea}
+
 %
 % ---------------------------------------------------------------------------------------------
 %
@@ -350,6 +351,7 @@
 %
 %
 % BEGINNING OF THESIS CLASS -------------------------------------------------------------------
+
 
 \ifthenelse{\equal{\class@state}{Thesis}
 }{
@@ -1317,6 +1319,7 @@
 \lstset{style=mainStyle}
 
 %
+
 
 % GLOBAL ERROR CORRECTION CHECK ---------------------------------------------------------------
 %
