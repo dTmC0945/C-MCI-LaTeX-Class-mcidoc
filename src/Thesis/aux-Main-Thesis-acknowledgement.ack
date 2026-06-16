@@ -6,11 +6,11 @@
   Dr. Emily White, for their constructive feedback and essential suggestions that enhanced the
   quality of my work.
 
-  My appreciation also goes to the faculty and staff in the Department of Biology at University
-  College London, whose resources and assistance have been invaluable. I would also like to
-  acknowledge my peers for their camaraderie and the stimulating discussions that inspired me
-  throughout my academic journey. Their collective wisdom and encouragement have been a
-  cornerstone of my research experience.
+  My appreciation also goes to the faculty and staff in the Department of Biology at AAAS,
+  whose resources and assistance have been invaluable. I would also like to acknowledge my
+  peers for their camaraderie and the stimulating discussions that inspired me throughout my
+  academic journey. Their collective wisdom and encouragement have been a cornerstone of my
+  research experience.
 
   Finally, my sincere thanks to the technical staff whose expertise in managing laboratory
   equipment was crucial for my experiments. Their patience and readiness to assist at all times
