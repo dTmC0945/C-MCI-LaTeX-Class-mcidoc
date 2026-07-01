@@ -1,4 +1,4 @@
-# Created 2026-07-01 Wed 11:18
+# Created 2026-07-01 Wed 12:42
 #+title: mcidoc Student Documentation
 #+author: Daniel McGuiness
 #+filetags: :manual:code:
@@ -6,6 +6,15 @@
 - [[#introduction][Introduction]]
   - [[#an-overview-of-mcidoc][An Overview of mciDoc]]
     - [[#purpose-of-making][Purpose of Making]]
+  - [[#frequently-asked-questions][Frequently Asked Questions]]
+    - [[#where-can-i-download-the-documentclass][Where can I download the documentclass?]]
+    - [[#what-is-setmci--how-do-i-use-it][What is SetMCI ? How do I use it?]]
+    - [[#what-is-latex-isnt-is-a-type-of-plastic][What is LaTeX? Isn't is a type of plastic?]]
+    - [[#i-dont-know-what-to-do-with-this-file-what-is-a-cls-file-][I Don't know what to do with this file. What is a .cls file ?]]
+    - [[#i-want-to-use-word-docx-instead-of-latex-will-you-help-me][I want to use word (.docx) instead of LaTeX. Will you help me?]]
+    - [[#can-i-use-it-in-overleaf][Can I use it in Overleaf?]]
+    - [[#what-editor-should-i-use][What Editor Should I Use?]]
+    - [[#ive-found-a-bug-how-can-i-report-it][I've found a Bug. How can I Report It?]]
 * Introduction
 
 This repo contains ~mcidoc~, a LaTeX class for producing guideline compliant
@@ -88,3 +97,72 @@ worried of these quirks.
 The user should only be responsible of the content they create. The form of the
 documentation, and how the content is presented is taken care of the class
 designer.
+** Frequently Asked Questions
+
+**** Where can I download the documentclass?
+
+The documentclass is stored in the github [[https://github.com/dTmC0945/C-MCI-LaTeX-Class-mcidoc/tree/main][repo]] which you can access it in one of
+two ways:
+
+1. If you are familiar with ~git~ you can use the following command to clone it:
+
+#+begin_src bash
+git clone https://github.com/dTmC0945/C-MCI-LaTeX-Class-mcidoc.git
+#+end_src
+
+1. You can visit the website from [[https://github.com/dTmC0945/C-MCI-LaTeX-Class-mcidoc/tree/main][here]]. Once you are in the repo you need to
+   click [Code] and then [Download ZIP].  Once downloaded, you need to extract
+   the zip file and then place the ~mcidoc.cls~ file on the *same folder* where the
+   main ~.tex~ file is.
+**** What is SetMCI ? How do I use it?
+
+~\SetMCI~ is a custom command designed to streamline the interaction between the
+end user (i.e., you) and the typesetting software (i.e., LaTeX). To get more
+information about what options this command takes and relevant examples, please
+consult the [[https://dtmc0945.github.io/C-MCI-LaTeX-Class-mcidoc/][official documentation]].
+**** What is LaTeX? Isn't is a type of plastic?
+
+Well, yes but in this context, no. It is a typesetting language which is
+designed to produce high quality scientific work and technical documents.
+
+However, It seems you might need a good refreshment on important concepts on
+LaTeX, which you can access from [[https://github.com/dTmC0945/L-MCI-BSc-Academic-Writing][here]].
+**** I Don't know what to do with this file. What is a .cls file ?
+
+~mcidoc.cls~ is a class file. It is a set of instruction telling how the document
+should *behave*. For example, margins of the page, where should the title be, the
+style of chapters, so on and so forth. Using a class file allows the author
+(i.e., you) to not worry about formatting and focus more on what is important
+content.
+**** I want to use word (.docx) instead of LaTeX. Will you help me?
+
+No.
+**** Can I use it in Overleaf?
+
+Technically yes. But, due to its implementation, it might cause problems in
+compilation time. It is heavily suggested to have an *offline* installation such
+as:
+
+- [[https://www.tug.org/texlive/][TeX Live]] (Windows, macOS, Linux)
+- [[https://miktex.org/][MiKTeX]]   (Windows)
+- [[https://www.tug.org/mactex/][MacTeX]]   (macOS)
+
+and work with a good text editor.
+**** What Editor Should I Use?
+
+Excellent question. The following are good LaTeX editors with built in support:
+
+- [[www.texstudio.org][TeXstudio]]
+- [[https://www.xm1math.net/texmaker/][Texmaker]]
+
+Some general purpose text editors can also be used to work with LaTeX very well.
+
+- [[https://code.visualstudio.com/][Visual Studio Code]]
+- [[https://www.vim.org/][Vim]] or [[https://neovim.io/][Neovim]]
+- [[https://www.gnu.org/software/emacs/][Emacs]]
+- [[https://notepad-plus-plus.org/][Notepad++]]
+**** I've found a Bug. How can I Report It?
+
+As this is not a small project (in terms of LaTeX), there can be problems, and
+edge cases where there can be problems. If you happen to find some problems,
+please use the official [[https://github.com/dTmC0945/C-MCI-LaTeX-Class-mcidoc/tree/main][repo]] to report it.
