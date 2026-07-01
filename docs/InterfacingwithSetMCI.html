@@ -1,0 +1,436 @@
+<!DOCTYPE html> 
+<html lang="en">  
+<head><title>Interfacing with SetMCI</title> 
+<meta  charset="utf-8" /> 
+<meta name="generator" content="TeX4ht (https://tug.org/tex4ht/)" /> 
+<meta name="viewport" content="width=device-width,initial-scale=1" /> 
+<link rel="stylesheet" type="text/css" href="temp.css" /> 
+<meta name="src" content="temp.tex" /> 
+<script>window.MathJax = { tex: { tags: "ams", }, }; </script> 
+<script type="text/javascript" async="async" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>  
+<title>mcidoc Student Documentation</title> 
+<link href="/pagefind/pagefind-component-ui.css" rel="stylesheet"> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> 
+<script src="/pagefind/pagefind-component-ui.js" type="module"></script> 
+<link rel="stylesheet" type="text/css" href="flatweb.css"> 
+<script type="text/javascript" src="flatweb.js"></script> 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/default.min.css"> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script> 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/base16/solarized-light.min.css"/> 
+<script src="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.js"></script> 
+<link rel="stylesheet" href="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.css"/> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/cpp.min.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/latex.min.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/matlab.min.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/dockerfile.min.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/cmake.min.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/makefile.min.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/markdown.min.js"></script> 
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/> <style> 
+ </style> 
+ <header> 
+ <button class="toc" onclick="toggleTOC()">TOC</button> 
+ <pagefind-modal></pagefind-modal> 
+ </header> 
+</head><body 
+>
+<page> 
+<div class="keyboard-help-menu"><div style="overflow-x:auto"> <table> <thead> <tr> <th>Key</th> <th>Description</th> </tr> </thead> <tbody> <tr> <td><kbd>t</kbd></td> <td>Enable/Disable Table of Contents</td> </tr> <tr> <td><kbd>n</kbd></td> <td>Visit Next Chapter</td> </tr> <tr> <td><kbd>p</kbd></td> <td>Visit Previous Chapter</td> </tr> <tr> <td><kbd>u</kbd></td> <td>Go to Top of Page</td> </tr> <tr> <td><kbd>b</kbd></td> <td>Go to Bottom of Page</td> </tr> <tr> <td><kbd>i</kbd></td> <td>Visit the Introduction Page</td> </tr> </tbody> </table> </div> </div> <nav class="wide"><img class="webbook-logo" src="logo/webbook-logo.svg"></img> <div class="header"> <div class="header-left"><span class="header-lecture-grade">M.Sc and B.Sc</span> 
+<span class="header-lecture-name">mcidoc Student Documentation</span> 
+<span class="header-webBook">WebBook</span> </div> <div class="header-right"> <span class="header-version">2026.SS.1</span> 
+ <span class="header-chapter">Configuring the Document</span></div></div> <div class="toc"><pagefind-modal-trigger></pagefind-modal-trigger><div class="toc-links"><a href="https://github.com/dTmC0945"><i class="fab fa-github" style='font-size:20px'></i></a><a href="https://scholar.google.com/citations?view_op=list_works\&hl=en\&user=lxQGADMAAAAJ"><i class="fa-brands fa-google-scholar" style='font-size:20px'></i></a><a href="https://www.researchgate.net/profile/Daniel-Mcguiness-2"><i class="fa-brands fa-researchgate" style='font-size:20px'></i></a><a href="https://dtmc0945.github.io/Th-MCI-Thesis-Topics/"><i class="fa-solid fa-book" style='font-size:20px'></i></a></div><hr><span class="chapterToc"><span class="number">0</span><span class="title"><a 
+href="index.html#x2-10000">index</a></span></span><span class="chapterToc"><span class="number">1</span><span class="title"><a 
+href="Introduction.html#x3-20001">Introduction</a></span></span><span class="sectionToc"><span class="number">1.1</span><span class="title"><a 
+href="AnOverviewofmciDoc.html#x4-30001.1">An Overview of mciDoc</a></span></span><span class="subsectionToc"><span class="number">1.1.1</span><span class="title"><a 
+href="AnOverviewofmciDoc.html#x4-40001.1.1">Purpose of Making</a></span></span><span class="subsectionToc"><span class="number">1.1.2</span><span class="title"><a 
+href="AnOverviewofmciDoc.html#x4-50001.1.2">Reading
+the Commands and Environments</a></span></span><span class="subsectionToc"><span class="number">1.1.3</span><span class="title"><a 
+href="AnOverviewofmciDoc.html#x4-60001.1.3">Currently Supported Formats</a></span></span><span class="subsectionToc"><span class="number">1.1.4</span><span class="title"><a 
+href="AnOverviewofmciDoc.html#x4-70001.1.4">Important
+Notice</a></span></span><span class="chapterToc"><span class="number">2</span><span class="title"><a 
+href="ConfiguringtheDocument.html#x5-80002">Configuring the Document</a></span></span><span class="sectionToc"><span class="number">2.1</span><span class="title"><a 
+href="#x6-90002.1">Interfacing with SetMCI</a></span></span><span class="subsectionToc"><span class="number">2.1.1</span><span class="title"><a 
+href="#x6-100002.1.1">Notational
+Information</a></span></span><span class="subsectionToc"><span class="number">2.1.2</span><span class="title"><a 
+href="#x6-110002.1.2">Global Options</a></span></span><span class="subsectionToc"><span class="number">2.1.3</span><span class="title"><a 
+href="#x6-120002.1.3">Thesis Specific Options</a></span></span><span class="subsectionToc"><span class="number">2.1.4</span><span class="title"><a 
+href="#x6-130002.1.4">Custom Environments
+and Commands</a></span></span><span class="subsectionToc"><span class="number">2.1.5</span><span class="title"><a 
+href="#x6-140002.1.5">Supervisor</a></span></span><span class="subsectionToc"><span class="number">2.1.6</span><span class="title"><a 
+href="#x6-150002.1.6">Reviewer</a></span></span><span class="subsectionToc"><span class="number">2.1.7</span><span class="title"><a 
+href="#x6-160002.1.7">Table of Contents</a></span></span>
+<div class="lecture-materials"><div class="lecture-materials-title"><span class="material-title">Lecture Materials</span></div><div class="lecture-materials-body"><br><span class="lecture-book">LectureBook</span> <br><span class="tutorial-book">TutorialBook</span> <br><span class="laboratory-book">LaboratoryBook</span> <br><span class="lecture-slide">LectureSlide</span> <br><span class="lecture-handout">LectureHandout</span> <br><span class="assignments">Assignments</span> <br><span class="exams">Exams</span> </div> </div><div class="nav-footer"><div class="nav-footer-left"><span class="nav-footer-lecture">Daniel McGuiness</span> 
+<span class="nav-footer-webBook"><span id="bold" style="font-weight:bold;">Last Updated:</span> 1.7.2026, at 11:35.</span></div></div><span class="nav-comments">The website you are viewing is auto-generated using ParSnip and therefore subject to slight errors in typography and formatting. When in doubt, please consult the LectureBook. </span></div></div></nav> 
+
+<article class="chapter"> 
+<nav class="crosslinks-top"> <span class="nav-inactive"><span class="nav-next">NEXT</span></span> <span class="nav-inactive"><span class="nav-prev">PREV</span></span> <span class="nav-inactive"><span class="nav-prev-tail">PREV-TAIL</span></span> <a 
+href="#tailInterfacingwithSetMCI.html"><span class="nav-tail">TAIL</span></a><a 
+href="ConfiguringtheDocument.html#InterfacingwithSetMCI.html" ><span class="nav-up">UP</span></a></nav> 
+<div class="section-header"><h3><a class="pdf-icon" href="temp.pdf#section.2.1"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-file-pdf" viewBox="0 0 16 16"><path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"></path><path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z"></path></svg></a><span class="number">2.1</span> <span class="title">  <a 
+ id="x6-90002.1"></a>Interfacing with SetMCI</span></h3></div><p>
+<!--l. 212--><p class="noindent" >Let’s now look at how the command <code class="verb"><span 
+class="ec-lmtt-10">SetMCI</span></code> is interfaced with the end user.
+</p>
+<!--l. 213--><p class="noindent" ><div class="subsection-header"><h4><a class="pdf-icon" href="temp.pdf#subsection.2.1.1"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-file-pdf" viewBox="0 0 16 16"><path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"></path><path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z"></path></svg></a><span class="number">2.1.1</span> <span class="title">  <a 
+ id="x6-100002.1.1"></a>Notational Information</span></h4></div><p>
+</p><!--l. 216--><p class="noindent" >Before options for the <code class="verb"><span 
+class="ec-lmtt-10">SetMCI</span></code> are described, it is worth explaining the slight notational quirks used in
+defining the command.
+                                                                                
+                                                                                
+</p><!--l. 219--><p class="noindent" >For most, if not all, options given by <code class="verb"><span 
+class="ec-lmtt-10">SetMCI</span></code> and are by default either as <code class="verb"><span 
+class="ec-lmtt-10">set</span></code> or <code class="verb"><span 
+class="ec-lmtt-10">unset</span></code> unless specified
+otherwise within the documentation.
+</p>     
+<ul class="itemize1">
+<li class="itemize">     
+<!--l. 223--><p class="noindent" >If a feature is <code class="verb"><span 
+class="ec-lmtt-10">set</span></code> by default, then the option will be executed as long as the user does not
+alter its value to <code class="verb"><span 
+class="ec-lmtt-10">unset</span></code>.
+</p>     
+</li>
+<li class="itemize">     
+<!--l. 225--><p class="noindent" >Conversely, if a <code class="verb"><span 
+class="ec-lmtt-10">SetMCI</span></code> value is <code class="verb"><span 
+class="ec-lmtt-10">unset</span></code>, then it will not show in the document or alter
+anything within the document as long as the user does not change its behavior.</p></li></ul>
+                                                                                
+                                                                                
+<!--l. 230--><p class="noindent" ></p><figure class="float" 
+>
+                                                                                
+                                                                                
+<a 
+ id="x6-10001r1"></a>
+<figcaption class="caption" ><span class="id"><span 
+class="ec-lmbx-7">Table</span><span 
+class="ec-lmbx-7"> 2.1:</span><span 
+class="ec-lmbx-7"> </span></span><span  
+class="content"><span 
+class="ec-lmr-7">Available options</span>
+</span></figcaption><!--tex4ht:label?: x6-10001r1 -->
+<div class="tabular"> <table id="TBL-1" class="tabular" 
+ 
+><colgroup id="TBL-1-1g"><col 
+id="TBL-1-1" /><col 
+id="TBL-1-2" /></colgroup><tr  
+ style="vertical-align:baseline;" id="TBL-1-1-"><td  style="white-space:normal; text-align:left;" id="TBL-1-1-1"  
+class="td11"> Property  </td>
+            <td  style="white-space:normal; text-align:left;" id="TBL-1-1-2"  
+class="td11"> Result                </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-2-"><td  style="white-space:normal; text-align:left;" id="TBL-1-2-1"  
+class="td11"> <code class="verb"><span 
+class="ec-lmtt-10">set</span></code>      </td><td  style="white-space:normal; text-align:left;" id="TBL-1-2-2"  
+class="td11"> Enable a feature  </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-3-"><td  style="white-space:normal; text-align:left;" id="TBL-1-3-1"  
+class="td11"> <code class="verb"><span 
+class="ec-lmtt-10">unset</span></code>    </td><td  style="white-space:normal; text-align:left;" id="TBL-1-3-2"  
+class="td11"> Disable a feature  </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-4-"><td  style="white-space:normal; text-align:left;" id="TBL-1-4-1"  
+class="td11">          </td></tr></table>                                                                   </div>
+                                                                                
+                                                                                
+</figure>
+<!--l. 240--><p class="noindent" >Some options on the other hand can take different values which are explained in detail where they are
+relevant.
+</p><!--l. 243--><p class="noindent" >Throughout the documentation, various configuration to the <code class="verb"><span 
+class="ec-lmtt-10">SetMCI</span></code> command is given in the form of
+<code class="verb"><span 
+class="ec-lmtt-10">/root/parent/child</span></code> for clarity.
+</p><!--l. 246--><p class="noindent" >For example the <code class="verb"><span 
+class="ec-lmtt-10">/Thesis/Supervisor/Postfix</span></code> option can be invoked in the documentation as
+such:
+</p>
+<pre><code class="language-latex">
+<pre class="fancyvrb" id="fancyvrb3"><a 
+ id="x6-10003r1"></a><span 
+class="ec-lmtt-10">...</span> 
+<a 
+ id="x6-10005r2"></a><span 
+class="ec-lmtt-10">\SetMCI{</span> 
+<a 
+ id="x6-10007r3"></a>  <span 
+class="ec-lmtt-10">Thesis = {</span> 
+<a 
+ id="x6-10009r4"></a>    <span 
+class="ec-lmtt-10">Supervisor = {</span> 
+<a 
+ id="x6-10011r5"></a>      <span 
+class="ec-lmtt-10">Postfix = {},</span> 
+<a 
+ id="x6-10013r6"></a>    <span 
+class="ec-lmtt-10">},</span> 
+<a 
+ id="x6-10015r7"></a>  <span 
+class="ec-lmtt-10">},</span> 
+<a 
+ id="x6-10017r8"></a><span 
+class="ec-lmtt-10">}</span> 
+<a 
+ id="x6-10019r9"></a><span 
+class="ec-lmtt-10">...</span></pre>
+</code></pre><p>
+<!--l. 261--><p class="noindent" >where <code class="verb"><span 
+class="ec-lmtt-10">...</span></code> designates the code prior and after the <code class="verb"><span 
+class="ec-lmtt-10">SetMCI</span></code> command, and <code class="verb"><span 
+class="ec-lmtt-10">\{\}</span></code> is where the value is
+entered.
+</p><!--l. 264--><p class="noindent" >Alternativey, the option <code class="verb"><span 
+class="ec-lmtt-10">/Degree</span></code> can be set as follows:
+</p>
+<pre><code class="language-latex">
+<pre class="fancyvrb" id="fancyvrb4"><a 
+ id="x6-10021r1"></a><span 
+class="ec-lmtt-10">...  \SetMCI{ Degree = {}, } ...</span></pre>
+</code></pre><p>
+<!--l. 270--><p class="noindent" >where again, <code class="verb"><span 
+class="ec-lmtt-10">...</span></code> designates the code prior and after the <code class="verb"><span 
+class="ec-lmtt-10">\SetMCI</span></code> command, and <code class="verb"><span 
+class="ec-lmtt-10">{}</span></code> is where the value
+is entered.
+</p>
+<!--l. 272--><p class="noindent" ><div class="subsection-header"><h4><a class="pdf-icon" href="temp.pdf#subsection.2.1.2"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-file-pdf" viewBox="0 0 16 16"><path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"></path><path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z"></path></svg></a><span class="number">2.1.2</span> <span class="title">  <a 
+ id="x6-110002.1.2"></a>Global Options</span></h4></div><p>
+</p><!--l. 275--><p class="noindent" >The following options are available across different states:
+</p><!--l. 277--><p class="noindent" ><span id="bold" style="font-weight:bold;">TeXnician’s Note:</span> These options are defined as <code class="verb"><span 
+class="ec-lmtt-10">\Global@</span></code> prefix.
+</p>
+<div class="doc-block"> <div class="command-header"><span class="command-type"><span id="bold" style="font-weight:bold;">key</span></span><span class="command-name"><code class="verb">/Degree</code></span><span class="command-args"><code class="verb">marg</code></span><span class="command-doc"><span class="inactive-manual">Manual</span></span></div><div class="body"><p> Sets the <span id="bold" style="font-weight:bold;">Degree</span> of the document which can change some subtitles of the
+documentation.
+Current supported values are: <code class="verb"><span 
+class="ec-lmtt-10">BSc</span></code>, <code class="verb"><span 
+class="ec-lmtt-10">MSc</span></code>. </p></div> </div><p class="noindent">
+<div class="doc-block"> <div class="command-header"><span class="command-type"><span id="bold" style="font-weight:bold;">key</span></span><span class="command-name"><code class="verb">/Language</code></span><span class="command-args"><code class="verb">marg</code></span><span class="command-doc"><span class="inactive-manual">Manual</span></span></div><div class="body"><p> Sets the <span id="bold" style="font-weight:bold;">Language</span> of the document which changes the typographical rules of the
+document and correctly sets the document titles and labels.
+Current supported values are: <code class="verb"><span 
+class="ec-lmtt-10">EN</span></code> (english), <code class="verb"><span 
+class="ec-lmtt-10">DE</span></code> (german). </p></div> </div><p class="noindent">
+<div class="doc-block"> <div class="command-header"><span class="command-type"><span id="bold" style="font-weight:bold;">key</span></span><span class="command-name"><code class="verb">/Deparment</code></span><span class="command-args"><code class="verb">marg</code></span><span class="command-doc"><span class="inactive-manual">Manual</span></span></div><div class="body"><p> Sets the <span id="bold" style="font-weight:bold;">Deparment</span> of the document.
+Current supported values are: <code class="verb"><span 
+class="ec-lmtt-10">MECH</span></code> (Mechatronics). </p></div> </div><p class="noindent">
+<div class="doc-block"> <div class="command-header"><span class="command-type"><span id="bold" style="font-weight:bold;">key</span></span><span class="command-name"><code class="verb">/StudentID</code></span><span class="command-args"><code class="verb">marg</code></span><span class="command-doc"><span class="inactive-manual">Manual</span></span></div><div class="body"><p> Sets the <span id="bold" style="font-weight:bold;">Student Number</span> (i.e., Matrikelnummer) of the document.
+As it is a FH, the number <span id="bold" style="font-weight:bold;">must</span> begin with the digit <code class="verb"><span 
+class="ec-lmtt-10">5</span></code>. </p></div> </div><p class="noindent">
+<!--l. 312--><p class="noindent" ><div class="subsection-header"><h4><a class="pdf-icon" href="temp.pdf#subsection.2.1.3"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-file-pdf" viewBox="0 0 16 16"><path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"></path><path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z"></path></svg></a><span class="number">2.1.3</span> <span class="title">  <a 
+ id="x6-120002.1.3"></a>Thesis Specific Options</span></h4></div><p>
+</p><!--l. 315--><p class="noindent" >The following options are used in the thesis mode only. Some options may have the same name as other
+states. In those cases, these options will only be described under the parent option in which they were
+invoked.
+                                                                                
+                                                                                
+</p><!--l. 319--><p class="noindent" >The following are the global options for the <code class="verb"><span 
+class="ec-lmtt-10">Thesis</span></code> state:
+</p>
+<div class="doc-block"> <div class="command-header"><span class="command-type"><span id="bold" style="font-weight:bold;">key</span></span><span class="command-name"><code class="verb">/Thesis/Title</code></span><span class="command-args"><code class="verb">marg</code></span><span class="command-doc"><span class="inactive-manual">Manual</span></span></div><div class="body"><p> Set the title for the Thesis. </p></div> </div><p class="noindent">
+<div class="doc-block"> <div class="command-header"><span class="command-type"><span id="bold" style="font-weight:bold;">key</span></span><span class="command-name"><code class="verb">/Thesis/StudyProgram</code></span><span class="command-args"><code class="verb">marg</code></span><span class="command-doc"><span class="inactive-manual">Manual</span></span></div><div class="body"><p> Set the study program for the Thesis. </p></div> </div><p class="noindent">
+<div class="doc-block"> <div class="command-header"><span class="command-type"><span id="bold" style="font-weight:bold;">key</span></span><span class="command-name"><code class="verb">/Thesis/Location</code></span><span class="command-args"><code class="verb">oarg</code></span><span class="command-doc"><span class="inactive-manual">Manual</span></span></div><div class="body"><p> Set the location in which <code class="verb"><span 
+class="ec-lmtt-10">Preclusion from Public Access</span></code>, and
+<code class="verb"><span 
+class="ec-lmtt-10">Declaration In Lieu of Oath</span></code> are signed.
+Default is <code class="verb"><span 
+class="ec-lmtt-10">Innsbruck</span></code>. </p></div> </div><p class="noindent">
+<div class="doc-block"> <div class="command-header"><span class="command-type"><span id="bold" style="font-weight:bold;">key</span></span><span class="command-name"><code class="verb">/Thesis/Date</code></span><span class="command-args"><code class="verb">oarg</code></span><span class="command-doc"><span class="inactive-manual">Manual</span></span></div><div class="body"><p> Set the date in which <code class="verb"><span 
+class="ec-lmtt-10">Preclusion from Public Access</span></code>, and <code class="verb"><span 
+class="ec-lmtt-10">Declaration</span>
+<span 
+class="ec-lmtt-10">In Lieu of Oath</span></code> are signed.
+Default is the date in which the document is compiled.
+<!--l. 350--><p class="noindent" >To change it the user can enter a date in the form <code class="verb"><span 
+class="ec-lmtt-10">{DD.MM.YYYY}</span></code>. </p></div> </div><p class="noindent"></p>
+<div class="doc-block"> <div class="command-header"><span class="command-type"><span id="bold" style="font-weight:bold;">Option</span></span><span class="command-name"><code class="verb">/Thesis/Embargo</code></span><span class="command-args"><code class="verb">optional</code></span><span class="command-doc"><span class="inactive-manual">Manual</span></span></div><div class="body"><p> Set the end date for the embargo of the thesis.
+The entered date must be in the format <code class="verb"><span 
+class="ec-lmtt-10">dd.mm.yyyy</span></code>.
+<!--l. 360--><p class="noindent" >Default is <code class="verb"><span 
+class="ec-lmtt-10">unset</span></code>. </p></div> </div><p class="noindent"></p>
+<!--l. 363--><p class="noindent" ><div class="subsection-header"><h4><a class="pdf-icon" href="temp.pdf#subsection.2.1.4"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-file-pdf" viewBox="0 0 16 16"><path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"></path><path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z"></path></svg></a><span class="number">2.1.4</span> <span class="title">  <a 
+ id="x6-130002.1.4"></a>Custom Environments and Commands</span></h4></div><p>
+</p><!--l. 366--><p class="noindent" >There are a few commands and environments defined specifically for the <code class="verb"><span 
+class="ec-lmtt-10">Thesis</span></code> class which are as
+follows:
+</p>
+<div class="doc-block"> <div class="command-header"><span class="command-type"><span id="bold" style="font-weight:bold;">Environment</span></span><span class="command-name"><code class="verb">Abstract</code></span><span class="command-args"><code class="verb">marg:language</code></span><span class="command-doc"><span class="inactive-manual">Manual</span></span></div><div class="body"><p>
+Generate an abstract after <span id="bold" style="font-weight:bold;">Declaration in Lieu of Oath</span> if <span id="bold" style="font-weight:bold;">Acknowledgements</span> is not inserted, else
+the abstract is inserted right after <span id="bold" style="font-weight:bold;">Acknowledgements</span>.
+<!--l. 376--><p class="noindent" >The abstract(s) is/are printed before the main Table of contents.
+</p><!--l. 378--><p class="noindent" >The mandatory argument <code class="verb"><span 
+class="ec-lmtt-10">{language}</span></code> controls which language is used. Currently <code class="verb"><span 
+class="ec-lmtt-10">EN</span></code> and <code class="verb"><span 
+class="ec-lmtt-10">DE</span></code> are
+supported. Based on the chosen <code class="verb"><span 
+class="ec-lmtt-10">/Language</span></code>, The following actions are taken.
+</p><!--l. 383--><p class="noindent" >     
+</p>
+<dl class="enumerate-enumitem"><dt class="enumerate-enumitem">  
+1. 
+</dt><dd 
+class="enumerate-enumitem">If English is chosen (<code class="verb"><span 
+class="ec-lmtt-10">EN</span></code>), then only the English abstract is printed with the title <span id="bold" style="font-weight:bold;">Abstract</span>.
+</dd>     
+<dt class="enumerate-enumitem">
+2. 
+</dt><dd 
+class="enumerate-enumitem">If German is chosen (<code class="verb"><span 
+class="ec-lmtt-10">DE</span></code>), then first the German abstract with the title <span id="bold" style="font-weight:bold;">Zusammenfassung</span>
+is printed, then the English abstract is printed with the title <span id="bold" style="font-weight:bold;">Abstract</span> is printed.</dd></dl>
+<!--l. 390--><p class="noindent" ><span id="bold" style="font-weight:bold;">NOTE:</span> This is a <span id="bold" style="font-weight:bold;">mandatory</span> environment.
+</p><!--l. 392--><p class="noindent" ><span id="bold" style="font-weight:bold;">TeXnician’s Note:</span> Abstracts are written to external files with the name <code class="verb"><span 
+class="ec-lmtt-10">aux-\jobname-abstract-&#x003C;lang&#x003E;.abs</span></code>
+where <code class="verb"><span 
+class="ec-lmtt-10">&#x003C;lang&#x003E;</span></code> is the lowercase of <code class="verb"><span 
+class="ec-lmtt-10">/Language</span></code>. The printing of this is achieved by the <code class="verb"><span 
+class="ec-lmtt-10">\VerbatimOut</span></code> to
+preserve the user entered macros. </p></div> </div><p class="noindent"></p>
+<div class="doc-block"> <div class="command-header"><span class="command-type"><span id="bold" style="font-weight:bold;">Environment</span></span><span class="command-name"><code class="verb">Acknowledgments</code></span><span class="command-args"><code class="verb">None</code></span><span class="command-doc"><span class="inactive-manual">Manual</span></span></div><div class="body"><p> Generate the <span id="bold" style="font-weight:bold;">Acknowledgements</span> page for the thesis. This is
+printed right before any abstract on the thesis.
+<span id="bold" style="font-weight:bold;">NOTE:</span> This is an <span id="bold" style="font-weight:bold;">optional</span> environment.
+<!--l. 406--><p class="noindent" ><span id="bold" style="font-weight:bold;">TeXnician’s Note:</span> The <span id="bold" style="font-weight:bold;">Acknowledgments</span> are written to external files with the name
+<code class="verb"><span 
+class="ec-lmtt-10">aux-\jobname-acknowledgement.ack</span></code>. The printing of this is achieved by the <code class="verb"><span 
+class="ec-lmtt-10">\VerbatimOut</span></code> to
+preserve the user entered macros. To control whether the acknowledgement is to be printed a globally
+defined <code class="verb"><span 
+class="ec-lmtt-10">\ifacknowledgments</span></code> is used. This must be set global to allow it to be seen by the internal
+command <code class="verb"><span 
+class="ec-lmtt-10">\Th@Preamble</span></code>. </p></div> </div><p class="noindent"></p>
+                                                                                
+                                                                                
+<!--l. 414--><p class="noindent" ><div class="subsection-header"><h4><a class="pdf-icon" href="temp.pdf#subsection.2.1.5"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-file-pdf" viewBox="0 0 16 16"><path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"></path><path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z"></path></svg></a><span class="number">2.1.5</span> <span class="title">  <a 
+ id="x6-140002.1.5"></a>Supervisor</span></h4></div><p>
+</p><!--l. 417--><p class="noindent" >Supervisor is the primary person when the student is conducting their thesis. This person can be an
+internal (i.e., MCI Lecturer, Researcher) or could be someone from a company.
+</p><!--l. 421--><p class="noindent" >An example of this options is shown as below:
+</p>
+<pre><code class="language-latex">
+<pre class="fancyvrb" id="fancyvrb5"><a 
+ id="x6-14002r1"></a><span 
+class="ec-lmtt-10">...</span> 
+<a 
+ id="x6-14004r2"></a><span 
+class="ec-lmtt-10">Supervisor     = {%</span> 
+<a 
+ id="x6-14006r3"></a>  <span 
+class="ec-lmtt-10">Company = {Ministry of Sillyputty}, % &#x003C;</span><span 
+class="ec-lmtt-10">-</span> <span 
+class="ec-lmtt-10">The company of the supervisor</span> 
+<a 
+ id="x6-14008r4"></a>  <span 
+class="ec-lmtt-10">Prefix  = {Dipl</span><span 
+class="ec-lmtt-10">-</span><span 
+class="ec-lmtt-10">Eng.},</span> 
+<a 
+ id="x6-14010r5"></a>  <span 
+class="ec-lmtt-10">Name    = {Colin Devon},</span> 
+<a 
+ id="x6-14012r6"></a>  <span 
+class="ec-lmtt-10">Postfix = {M.Sc},</span> 
+<a 
+ id="x6-14014r7"></a><span 
+class="ec-lmtt-10">},%</span> 
+<a 
+ id="x6-14016r8"></a><span 
+class="ec-lmtt-10">...</span></pre>
+</code></pre><p>
+<div class="doc-block"> <div class="command-header"><span class="command-type"><span id="bold" style="font-weight:bold;">option</span></span><span class="command-name"><code class="verb">/Thesis/Supervisor/Company</code></span><span class="command-args"><code class="verb"></code></span><span class="command-doc"><span class="inactive-manual">Manual</span></span></div><div class="body"><p> Inserts the company name which the supervisor belongs to.
+This option should only be used if the supervisor is <span id="bold" style="font-weight:bold;">outside</span> MCI as using this option will require the
+insertion of the <a 
+href="#x6-150002.1.6">Reviewer</a> option as well.
+Default is <code class="verb"><span 
+class="ec-lmtt-10">unset</span></code>. </p></div> </div><p class="noindent">
+<div class="doc-block"> <div class="command-header"><span class="command-type"><span id="bold" style="font-weight:bold;">option</span></span><span class="command-name"><code class="verb">/Thesis/Supervisor/Prefix</code></span><span class="command-args"><code class="verb"></code></span><span class="command-doc"><span class="inactive-manual">Manual</span></span></div><div class="body"><p> Prints prefix honorifics for the supervisor, if there is any. For
+example titles such as Dr. or Dipl-Eng should be added here.
+Default is <code class="verb"><span 
+class="ec-lmtt-10">unset</span></code>. </p></div> </div><p class="noindent">
+<div class="doc-block"> <div class="command-header"><span class="command-type"><span id="bold" style="font-weight:bold;">option</span></span><span class="command-name"><code class="verb">/Thesis/Supervisor/Name</code></span><span class="command-args"><code class="verb"></code></span><span class="command-doc"><span class="inactive-manual">Manual</span></span></div><div class="body"><p> Prints the name of the supervisor.
+Default is <code class="verb"><span 
+class="ec-lmtt-10">unset</span></code>. </p></div> </div><p class="noindent">
+<div class="doc-block"> <div class="command-header"><span class="command-type"><span id="bold" style="font-weight:bold;">option</span></span><span class="command-name"><code class="verb">/Thesis/Supervisor/Postfix</code></span><span class="command-args"><code class="verb"></code></span><span class="command-doc"><span class="inactive-manual">Manual</span></span></div><div class="body"><p> Prints post honorifics of the supervisor. For example, titles such
+as Ph.D, B.Sc, M.Sc or anything similar should be added here
+Default is <code class="verb"><span 
+class="ec-lmtt-10">unset</span></code>. </p></div> </div><p class="noindent">
+<!--l. 473--><p class="noindent" ><div class="subsection-header"><h4><a class="pdf-icon" href="temp.pdf#subsection.2.1.6"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-file-pdf" viewBox="0 0 16 16"><path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"></path><path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z"></path></svg></a><span class="number">2.1.6</span> <span class="title">  <a 
+ id="x6-150002.1.6"></a>Reviewer</span></h4></div><p>
+</p><!--l. 476--><p class="noindent" >Reviewer is the examiner when the student is conducting their thesis with a company. The reviewer can
+be considered as a liason between the student and the MCI.
+</p><!--l. 480--><p class="noindent" >An example usage of this is shown below
+</p>
+<pre><code class="language-latex">
+<pre class="fancyvrb" id="fancyvrb6"><a 
+ id="x6-15002r1"></a><span 
+class="ec-lmtt-10">...             % &#x003C;</span><span 
+class="ec-lmtt-10">-</span> <span 
+class="ec-lmtt-10">Previously the Supervisor was</span> 
+<a 
+ id="x6-15004r2"></a><span 
+class="ec-lmtt-10">...             % defined so we add the Reviewer</span> 
+<a 
+ id="x6-15006r3"></a><span 
+class="ec-lmtt-10">Reviewer     = {%</span> 
+<a 
+ id="x6-15008r4"></a>     <span 
+class="ec-lmtt-10">Prefix     = {Rev.},</span> 
+<a 
+ id="x6-15010r5"></a>     <span 
+class="ec-lmtt-10">Name       = {Ted Marshall},</span> 
+<a 
+ id="x6-15012r6"></a>     <span 
+class="ec-lmtt-10">Postfix    = {Esq.},</span> 
+<a 
+ id="x6-15014r7"></a>   <span 
+class="ec-lmtt-10">},%</span> 
+<a 
+ id="x6-15016r8"></a><span 
+class="ec-lmtt-10">...</span></pre>
+</code></pre><p>
+<div class="doc-block"> <div class="command-header"><span class="command-type"><span id="bold" style="font-weight:bold;">option</span></span><span class="command-name"><code class="verb">/Thesis/Reviewer/Prefix</code></span><span class="command-args"><code class="verb"></code></span><span class="command-doc"><span class="inactive-manual">Manual</span></span></div><div class="body"><p> Prints prefix honorifics for the Reviewer, if there is any. For
+example titles such as Dr. or Dipl-Eng should be added here.
+Default is <code class="verb"><span 
+class="ec-lmtt-10">unset</span></code>. </p></div> </div><p class="noindent">
+<div class="doc-block"> <div class="command-header"><span class="command-type"><span id="bold" style="font-weight:bold;">option</span></span><span class="command-name"><code class="verb">/Thesis/Reviewer/Name</code></span><span class="command-args"><code class="verb"></code></span><span class="command-doc"><span class="inactive-manual">Manual</span></span></div><div class="body"><p> Prints the name of the reviewer.
+Default is <code class="verb"><span 
+class="ec-lmtt-10">unset</span></code>. </p></div> </div><p class="noindent">
+<div class="doc-block"> <div class="command-header"><span class="command-type"><span id="bold" style="font-weight:bold;">option</span></span><span class="command-name"><code class="verb">/Thesis/Reviewer/Postfix</code></span><span class="command-args"><code class="verb"></code></span><span class="command-doc"><span class="inactive-manual">Manual</span></span></div><div class="body"><p> Prints post honorifics of the reviewer. For example, titles such as
+Ph.D should be added here
+Default is <code class="verb"><span 
+class="ec-lmtt-10">unset</span></code>. </p></div> </div><p class="noindent">
+                                                                                
+                                                                                
+<!--l. 519--><p class="noindent" ><div class="subsection-header"><h4><a class="pdf-icon" href="temp.pdf#subsection.2.1.7"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-file-pdf" viewBox="0 0 16 16"><path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"></path><path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z"></path></svg></a><span class="number">2.1.7</span> <span class="title">  <a 
+ id="x6-160002.1.7"></a>Table of Contents</span></h4></div><p>
+</p><!--l. 522--><p class="noindent" >Allows the control of how the table of contents is printed.
+</p>
+<div class="doc-block"> <div class="command-header"><span class="command-type"><span id="bold" style="font-weight:bold;">option</span></span><span class="command-name"><code class="verb">/Thesis/ToC/Primary</code></span><span class="command-args"><code class="verb"></code></span><span class="command-doc"><span class="inactive-manual">Manual</span></span></div><div class="body"><p> Prints the main Table of Contents. Default is <code class="verb"><span 
+class="ec-lmtt-10">set</span></code> and is the first table
+of content to be printed right after the abstract.
+Default is <code class="verb"><span 
+class="ec-lmtt-10">set</span></code>. </p></div> </div><p class="noindent">
+<div class="doc-block"> <div class="command-header"><span class="command-type"><span id="bold" style="font-weight:bold;">option</span></span><span class="command-name"><code class="verb">/Thesis/ToC/Figures</code></span><span class="command-args"><code class="verb"></code></span><span class="command-doc"><span class="inactive-manual">Manual</span></span></div><div class="body"><p> Prints the <span id="bold" style="font-weight:bold;">List of Figures</span> right after Table of Contents on a
+newpage.
+Default is <code class="verb"><span 
+class="ec-lmtt-10">set</span></code>.
+<!--l. 540--><p class="noindent" >If user has no figures within their document, this should changed to <code class="verb"><span 
+class="ec-lmtt-10">unset</span></code>. </p></div> </div><p class="noindent"></p>
+<div class="doc-block"> <div class="command-header"><span class="command-type"><span id="bold" style="font-weight:bold;">option</span></span><span class="command-name"><code class="verb">/Thesis/ToC/Tables</code></span><span class="command-args"><code class="verb"></code></span><span class="command-doc"><span class="inactive-manual">Manual</span></span></div><div class="body"><p> Prints the <span id="bold" style="font-weight:bold;">List of Tables</span> right after <span id="bold" style="font-weight:bold;">Contents</span> on a newpage if
+<code class="verb"><span 
+class="ec-lmtt-10">/Thesis/ToC/Figures</span></code> is <code class="verb"><span 
+class="ec-lmtt-10">unset</span></code> or right after <code class="verb"><span 
+class="ec-lmtt-10">/Thesis/ToC/Figures</span></code> and on the same page if space if
+available.
+Default is <code class="verb"><span 
+class="ec-lmtt-10">set</span></code>.
+<!--l. 552--><p class="noindent" >If user has no table within their document, this should changed to <code class="verb"><span 
+class="ec-lmtt-10">unset</span></code>. </p></div> </div><p class="noindent"></p>
+<div class="crosslinks-bottom"><span class="nav-inactive"><span class="nav-next">NEXT</span></span> <span class="nav-inactive"><span class="nav-prev">PREV</span></span> <span class="nav-inactive"><span class="nav-prev-tail">PREV-TAIL</span></span> <a 
+href="InterfacingwithSetMCI.html" ><span class="nav-front">FRONT</span></a><a 
+href="ConfiguringtheDocument.html#InterfacingwithSetMCI.html" ><span class="nav-up">UP</span></a></nav><a 
+ id="tailInterfacingwithSetMCI.html"></a>  </div> <div class="footer"> <div class="footer-left"><span class="footer-lecture">Daniel McGuiness</span> 
+<span class="footer-webBook"><span id="bold" style="font-weight:bold;">Last Updated:</span> 1.7.2026, at 11:35.</span> </div> </div> </div> <div class="author-notes"><span class="note">Authors Note </span><span class="text">The website you are
+viewing is auto-generated using ParSnip and therefore subject to slight errors in typography and
+formatting. When in doubt, please consult the LectureBook. </span></div>  
+</body> 
+</html>

@@ -1,0 +1,2435 @@
+/*
+  #INFO: css for the WebBook Documentation
+ 
+  ------------------------------------------------------------------------------
+  
+  Author: DTMc
+  
+  This file is part of lms. 
+  
+  lms is free software: you can redistribute it and/or modify it under the 
+  terms of the GNU General Public License as published by the Free Software 
+  Foundation, either version 3 of the License, or (at your option) any later 
+  version. 
+  
+  lms is distributed in the hope that it will be useful, but WITHOUT ANY 
+  WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
+  A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+  
+  ------------------------------------------------------------------------------
+*/
+
+/* Set global settings and colour information */
+:root {
+    --header-color: #eee8d5;
+    --header-color-05: color-mix(var(--header-color), black 5%);
+    --header-color-10: color-mix(var(--header-color), black 10%);
+
+    --link-color: #1481b8;
+
+    /* Block settings */
+    --info-block: #7BA591;
+    --exer-block: #326199;
+    --theo-block: #42395f;
+    --desc-block: #eb8d50;
+    --docs-block: #F2F0EF;
+
+    /* Colour domain settings */
+    --fundamental-science:   #42395f;
+    --ai-science:            #0063B2;
+    --robotic-science:       #0a2a0a;
+    --computer-science:      #313244;
+    --electro-science:       #1c2e4a;
+    --org-science:           #004983;
+
+    /* Some propeties of buttons */
+    --button-radius:         5px;
+
+    --chosen-science: var(--fundamental-science);
+}
+
+html {
+    scroll-behavior: smooth !important;
+    height: 100%;
+}
+
+/* Add this options so the top p above body is set to contain no space */
+p{
+    margin-top:    0px;
+    margin-bottom: 0px;
+}
+
+pagefind-modal-trigger {
+    display: flex;
+    padding-bottom: 30px;
+}
+
+button.toc {
+    z-index: 1;
+    bottom: 2%;
+    right: 2%;
+    width: 100px;
+    height: 50px;
+    background:    var(--chosen-science);
+    border-radius: var(--button-radius);
+    color: white;
+    position: fixed;
+    border: 1px solid color-mix(var(--chosen-science), black 50%);
+}
+    
+
+button.toc:hover {
+    background-color: color-mix(var(--chosen-science), black 30%);
+    color: white;
+    transition: all .8s ease;
+}
+
+body {
+    color: black;
+    font:  normal 16px/24px "Source Sans Pro",
+           sans-serif;
+}
+
+/* GLOBAL SETTINGS ---------------------------------------------------------- */
+
+/* Control how a code snippet looks in text. (i.e, Use the man command) */
+.verb {
+    color:            color-mix(var(--header-color), black 80%);
+    background-color: color-mix(var(--header-color), white 50%);
+    
+    border:           0.2px solid color-mix(var(--header-color), black 20%);
+    border-radius:    3px;
+    
+    font:             normal 13px/20px "Source Code Pro",
+                      Menlo, Consolas, Monaco, monospace;
+
+    padding-top:      1px;
+    padding-left:     3px;
+    padding-bottom:   1px;
+    padding-right:    3px;
+}
+
+/* Define the keyboard notation on the webpage */
+kbd {
+    background-color: #eee;
+    border: 1px solid #b4b4b4;
+    border-radius: 3px;
+    color: #333;
+    display: inline-block;
+    font-size: 0.85em;
+    font-weight: 700;
+    line-height: 1;
+    padding: 2px 4px;
+    white-space: nowrap;
+    top: -1px;
+    
+    &:hover {
+        box-shadow:
+            0 1px 1px rgba(0, 0, 0, 0.2),
+            0 2px 0 0 rgba(255, 255, 255, 0.7) inset;
+        top: 1px;
+    }
+}
+
+
+
+/* Make sure the captions of `figure' and `table' are field
+   in the right-hand side */
+figcaption.caption {
+
+    /* position: absolute; */
+    /* width: 250px; */
+    /* right: -280px; */
+    
+    text-align: left;
+    text-indent: 0px;
+    color: color-mix(var(--header-color), black 50%);
+    font: normal 14px/16px "Source Sans Pro",
+          sans-serif;
+    line-height: 1.5;
+    
+}
+
+.author-notes {
+    padding-top: 20px;
+    text-align: left;
+    padding-bottom: 30px;
+     font: italic 14px/20px "Source Sans Pro", sans-serif;
+     .note {
+         font-weight: bold;
+    }
+   
+}
+
+/* Control how lists behave. Original settings were too `clumped' which now
+   looks much better */
+ul {
+
+    p {
+        padding: 5px;
+    }
+}
+
+/* Define the marker for the itemized list */
+::marker {
+    color: #821131;
+    font-size: 1.2em;
+}
+
+ul {
+    list-style-type: "■ ";
+}
+
+
+/* Change the behaviour of `description' lists */
+.description {
+    display: block;
+
+    /* Control the item behaviour */
+    dd {
+        margin-left: 20px;
+    }
+
+    p {
+        margin-top: 10px;
+        margin-bottom: 15px;
+    }
+}
+
+/* Define the colour of the Insignia */
+
+#insignia {
+    
+    #path1 {fill: #326199;}
+    #path2 {fill: #4fb1a1;}
+    #path3 {fill: #fcc055;}
+    #path4 {fill: #df6e5b;}
+    #path5 {fill: #eb8d50;}
+
+}
+
+
+/* Time to define all the side images should look like */
+.sidenote {
+    position:   absolute;
+    text-align: left;
+    right:      -270px;
+    width:      220px;
+    border-top: solid 1px var(--header-color);
+    font:       normal 12px/20px "Source Sans Pro",
+                sans-serif;
+    
+    figcaption {
+
+        position: initial;
+        .id {
+            color: color-mix(var(--header-color), black 50%);
+            font: bold 12px/20px "Source Sans Pro", sans-serif;
+        }
+
+        .content {
+            color: color-mix(var(--header-color), black 50%);
+            font: normal 12px/20px "Source Sans Pro", sans-serif;
+        }
+    }
+}
+
+/* All images should have a gentle curve around the image for easy visibility
+   and slight aestetics */
+img {
+    outline: none;
+    border-radius: .25rem;
+}
+
+/* Define how equations `equation' and `equation*' looks */
+table.equation {
+    display:    block;
+    overflow-x: auto;
+}
+
+table.equation-star {
+    display:    table;
+    overflow-x: auto;
+}
+
+
+/*
+  Here we defined all the necessary configurations for drawing tables. Make sure
+  in the SRC to keep all tables as `tabularray' is just a pain to work with
+*/
+.tabular {
+    
+    table {
+
+        width: 100%;
+        border-collapse: collapse;
+        border: 2px solid #DCDCDC;
+    }
+    
+    th, td {       
+        padding: 8px;
+        border: 1px solid #DCDCDC;
+    }
+
+    tr:nth-child(odd) {
+        background-color: color-mix(var(--header-color), white 50% );
+    }
+
+    /* Define the header of the table */
+    tr:first-child {
+        background:
+            linear-gradient(
+                to bottom,
+                var(--header-color) 0%,
+                var(--header-color-05) 90%,
+                var(--header-color-10) 100%
+            );
+    }
+}
+
+
+/* NAVIGATION SETTINGS ------------------------------------------------------ */
+
+nav {
+    background: 
+    linear-gradient(
+                to right,
+                color-mix(var(--chosen-science), white 5%) 0%,
+                color-mix(var(--chosen-science), white 2%) 50%,
+                color-mix(var(--chosen-science), black 5%)  100%
+            );
+    color: white;
+
+    hr {
+        color: color-mix(white, var(--chosen-science) 60%);
+    }
+
+
+    .toc-links {
+        font: 300 15px/24px "Source Sans Pro", sans-serif;
+        color: black;
+        overflow: auto;
+        white-space: pre;
+        display: flex;
+        justify-content: space-between;
+        padding-top: 0px;
+        padding-bottom: 20px;
+
+        a {
+            color: color-mix(var(--chosen-science), white 50%)
+        }
+    }
+
+    .nav-footer {
+
+        font: 12px/18px "Source Sans Pro", sans-serif;
+        color: color-mix(white, var(--chosen-science) 30%);
+        margin-bottom: 20px;
+        margin-top: 20px;
+    }
+
+    .nav-comments {
+
+        font: 12px/18px "Source Sans Pro", sans-serif;
+        color: color-mix(white, var(--chosen-science) 30%);
+        white-space: normal;
+        font-style: italic;
+    }
+
+}
+
+.crosslinks-top {
+    font: 300 15px/24px "Source Sans Pro",
+          sans-serif;
+    color: black;
+    overflow: auto;
+    white-space: pre;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 0px;
+    padding-bottom: 10px;
+    background: white;
+    border-bottom: solid 1px #DCDCDC;
+
+    .nav-inactive {
+        color: color-mix(var(--header-color), black 5%);
+    }
+}
+
+.crosslinks-bottom {
+    font: 300 15px/24px "Source Sans Pro",
+          sans-serif;
+    color: black;
+    overflow:        auto;
+    white-space:     pre;
+    display:         flex;
+    justify-content: space-between;
+    padding-top:     30px;
+    padding-bottom:  10px;
+    border-top: solid 1px #DCDCDC;
+
+    .nav-inactive {
+        color: color-mix(var(--header-color), black 5%);
+    }
+}
+
+.footer {
+
+        border-top: 1px solid #DCDCDC;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        width: 800 px;
+        line-height: 2;
+        font: 12px/18px "Source Sans Pro", sans-serif;
+        .footer-left {
+            white-space: pre;
+        }
+}
+
+   
+.header {
+    
+    /* position: fixed; */
+    width: 100%;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    /* border-bottom: 1px solid black; */
+    /* background: */
+    /*     linear-gradient( */
+    /*         to bottom, */
+    /*         var(--header-color) 0%, */
+    /*         var(--header-color-05) 60%, */
+    /*         var(--header-color-10) 100% */
+    /*     ); */
+    z-index: 100;
+    /* box-shadow: 10px 0 10px -2px #888; */
+
+    .header-left {
+        white-space: pre;
+        float: left;
+        margin: 18px 36px;
+
+        .header-webBook {
+            font-weight: initial;
+        }
+        
+    }
+    
+    .header-lecture-lecture {
+        font: bold 24px/20px "Source Sans Pro", sans-serif;
+    }
+
+    .header-right {
+        white-space: pre-line;
+        float: left;
+        margin: 18px 36px;
+
+        .header-chapter {
+            color: color-mix(var(--chosen-science), white 50%);
+            font-style: unset;
+        }
+
+         .header-version {
+            color: color-mix(var(--chosen-science), white 50%);
+            font-style: unset;
+        }
+        
+    }
+
+    
+}
+
+.title {
+    max-width: 70%;
+    float: left;
+}
+
+/* BLOCK SETTINGS ----------------------------------------------------------- */
+
+.doc-block {
+    /* Control how the documentation is presented on the webpage */
+    
+    padding: 15px;
+    background: var(--docs-block);
+
+    /* Formatting of the command line */
+    .command-header {
+        padding-bottom: 10px;
+        border-bottom: solid 1px color-mix(var(--docs-block), black 10%);
+    }
+
+    /* Formatting of the string `function' , `command' etc. */
+    .command-type {
+        font: normal 13px/20px "Source Sans Pro", sans-serif;
+    }
+
+    /* Add some spacing after command-type */
+    .command-type:after {
+        content: "\A\A";
+    }
+
+    /* Formatting of the string `function' , `command' etc. */
+    .command-doc {
+        float: right;
+        font: normal 13px/20px "Source Sans Pro", sans-serif;
+
+        /* Manual Comes in two formats, there is either a hyperlink
+           reference of not */
+        .inactive-manual {
+            color: color-mix(var(--docs-block), black 10%);
+        }
+    }
+    
+    /* Formatting of how a code string looks like */
+    code {
+        background: var(--docs-block);
+        border: 0px;
+        font: normal 13px/20px "Source Code Pro",
+              Menlo, Consolas, Monaco, monospace;
+    }
+
+    /* Finally control the paragraph space as to not
+       take too much space */
+    p {
+        font: normal 13px/20px "Source Sans Pro", sans-serif;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }    
+}
+
+.knowledge {
+    background: #d3ebe7;
+    padding: 0.1px;
+    padding-right: 0.1px;
+    padding-left: 0.1px;
+    margin: 20px -12px 20px;
+    /* font: */
+    /*     normal 16px/24px "Source Sans Pro", */
+    /*     sans-serif; */
+    color: #444;
+    padding-right: 1ex;
+    padding-left: 2ex;
+    border-left: 6px solid #4fb1a1 !important;
+    border-top: 1px solid #4fb1a1 !important;
+    border-right: 1px solid #4fb1a1 !important;
+    border-bottom: 1px solid #4fb1a1 !important;
+
+    p {
+        margin: 8px 0;
+        font: normal 14px/20px "Source Sans Pro", sans-serif;
+        line-height: 1.8;
+    }
+}
+
+.warning {
+    background: #feefd4;
+    padding: 0.1px;
+    padding-right: 0.1px;
+    padding-left: 0.1px;
+    margin: 20px -12px 20px;
+    font:         normal 16px/24px "Source Sans Pro",
+                  sans-serif;
+    color: #444;
+    padding-right: 1ex;
+    padding-left: 2ex;
+    border-left:  6px solid #fcc055 !important;
+    border-top: 1px solid #fcc055 !important;
+    border-right: 1px solid #fcc055 !important;
+    border-bottom: 1px solid #fcc055 !important;
+
+    p {
+        margin: 8px 0;
+        font: normal 14px/20px
+              "Source Sans Pro",
+              sans-serif;
+        
+        line-height: 1.8;
+    }
+}
+
+
+.exer-block {
+    padding:       20px;
+    margin:        20px -12px 0px;
+    font:          normal 16px/24px "Source Sans Pro", sans-serif;
+    background:    color-mix(var(--exer-block), white 90%);
+    border-left:   6px solid  var(--exer-block) !important;
+    border-top:    1px solid  var(--exer-block) !important;
+    border-right:  1px solid  var(--exer-block) !important;
+    border-bottom: 1px solid  var(--exer-block) !important;
+    font:
+        normal 15px/20px "Source Sans Pro",
+        sans-serif;
+
+    .exer-upper {
+        padding-right: 30px;
+        padding-bottom: 5px;
+        margin-left: 10px;
+        border-bottom: 0.5px solid color-mix(var(--exer-block), white 70%);
+    }
+
+    hr {
+        border: 1px dashed var(--exer-block);
+    }
+
+    .body {
+        padding-left: 10px;
+        padding-right: 10px;
+        display: none;
+        transition: all 0.5s ease;
+        will-change: transform;
+    }
+
+    p {
+        margin: 8px 0;
+        font: normal 14px/20px
+              "Source Sans Pro",
+              sans-serif;
+        
+        line-height: 1.8;
+    }
+
+    button {
+        background: color-mix(var(--exer-block), white 80%);
+        color: var(--exer-block);
+        float: right;
+        padding-left: 5px;
+        padding-right: 5px;
+        padding-bottom: 2px;
+        margin-right: 10px;
+        border:  0.5px solid  var(--exer-block) !important;
+        border-radius: var(--button-radius) !important;
+        
+    }
+}
+
+
+.info-block {
+    padding-top: 20px;
+    padding-right: 10px;
+    padding-left: 10px;
+    margin: 20px -12px 0px;
+    /* font: normal 16px/24px "Source Sans Pro", sans-serif; */
+    background: color-mix(var(--info-block), white 90%);
+    border-left: 6px solid  var(--info-block) !important;
+    border-top: 1px solid  var(--info-block) !important;
+    border-right: 1px solid  var(--info-block) !important;
+    border-bottom: 1px solid  var(--info-block) !important;
+    /* font: */
+    /*     normal 15px/20px "Source Sans Pro", */
+    /*     sans-serif; */
+
+    
+    hr {
+        border: 1px dashed var(--info-block);
+    }
+
+    .info-upper {
+        padding-right: 30px;
+        padding-bottom: 5px;
+        margin-left:10px;
+        border-bottom: 1px solid var(--info-block);
+        line-height: 2.5;
+    }
+
+    .body {
+        padding-left: 10px;
+        padding-right: 10px;
+        font: normal 14px/20px "Source Sans Pro", sans-serif;
+    }
+
+   
+    p {
+        margin: 8px 0;
+        font: normal 14px/20px
+              "Source Sans Pro",
+              sans-serif;
+        
+        line-height: 1.8;
+    }
+
+    .code {
+        background: none;
+    }
+}
+
+.desc-block {
+    padding-top: 20px;
+    padding-right: 10px;
+    padding-left: 10px;
+    margin: 20px -12px 0px;
+    font: normal 16px/24px "Source Sans Pro", sans-serif;
+    background: color-mix(var(--desc-block), white 90%);
+    border-left: 6px solid  var(--desc-block) !important;
+    border-top: 1px solid  var(--desc-block) !important;
+    border-right: 1px solid  var(--desc-block) !important;
+    border-bottom: 1px solid  var(--desc-block) !important;
+    font:
+        normal 15px/20px "Source Sans Pro",
+        sans-serif;
+    
+    hr {
+        border: 1px dashed var(--desc-block);
+    }
+    
+    .desc-upper {
+        padding-right: 30px;
+        padding-bottom: 5px;
+        margin-left: 10px;
+        border-bottom: 1px solid var(--desc-block);
+    }
+
+    .body {
+        padding-left: 10px;
+        padding-right: 10px;
+    }   
+}
+
+.theo-block {
+    padding: 10px;
+    padding-right: 0.1px;
+    padding-left: 0.1px;
+    margin: 20px -12px 20px;
+    font: normal 16px/24px "Source Sans Pro", sans-serif;
+    background: color-mix(var(--theo-block), white 90%);;
+    padding-right: 1ex;
+    padding-left: 2ex;
+    border-left: 6px solid var(--theo-block) !important;
+    border-top: 1px solid var(--theo-block) !important;
+    border-right: 1px solid var(--theo-block) !important;
+    border-bottom: 1px solid var(--theo-block) !important;
+    font:
+        normal 15px/20px "Source Sans Pro",
+        sans-serif;
+
+    
+    hr {
+        border: 1px dashed var(--theo-block);
+    }
+
+    .theo-upper {
+        padding-right: 30px;
+        padding-bottom: 5px;
+        margin-left: 10px;
+        border-bottom: 1px solid var(--theo-block);
+    }
+
+    .body {
+        padding-left: 10px;
+        padding-right: 10px;
+    }   
+}
+
+/* Define the way `quotes' supposed to look */
+.quote {
+    margin: 20px;
+    padding-left: 10px;
+    font: lighter 16px/24px "Source Sans Pro", sans-serif;
+    border-left: 2px solid
+                 color-mix(color-mix(var(--header-color), brown 40%), black 50%); 
+    color: color-mix(color-mix(var(--header-color), brown 40%), black 50%);
+}
+
+/* Control the code environment display */
+
+pre {
+
+    border:      0.5px solid color-mix(var(--header-color), black 20%);
+    border-radius: var(--button-radius);
+    
+    code {
+        font:        normal 13px/20px "Source Code Pro",
+                     Menlo, Consolas, Monaco, monospace;
+        
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-bottom: 15px;
+        overflow-x:  auto;
+       
+
+       
+
+        
+    }
+
+     .hljs {
+
+            margin-top: -18px;
+        }
+}
+
+/* Header & Footer Settings ------------------------------------------------- */
+
+
+.chapterHead {
+    text-align: left;
+    position: relative;
+    
+    padding-top: 100px;
+    padding-bottom: 10px;
+    border-bottom:  0.2px solid #DCDCDC;
+    
+    font: bold 48px/48px "Source Sans Pro",
+          sans-serif;
+    color: color-mix(color-mix(var(--header-color), brown 40%), black 50%);
+
+    line-height: 1.4;
+}
+
+
+/* Title Settings ----------------------------------------------------------- */
+
+.chapter-header {
+    font: italic 16px/30px "Source Sans Pro", sans-serif;
+    float: right;
+}
+
+.section-header {
+    display: flow-root;
+    border-bottom: 1px solid var(--header-color);
+    margin: 71px 0 0 0;
+    padding-bottom: 1px;
+
+    /* Configure the PDF icon */
+    a {
+        color: red;
+        position: absolute;
+        left: 20px;
+        text-align: left;        
+    }
+
+    .number {
+        float: right;
+        font: bold 24px/24px "Source Sans Pro", sans-serif;
+        color: color-mix(color-mix(var(--header-color), brown 40%), black 50%);
+    }
+    
+    .title  {
+        float: left;
+        font: bold 24px/24px "Source Sans Pro", sans-serif;
+        color: color-mix(color-mix(var(--header-color), brown 40%), black 50%);
+    }
+
+    
+}   
+
+.subsection-header {
+    display: flow-root;
+    border-bottom: 1px solid var(--header-color);
+
+    /* Configure the PDF icon */
+    a {
+        color: red;
+        position: absolute;
+        left: 0px;
+        text-align: left;        
+    }
+
+    .number {
+        float: right;
+        font: bold 20px/24px "Source Sans Pro", sans-serif;
+        color: color-mix(color-mix(var(--header-color), brown 40%), black 50%);
+         text-align: right;
+    }
+    
+    .title  {
+        float: left;
+        font: bold 20px/24px "Source Sans Pro", sans-serif;
+        color: color-mix(color-mix(var(--header-color), brown 40%), black 50%);
+        text-align: left;
+    }
+}
+
+.subsubsectionHead {
+    color: color-mix(color-mix(var(--header-color), brown 40%), black 50%);
+    padding-bottom: 2px;
+    border-bottom:  0.2px solid #DCDCDC;
+    font: bold 16px/24px "Source Sans Pro",
+          sans-serif;
+
+}
+
+.paragraphHead {
+    color: color-mix(color-mix(var(--header-color), brown 40%), black 50%);
+    padding-bottom: 2px;
+    border-bottom:  0.2px solid #DCDCDC;
+    font: bold 16px/24px "Source Sans Pro",
+          sans-serif;
+    margin-right: 20px;
+
+
+}
+
+/* Control how the page is displayed on the current page */
+.chapter {
+    padding-top: 120px;
+    text-align: justify;
+    text-justify: inter-word;
+    border-right: 1px solid #DCDCDC;
+    padding-right: 30px;
+    padding-left: 15px;
+}
+
+/* Define the visual look of the chapter TOC */
+.sectionTOCS:before {
+    
+    border-bottom: 1px solid var(--header-color);
+    content: "Chapter Table of Contents \A\A";
+    white-space: pre;
+    font: bold 20px/30px "Source Sans Pro", sans-serif;
+}
+
+.sectionTOCS {
+    margin-top: 40px;
+    outline-width: 2;
+
+    .subsectionToc {
+        margin-left: 50px;
+        padding-top: 10px;
+    }
+    
+    .likesubsubsectionToc {
+        margin: 70px;
+    }
+
+    
+}
+
+
+
+
+/* SCREEN SPECIFIC SETTINGS ************************************************* */
+
+/*
+  All screen specific size control are given here from largest screen to the
+  smallest screen.
+*/
+
+article {
+    position: relative;
+    width: 700px;
+    margin: 0 auto 0 384px;
+}
+
+@media only screen and (min-width: 1200px) and (max-width: 1420px) {
+    /*
+      Here we have to make sure the content fits the screen and therefore we
+      have to disable all the navigation by defauly and shift the article to
+      left to maintain readability.
+   */
+
+    nav {
+        display: none;
+    }
+    
+    article {
+        /* We also going to shift the article to left. */
+        position: relative;
+        width:    700px;
+        margin:   0 auto 0 150px;
+    }    
+}
+
+
+@media only screen and (min-width: 1200px) {
+
+    .section-header {
+        a {
+            left: -20px;       
+        }
+    }
+
+     .subsection-header {
+        a {
+            left: -20px;       
+        }
+    }
+
+    .margin-comment {
+
+        .ellipsis {
+            color: #1481b8;
+            text-decoration: none;
+            border-bottom: solid 1px rgba(222, 233, 237, 0);
+            transition: color 0.2s ease, border-color 0.4s ease;
+        }
+
+        .ellipsis:hover {
+            color: #1481b8;
+            border-bottom: solid 1px #dee9ed;
+        }
+        
+        .sidenote {
+            position: absolute;
+            right: -300px;
+            text-align: left;
+            width: 250px;
+            font: normal 12px/20px "Source Sans Pro", sans-serif;
+            display: none;
+            background: color-mix(var(--header-color), white 50%);
+            border: 1px solid color-mix(var(--header-color), black 20%);
+            font: normal 12px/20px "Source Sans Pro", sans-serif;
+            padding: 10px;
+            z-index: 999;
+              
+        }
+
+        .sidenote::before {
+            content:  "Anectode\A";
+            white-space: pre;
+            font: bold 12px/20px "Source Sans Pro", sans-serif;
+        }
+        
+        .ellipsis:hover~.sidenote  {
+            color: black;
+            display: block;
+        }
+    }
+
+    /* Glossary Settings */
+
+    .acronym {
+
+        .acronym-short {
+            color: black;
+            text-decoration: none;
+            transition: color 0.2s ease, border-color 0.4s ease;
+        }
+
+        .acronym-short:hover {
+            color: black;
+        }
+
+        .acronym-long:before {
+            content: "Definition\A";
+            white-space: pre;
+            font: bold 12px/20px "Source Sans Pro", sans-serif;
+            
+        }
+
+        
+        .acronym-long:after {
+            content: "\A\A";
+            white-space: pre;
+            font: bold 12px/20px "Source Sans Pro", sans-serif;
+            
+        }
+        
+        .acronym-detail {
+            color: black;
+            position: absolute;
+            right: -300px;
+            text-align: left;
+            width: 250px;
+            font: normal 12px/20px "Source Sans Pro", sans-serif;
+            display: none;
+            background: color-mix(var(--header-color), white 50%);
+            border: 1px solid color-mix(var(--header-color), black 20%);
+            font: normal 12px/20px "Source Sans Pro", sans-serif;
+            padding: 10px;
+            z-index: 999;
+        }
+
+        .acronym-short:hover~.acronym-detail  {
+            color: black;
+            display: block;        
+        }
+    }
+
+
+    .cite {
+
+        .cite-show {
+            color: #1481b8;
+            /* Make sure it is superscript */
+            position: relative;
+            top: -0.5em;
+            font-size: 80%;
+            text-decoration: none;
+            border-bottom: solid 1px rgba(222, 233, 237, 0);
+            transition: color 0.2s ease, border-color 0.4s ease;
+        }
+
+        .cite-show:hover {
+            color: #1481b8;
+            border-bottom: solid 1px #dee9ed;
+        }
+        
+        .cite-detail {
+            position: absolute;
+            right: -300px;
+            text-align: left;
+            width: 250px;
+            display: none;
+            background: color-mix(var(--header-color), white 50%);
+             border: 1px solid color-mix(var(--header-color), black 20%);
+            font: normal 12px/20px "Source Sans Pro", sans-serif;
+            padding: 10px;
+            z-index: 999;
+        }
+
+
+        .cite-detail::before {
+            content:  "Reference:\A";
+            white-space: pre;
+            font: bold 12px/20px "Source Sans Pro", sans-serif;
+        }
+        
+        .cite-show:hover~.cite-detail  {
+            color: black;
+            display: block;        
+        }
+
+        .cite-show:checked~.cite-detail  {
+            color: black;
+            display: block;
+            font: italic 12px/20px "Source Sans Pro", sans-serif;
+        }
+    }
+
+    .footer {
+
+        border-top: 1px solid #DCDCDC;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        width: 800 px;
+        line-height: 2;
+        font: 12px/18px "Source Sans Pro", sans-serif;
+        .footer-left {
+            white-space: pre;
+        }
+        
+    }
+
+      .header-lecture-grade {
+                font: bold 20px/16px "Source Sans Pro", sans-serif;
+            }
+            .header-lecture-name {
+                font: bold 20px/16px "Source Sans Pro", sans-serif;
+            }
+    
+    
+    .header {
+        
+        /* position: fixed; */
+        width: 100%;
+        padding-top: 30px;
+        padding-bottom: 30px;
+        /* border-bottom: 1px solid black; */
+        /* background: */
+        /*     linear-gradient( */
+        /*         to bottom, */
+        /*         var(--header-color) 0%, */
+        /*         var(--header-color-05) 60%, */
+        /*         var(--header-color-10) 100% */
+        /*     ); */
+        z-index: 100;
+        /* box-shadow: 10px 0 10px -2px #888; */
+
+        .header-left {
+            white-space: pre;
+            float: left;
+           margin: 18px 36px;
+        }
+        
+        .header-lecture-lecture {
+            font: bold 24px/20px "Source Sans Pro", sans-serif;
+        }
+
+        .header-right {
+            white-space: pre-line;
+            float: left;
+            margin: 18px 36px;
+
+        }
+
+        
+    }
+
+    
+    
+}
+
+
+
+
+@media only screen and (min-width: 1280px){
+
+    /* Make sure margins are placed on the right edge of the page */
+    .margin-comment {
+
+        .ellipsis {
+            color: #1481b8;
+            text-decoration: none;
+            border-bottom: solid 1px rgba(222, 233, 237, 0);
+            transition: color 0.2s ease, border-color 0.4s ease;
+        }
+
+        .ellipsis:hover {
+            color: #1481b8;
+            border-bottom: solid 1px #dee9ed;
+        }
+        
+        .sidenote {
+            position: absolute;
+            right: -300px;
+            text-align: left;
+            width: 250px;
+            font: normal 12px/20px "Source Sans Pro", sans-serif;
+            display: none;
+            background: color-mix(var(--header-color), white 50%);
+            border: 1px solid color-mix(var(--header-color), black 20%);
+            font: normal 12px/20px "Source Sans Pro", sans-serif;
+            padding: 10px;
+            z-index: 999;
+            
+        }
+
+        .sidenote::before {
+            content:  "Anectode\A";
+            white-space: pre;
+            font: bold 12px/20px "Source Sans Pro", sans-serif;
+        }
+        
+        .ellipsis:hover~.sidenote  {
+            color: black;
+            display: block;
+            
+        }
+    }
+
+    /* Glossary Settings */
+
+    .acronym {
+
+        .acronym-short {
+            color: black;
+            text-decoration: none;
+            transition: color 0.2s ease, border-color 0.4s ease;
+        }
+
+        .acronym-short:hover {
+            color: black;
+        }
+
+        .acronym-long:before {
+            content: "Definition\A";
+            white-space: pre;
+            font: bold 12px/20px "Source Sans Pro", sans-serif;
+                        
+        }
+
+        
+        .acronym-long:after {
+            content: "\A\A";
+            white-space: pre;
+            font: bold 12px/20px "Source Sans Pro", sans-serif;
+                        
+        }
+        
+        .acronym-detail {
+            color: black;
+            position: absolute;
+            right: -300px;
+            text-align: left;
+            width: 250px;
+            font: normal 12px/20px "Source Sans Pro", sans-serif;
+            display: none;
+            background: color-mix(var(--header-color), white 50%);
+            border: 0.5px solid color-mix(var(--header-color), white 20%);
+            font: normal 12px/20px "Source Sans Pro", sans-serif;
+            padding: 10px;
+            z-index: 999;
+        }
+
+        .acronym-short:hover~.acronym-detail  {
+            color: black;
+            display: block;        
+        }
+    }
+
+
+    .cite {
+
+        .cite-show {
+            color: #1481b8;
+            /* Make sure it is superscript */
+            position: relative;
+            top: -0.5em;
+            font-size: 80%;
+            text-decoration: none;
+            border-bottom: solid 1px rgba(222, 233, 237, 0);
+            transition: color 0.2s ease, border-color 0.4s ease;
+        }
+
+        .cite-show:hover {
+            color: #1481b8;
+            border-bottom: solid 1px #dee9ed;
+        }
+        
+        .cite-detail {
+            position: absolute;
+            right: -300px;
+            text-align: left;
+            width: 250px;
+            display: none;
+            background: color-mix(var(--header-color), white 50%);
+            border: 0.5px solid color-mix(var(--header-color), white 20%);
+            font: normal 12px/20px "Source Sans Pro", sans-serif;
+            padding: 10px;
+            z-index: 999;
+        }
+
+
+        .cite-detail::before {
+            content:  "Reference:\A";
+            white-space: pre;
+            font: bold 12px/20px "Source Sans Pro", sans-serif;
+        }
+        
+        .cite-show:hover~.cite-detail  {
+            color: black;
+            display: block;        
+        }
+
+        .cite-show:checked~.cite-detail  {
+            color: black;
+            display: block;
+            font: italic 12px/20px "Source Sans Pro", sans-serif;
+        }
+    }
+}
+
+
+
+
+
+@media only screen and (max-width: 630px) {
+    article.chapter h2 a::before,
+    article.chapter h3 a::before {
+        left: -24px;
+        width: 24px;
+    }
+
+    article.contents h2 .num,
+    article.contents li .num {
+        width: 28px;
+    }
+    article.contents ol,
+    article.contents ul {
+        margin-left: 0;
+    }
+    article.contents li {
+        padding-left: 0;
+    }
+}
+
+
+
+@media only screen and (max-width: 580px) {
+
+    /* Control the view of PDF file link as mobile users won't need it */
+    h2,
+    h3,
+    h4 {
+        a {
+            svg {
+                visibility: hidden;
+            }
+        }
+    }
+
+    /* Control the view of code-type information as the screen is too small
+       to fit it */
+    .code-lang {
+        visibility: hidden;
+    }
+
+    article.chapter h2 {
+        margin-top: 64px;
+        padding-bottom: 2px;
+        font-size: 22px;
+        line-height: 22px;
+    }
+    
+    article.chapter h3 {
+        margin-top: 64px;
+        padding-bottom: 0;
+        font-size: 20px;
+    }
+
+     article.contents h2 {
+        margin: 19px 0 6px 0;
+        font-size: 17px;
+        line-height: 22px;
+    }
+    article.contents h3 {
+        padding: 1px 0 2px 0;
+        font-size: 17px;
+        line-height: 22px;
+    }
+    article.contents p {
+        font-size: 15px;
+        line-height: 22px;
+    }
+    article.contents ol,
+    article.contents ul {
+        padding-bottom: 8px;
+    }
+    article.contents li {
+        font-size: 14px;
+        line-height: 22px;
+        padding: 4px 0 3px 0;
+    }
+
+    article {
+        margin: 0 auto 0 50px;
+    }
+    
+}
+
+
+
+
+
+
+body, img {
+    margin: 0;
+}
+
+img {
+    outline: none;
+}
+
+
+
+
+.emdash {
+    white-space: nowrap;
+}
+
+.small-caps {
+    font-weight: 600;
+    font-size: 13px;
+}
+
+a {
+    color: #1481b8;
+    text-decoration: none;
+    border-bottom: solid 1px rgba(222, 233, 237, 0);
+    transition:
+        color 0.2s ease,
+        border-color 0.4s ease;
+}
+
+a:hover {
+    color: #1481b8;
+    border-bottom: solid 1px #dee9ed;
+}
+
+
+/* Control how the Table of Contents is presented */
+
+nav {
+    font:
+        800 15px/30px "Source Sans Pro",
+        sans-serif;
+
+    color: white;
+    overflow: auto;
+    white-space: pre;
+
+    .sectionToc {
+        margin-top: 30px;
+    }
+    
+    .toc{
+        margin: 18px 36px;
+        text-wrap: stable;
+    }
+
+
+
+
+}
+
+
+.crosslinks-bottom {
+    margin-top: 20px;
+    margin-bottom:10px;
+}
+
+
+
+nav a:hover {
+    color: #dee9ed;
+    text-decoration: none;
+    border-bottom: none;
+}
+
+nav img {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 55px 48px 23px 48px;
+}
+
+
+
+nav.wide {
+    scrollbar-color: color-mix(var(--chosen-science), black 20%)
+                     var(--chosen-science);
+    scrollbar-width: thin;
+    position: fixed;
+    width: 336px;
+    z-index: 10;
+    height: 100%;
+    border-right: 0.1px solid black;
+    max-height: calc(100vh) !important;
+}
+
+nav.wide .contents {
+    margin: 20px 30px;
+}
+
+.mathjax-env {
+  overflow-x: auto;
+  display: block;
+}
+
+
+.lecture-materials {
+    background:  color-mix(var(--chosen-science), black 20%);
+    width: 336px;
+    margin-left: -36px;
+    border-bottom: 1px solid color-mix(var(--chosen-science), white 15%);
+    border-top: 1px solid color-mix(var(--chosen-science), white 15%);
+
+    .lecture-materials-title {
+        margin-left: 36px;
+        margin-bottom: -30px;
+        padding-top:10px;
+        
+        
+    }
+
+    .lecture-materials-body {
+
+        margin-bottom: -20px;
+    }
+
+    
+    .lecture-book,
+    .tutorial-book,
+    .laboratory-book,
+    .lecture-slide,
+    .lecture-handout,
+    .assignments,
+    .exams {
+        padding: 56px;
+        color: color-mix(white, var(--chosen-science) 30%);
+        font: normal 12px/15px "Source Sans Pro", sans-serif;
+    }
+    
+}
+
+.math {
+    display: inline;
+    display: inline;
+    margin-right: 5px;
+    vertical-align: middle;
+    margin-left: 5px;
+}
+
+.math-display {
+    text-align: center;
+}
+
+
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+
+.em {
+    padding: 0 0.1em;
+    white-space: nowrap;
+}
+
+
+pre {
+    font:
+        normal 13px/20px "Source Code Pro",
+        Menlo,
+        Consolas,
+        Monaco,
+        monospace;
+    margin: 0;
+    padding: 0;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+
+
+article h2 {
+    position: relative;
+    font: 48px/48px "Source Sans Pro", sans-serif;
+    padding: 109px 0 19px 0;
+    z-index: 2;
+}
+
+article h4 {
+    font: bold 24px/40px "Source Sans Pro", sans-serif;
+    margin: 50px 0 0 0;
+    padding-bottom: 1px;
+}
+
+article h1.part {
+    font: 600 36px/48px "Source Sans Pro", sans-serif;
+    padding: 108px 0 20px 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Configure the header of articles */
+
+
+/* .author-notes { */
+/*     width: 400px; */
+/*     text-align: left; */
+/*     padding-bottom: 30px; */
+/*     font: italic 12px/20px "Source Sans Pro", sans-serif; */
+/* } */
+
+article p {
+    margin: 24px 0;
+    line-height: 1.8;
+}
+
+article ol,
+article ul {
+    margin: 24px 0;
+    padding: 0 0 0 24px;
+}
+
+article img {
+    max-width: 100%;
+}
+
+article img.wide {
+    max-width: none;
+    width: 912px;
+}
+
+
+
+aside {
+    color:#5985a6;
+    position: absolute;
+    text-align: left;
+    right: -300px;
+    width: 250px;
+    font:
+        normal 12px/20px "Source Sans Pro",
+        sans-serif;
+    border-top: solid 1px #dee9ed;
+}
+
+aside p {
+    margin: 20px 0;
+}
+
+aside p:first-child,
+aside img:first-child {
+    margin-top: 4px;
+}
+aside p:last-child {
+    margin-bottom: 4px;
+}
+aside code {
+    font-size: 14px;
+    border-radius: 2px;
+    padding: 1px 2px;
+}
+
+aside .codehilite {
+    padding: 6px;
+    margin: -12px 0;
+}
+
+aside .codehilite:last-child {
+    margin-bottom: 4px;
+}
+
+aside img.above {
+    position: absolute;
+    bottom: 100%;
+    margin-bottom: 16px;
+}
+
+aside blockquote {
+    margin: 20px 0;
+}
+
+aside blockquote::before,
+aside blockquote::after {
+    content: none;
+}
+
+aside blockquote p {
+    margin: 0 12px;
+    font: italic 15px/20px "Source Sans Pro", sans-serif;
+    color: inherit;
+}
+
+aside.bottom {
+    border-top: none;
+    border-bottom: solid 1px #dee9ed;
+}
+
+
+footer {
+    position: relative;
+    border-top: solid 1px #dee9ed;
+    color: #7aa0b8;
+    font: 400 15px "Source Sans Pro", sans-serif;
+    text-align: center;
+    margin: 48px 0;
+    padding-top: 48px;
+    padding: 30px 0 30px;
+}
+
+footer a,
+footer a:hover {
+    border: none;
+}
+
+footer .next {
+    right: 0;
+    top: -13px;
+    padding-left: 4px;
+    background: #fff;
+    font: 400 17px/24px "Source Sans Pro", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+footer .next:hover {
+    color: #004466;
+    border: none;
+}
+
+
+
+@media only screen and (min-width:580px) and (max-width: 960px) {
+    /* Screen size for vertical tablets (i.e., iPad) */
+    body {
+        margin: 0px;
+    }
+
+    article {
+        position: relative;
+        width: 600px;
+        margin: 0 auto 0 100px;
+    }
+
+    nav {
+        display: none;
+    }
+       
+    .page {
+        margin: 0px;
+        width: inherit;
+    }
+
+    article {
+        margin: 0;
+    }
+    
+
+    .chapter {
+        padding-top: 120px;
+        text-align: justify;
+        text-justify: inter-word;
+        border-right: 0px;
+        padding-left: 80px;
+        padding-right: 80px;
+    }
+    
+
+  
+
+    .crosslinks-top {
+        padding-left: 80px;
+        padding-right: 80px;
+    }
+
+
+    aside {
+        position: inherit;
+        right: inherit;
+        width: inherit;
+        border-bottom: solid 1px #dee9ed;
+    }
+
+    .section-header {
+        a {
+            left: 50px;
+        }
+    }
+
+    .subsection-header {
+        a {
+            left: 50px;
+        }
+    }
+
+}
+
+
+
+dl {
+    display: grid;
+    grid-template-columns: max-content auto;
+}
+
+
+
+dt {
+    font-weight: bold;
+    padding: 0 10px 0 0;
+    /* grid-column-start: 1; */
+}
+
+
+@media only screen and (min-width: 960px) and (max-width: 1200px) {
+
+    body {
+        margin: 0;
+    }
+
+    .chapter {
+        padding-top: 80px;
+        border-right: none;
+    }
+
+    article {
+        margin-left: 15%;
+        margin-right:15%;
+        width: auto;
+        
+    }
+
+    .margin-comment {
+
+        
+
+        .ellipsis {
+            display: none;
+        }
+
+        
+        .sidenote::before {
+            content:  "[";
+            font: normal 16px/24px "Source Sans Pro", sans-serif;
+            white-space: pre;
+        }
+        
+        .sidenote {
+            position: initial;
+            color: color-mix(var(--link-color), black 20%);
+            font: italic 16px/24px "Source Sans Pro", sans-serif;
+            border-top: none;
+        }
+
+         .sidenote::after {
+            content: "]";
+            font: normal 16px/24px "Source Sans Pro", sans-serif;
+        }
+        
+    }
+
+    .section-header {
+
+        a {
+            left: -20px;
+        }
+    }
+
+    .subsection-header {
+
+        a {
+            left: -20px;
+        }
+    }
+    
+    nav {
+        .wide {
+            visibility: hidden;
+        }
+        
+        columns: 1;
+        position: relative;
+        
+        white-space: pre;
+
+        .chapterToc {
+            padding: 12px 0 0 36px;
+            font:
+                normal 16px/24px "Source Sans Pro",
+                sans-serif;
+            color: #7aa0b8;
+            list-style-type: none;
+            line-height: 30px;
+            font-weight: bold;
+        }
+
+        .sectionToc {
+            padding: 12px 0 0 36px;
+            font:
+                normal 16px/24px "Source Sans Pro",
+                sans-serif;
+            color: #7aa0b8;
+            list-style-type: none;
+            line-height: 30px;
+        }
+        
+        .addchapToc {
+            padding: 12px 0 0 36px;
+            font:
+                normal 16px/24px "Source Sans Pro",
+                sans-serif;
+            color: #7aa0b8;
+            list-style-type: none;
+            line-height: 30px;
+            font-weight: bold;
+        }
+    }
+}
+
+nav{
+    /* background: color-mix(var(--header-color), white 50%); */
+
+
+    /* Define the style of a TOC */
+
+    .toc {    
+        columns: 1;
+        position: relative;
+        width: 240px;
+        padding: 0px 0 0px 0;
+        white-space: pre;
+
+
+        .chapterToc {
+            margin-top: 40px;
+            font: bold 16px/24px "Source Sans Pro", sans-serif;
+            color: white ;
+            
+            border-bottom: 1px solid color-mix(var(--chosen-science), white 15%);
+            display: flow-root;
+
+            
+            .number {
+                font: bold 16px/24px "Source Sans Pro", sans-serif;
+                float: right;
+            }
+            
+            .title {
+                white-space: initial;
+                float: inherit;
+                width: 200px;
+
+                a{
+                    color: white ;
+                }
+            }
+        }
+        
+
+        .sectionToc {
+            padding-bottom: 10px;
+
+            font: normal 16px/24px "Source Sans Pro", sans-serif;
+            color: white ;
+            display: flow-root;
+            .number {
+                float: right;
+            } 
+            .title {
+                white-space: normal;
+                float: inherit;
+                padding-right: 10px;
+                a{
+                    color: white ;
+                }
+            }
+        }
+
+        .subsectionToc {
+            padding: 0px 0 0 20px;
+            font: normal 12px/15px "Source Sans Pro", sans-serif;
+            color: white;
+            
+            line-height: 20px;
+            display: flow-root;
+
+            .number {
+                float: right;
+                color: color-mix(white, var(--chosen-science) 30%);
+            } 
+            
+            .title {
+                white-space: normal;
+                float: inherit;
+                padding-right: 10px;
+                a{
+                    color: color-mix(white, var(--chosen-science) 30%);
+                }
+            }
+            
+        }
+
+        .addchapToc { 
+            padding: 12px 0 0 36px;
+            font:
+                normal 16px/24px "Source Sans Pro",
+                sans-serif;
+            color: #7aa0b8;
+            list-style-type: none;
+            line-height: 30px;
+            font-weight: bold;
+        }
+    }
+    
+}
+
+/* List length of the bibliography */
+dl.thebibliography {
+    width: 700px;
+}
+
+/* Numbering colour  */
+dt.thebibliography {
+    color: #821131;
+}
+
+
+
+
+
+
+.addchapHead {
+    position: relative;
+    font:
+        48px/48px "Source Sans Pro",
+        sans-serif;
+    padding: 109px 0 19px 0;
+    z-index: 2;
+}
+
+
+.keyboard-help-menu {
+    visibility: hidden;
+    width: 20%;
+    margin-left: auto;
+    margin-right: auto;
+    position: fixed;
+    top: 30%;
+    left: 40%;
+    padding: 40px;
+    z-index: 999;
+    border-radius: var(--button-radius);
+    background: color-mix(var(--header-color), white 50%);
+    border: 0.5px solid color-mix(var(--header-color), black 20%);
+
+    kbd {
+        float: left;
+    }
+
+    .description {
+        float: right;
+    }
+}
+
+.webbook-logo {
+
+    width: 40%;
+    float: right;
+
+}
+
+
+.caption {
+
+    font-size: 12px;
+    color: #333333;
+
+    span.id {
+        font-weight: bold;
+    }
+}
+
+
+@media only screen and (min-width: 1200px) {
+    
+
+    .footer {
+
+        border-top: 1px solid #DCDCDC;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        width: 800 px;
+        line-height: 2;
+        font: 12px/18px "Source Sans Pro", sans-serif;
+        .footer-left {
+            white-space: pre;
+        }
+        
+    }
+
+    .header-lecture-grade {
+        font: bold 20px/16px "Source Sans Pro", sans-serif;
+    }
+    .header-lecture-name {
+        font: bold 20px/16px "Source Sans Pro", sans-serif;
+        text-wrap: auto;
+    }
+
+
+    .section-header {
+        a {
+            left: -20px;
+        }
+    }
+    
+    .header {
+        
+        /* position: fixed; */
+        width: 100%;
+        padding-top: 30px;
+        padding-bottom: 30px;
+        /* border-bottom: 1px solid black; */
+        /* background: */
+        /*     linear-gradient( */
+        /*         to bottom, */
+        /*         var(--header-color) 0%, */
+        /*         var(--header-color-05) 60%, */
+        /*         var(--header-color-10) 100% */
+        /*     ); */
+        z-index: 100;
+        /* box-shadow: 10px 0 10px -2px #888; */
+
+        .header-left {
+            white-space: pre;
+            float: left;
+            margin: 18px 36px;
+        }
+        
+        .header-lecture-lecture {
+            font: bold 24px/20px "Source Sans Pro", sans-serif;
+        }
+
+        .header-right {
+            white-space: pre-line;
+            float: left;
+            margin: 18px 36px;
+
+            
+        }
+
+        
+    }
+
+}
+
+
+
+
+@media only screen and (max-width: 580px) {
+    /* Define it for small screen usage (i.e., Mobile Phones) */
+
+    body {
+        margin: 0px;
+    }
+    
+    .chapter {
+      
+        border-right: 0px;
+        width:        80%;
+    }
+
+    nav.wide {
+        z-index: 9999;
+    }
+    
+    /* Glossary Settings */
+
+    .acronym {
+
+        .acronym-short {
+            color: #1481b8;
+            text-decoration: none;
+            border-bottom: solid 1px rgba(222, 233, 237, 0);
+            transition: color 0.2s ease, border-color 0.4s ease;
+        }
+
+        .acronym-short:hover {
+            color: #1481b8;
+            border-bottom: solid 1px #dee9ed;
+        }
+        
+        .acronym-detail {
+            position: absolute;            
+            text-align: left;
+            width: 250px;
+            font: normal 12px/20px "Source Sans Pro", sans-serif;
+            display: none;
+            background: white;
+            border: 0.5px solid dimgray;
+            font: normal 12px/20px "Source Sans Pro", sans-serif;
+            padding: 10px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+                        0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            z-index: 999;
+        }
+
+        .acronym-short:hover~.acronym-detail  {
+            color: #1481b8;
+            display: block;        
+        }
+    }
+
+     
+    .margin-comment {
+
+        .ellipsis {
+            color: #1481b8;
+            text-decoration: none;
+            border-bottom: solid 1px rgba(222, 233, 237, 0);
+            transition: color 0.2s ease, border-color 0.4s ease;
+        }
+
+        .ellipsis:hover {
+            color: #1481b8;
+            border-bottom: solid 1px #dee9ed;
+        }
+        
+        .sidenote {
+            position: absolute;
+            text-align: left;
+            width: 250px;
+            font: normal 12px/20px "Source Sans Pro", sans-serif;
+            display: none;
+            background: color-mix(var(--header-color), white 50%);
+            border: 0.5px solid color-mix(var(--header-color), white 20%);
+            font: normal 12px/20px "Source Sans Pro", sans-serif;
+            padding: 10px;
+            z-index: 999;
+        }
+
+        .sidenote::before {
+            content:  "Anectode:\A";
+            white-space: pre;
+            font: bold 12px/20px "Source Sans Pro", sans-serif;
+        }
+        
+        .ellipsis:hover~.sidenote  {
+            color: black;
+            display: block;
+        }
+
+        .ellipsis:focus~.sidenote  {
+            color: black;
+            display: block;        
+        }
+    }
+
+    figcaption.caption {
+
+        width: 60vw;
+        
+        text-align: left;
+        text-indent: 0px;
+        
+        font-size: 15px;
+        
+    }
+    
+    .crosslinks-top {
+        display: flex;
+        justify-content: space-between;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        position: absolute;
+        z-index: 999;
+        top: 70px;
+        width: 80vw;
+        background: white;
+
+        a {
+            font: bold 14px/10px "Source Sans Pro", sans-serif;
+            color: color-mix(var(--header-color), black 75%);
+        }
+        
+        .nav-inactive {
+            font: bold 14px/10px "Source Sans Pro", sans-serif;
+            color: color-mix(var(--header-color), black 25%);
+        }
+    }
+
+   
+    
+    .header {
+        
+      
+       
+
+        /* .header-left { */
+        /*     white-space: pre; */
+        /*     float: left; */
+        /*     padding-left: 30px; */
+
+        /*     .header-webBook { */
+        /*        position: absolute; */
+        /*        top: 8px; */
+        /*     } */
+
+        /*     .header-lecture-grade { */
+        /*         font: bold 20px/16px "Source Sans Pro", sans-serif; */
+        /*     } */
+        /*     .header-lecture-name { */
+        /*         font: bold 20px/16px "Source Sans Pro", sans-serif; */
+        /*     } */
+        /* } */
+        
+        .header-lecture-grade {
+            font: bold 24px/20px "Source Sans Pro", sans-serif;
+        }
+
+        /* .header-right { */
+        /*     white-space: pre-line; */
+        /*     float: right; */
+        /*     text-align: right; */
+        /*     padding-right: 30px; */
+        /* } */
+
+        
+    }
+
+    .footer {
+
+        border-top: 1px solid #DCDCDC;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        width: 800 px;
+        background: white;
+        line-height: 2;
+        font: 12px/18px "Source Sans Pro", sans-serif;
+        .footer-left {
+            white-space: pre;
+        }
+        
+    }
+    
+    .section-header {
+        display: flow-root;
+        border-bottom: 1px solid var(--header-color);
+        margin: 20px 0 0 0;
+        padding-bottom: 1px;
+
+        /* Configure the PDF icon */
+        a {
+            color: red;
+            position: absolute;
+            left: 10px;
+            text-align: left;        
+        }
+
+        .number {
+            float: right;
+            font: bold 16px/20px "Source Sans Pro", sans-serif;
+            color: color-mix(color-mix(var(--header-color), brown 40%), black 50%);
+        }
+        
+        .title  {
+            float: left;
+            font: bold 16px/20px "Source Sans Pro", sans-serif;
+            color: color-mix(color-mix(var(--header-color), brown 40%), black 50%);
+        }
+
+        .knowledge {
+
+            font: bold 16px/20px "Source Sans Pro", sans-serif;
+
+        }
+
+      
+
+        
+    }   
+
+ 
+    
+    
+    body {
+        font-size: 15px;
+        line-height: 1.8;
+    }
+
+    .small-caps {
+        font-size: 12px;
+    }
+
+    article {
+        width: 100%;
+    }
+    
+    article h1.part {
+        font-size: 30px;
+        padding: 97px 0 17px 0;
+    }
+
+    /* Control the way chapter number looks on mobile */
+    article .number {
+        top: 30px;
+        font-size: 70px;
+    }
+    article p {
+        margin: 22px 0;
+    }
+    article ol,
+    article ul {
+        margin: 22px 0;
+        padding: 0 0 0 22px;
+    }
+
+    blockquote {
+        margin: 27px 0 28px 0;
+    }
+    blockquote::before,
+    blockquote::after {
+        top: -17px;
+        font-size: 52px;
+    }
+    blockquote p {
+        margin: 0 22px;
+        font-size: 20px;
+        line-height: 33px;
+    }
+
+    footer .next {
+        font-size: 15px;
+    }
+}
+
+
+/* -----------------------------------------------------------------------------
+/* flatweb.css ends here.
+/*
+/*

@@ -1,0 +1,265 @@
+<!DOCTYPE html> 
+<html lang="en">  
+<head><title>An Overview of mciDoc</title> 
+<meta  charset="utf-8" /> 
+<meta name="generator" content="TeX4ht (https://tug.org/tex4ht/)" /> 
+<meta name="viewport" content="width=device-width,initial-scale=1" /> 
+<link rel="stylesheet" type="text/css" href="temp.css" /> 
+<meta name="src" content="temp.tex" /> 
+<script>window.MathJax = { tex: { tags: "ams", }, }; </script> 
+<script type="text/javascript" async="async" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>  
+<title>mcidoc Student Documentation</title> 
+<link href="/pagefind/pagefind-component-ui.css" rel="stylesheet"> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> 
+<script src="/pagefind/pagefind-component-ui.js" type="module"></script> 
+<link rel="stylesheet" type="text/css" href="flatweb.css"> 
+<script type="text/javascript" src="flatweb.js"></script> 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/default.min.css"> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script> 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/base16/solarized-light.min.css"/> 
+<script src="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.js"></script> 
+<link rel="stylesheet" href="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.css"/> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/cpp.min.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/latex.min.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/matlab.min.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/dockerfile.min.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/cmake.min.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/makefile.min.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/markdown.min.js"></script> 
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/> <style> 
+ </style> 
+ <header> 
+ <button class="toc" onclick="toggleTOC()">TOC</button> 
+ <pagefind-modal></pagefind-modal> 
+ </header> 
+</head><body 
+>
+<page> 
+<div class="keyboard-help-menu"><div style="overflow-x:auto"> <table> <thead> <tr> <th>Key</th> <th>Description</th> </tr> </thead> <tbody> <tr> <td><kbd>t</kbd></td> <td>Enable/Disable Table of Contents</td> </tr> <tr> <td><kbd>n</kbd></td> <td>Visit Next Chapter</td> </tr> <tr> <td><kbd>p</kbd></td> <td>Visit Previous Chapter</td> </tr> <tr> <td><kbd>u</kbd></td> <td>Go to Top of Page</td> </tr> <tr> <td><kbd>b</kbd></td> <td>Go to Bottom of Page</td> </tr> <tr> <td><kbd>i</kbd></td> <td>Visit the Introduction Page</td> </tr> </tbody> </table> </div> </div> <nav class="wide"><img class="webbook-logo" src="logo/webbook-logo.svg"></img> <div class="header"> <div class="header-left"><span class="header-lecture-grade">M.Sc and B.Sc</span> 
+<span class="header-lecture-name">mcidoc Student Documentation</span> 
+<span class="header-webBook">WebBook</span> </div> <div class="header-right"> <span class="header-version">2026.SS.1</span> 
+ <span class="header-chapter">Introduction</span></div></div> <div class="toc"><pagefind-modal-trigger></pagefind-modal-trigger><div class="toc-links"><a href="https://github.com/dTmC0945"><i class="fab fa-github" style='font-size:20px'></i></a><a href="https://scholar.google.com/citations?view_op=list_works\&hl=en\&user=lxQGADMAAAAJ"><i class="fa-brands fa-google-scholar" style='font-size:20px'></i></a><a href="https://www.researchgate.net/profile/Daniel-Mcguiness-2"><i class="fa-brands fa-researchgate" style='font-size:20px'></i></a><a href="https://dtmc0945.github.io/Th-MCI-Thesis-Topics/"><i class="fa-solid fa-book" style='font-size:20px'></i></a></div><hr><span class="chapterToc"><span class="number">0</span><span class="title"><a 
+href="index.html#x2-10000">index</a></span></span><span class="chapterToc"><span class="number">1</span><span class="title"><a 
+href="Introduction.html#x3-20001">Introduction</a></span></span><span class="sectionToc"><span class="number">1.1</span><span class="title"><a 
+href="#x4-30001.1">An Overview of mciDoc</a></span></span><span class="subsectionToc"><span class="number">1.1.1</span><span class="title"><a 
+href="#x4-40001.1.1">Purpose of Making</a></span></span><span class="subsectionToc"><span class="number">1.1.2</span><span class="title"><a 
+href="#x4-50001.1.2">Reading
+the Commands and Environments</a></span></span><span class="subsectionToc"><span class="number">1.1.3</span><span class="title"><a 
+href="#x4-60001.1.3">Currently Supported Formats</a></span></span><span class="subsectionToc"><span class="number">1.1.4</span><span class="title"><a 
+href="#x4-70001.1.4">Important
+Notice</a></span></span><span class="chapterToc"><span class="number">2</span><span class="title"><a 
+href="ConfiguringtheDocument.html#x5-80002">Configuring the Document</a></span></span><span class="sectionToc"><span class="number">2.1</span><span class="title"><a 
+href="InterfacingwithSetMCI.html#x6-90002.1">Interfacing with SetMCI</a></span></span><span class="subsectionToc"><span class="number">2.1.1</span><span class="title"><a 
+href="InterfacingwithSetMCI.html#x6-100002.1.1">Notational
+Information</a></span></span><span class="subsectionToc"><span class="number">2.1.2</span><span class="title"><a 
+href="InterfacingwithSetMCI.html#x6-110002.1.2">Global Options</a></span></span><span class="subsectionToc"><span class="number">2.1.3</span><span class="title"><a 
+href="InterfacingwithSetMCI.html#x6-120002.1.3">Thesis Specific Options</a></span></span><span class="subsectionToc"><span class="number">2.1.4</span><span class="title"><a 
+href="InterfacingwithSetMCI.html#x6-130002.1.4">Custom Environments
+and Commands</a></span></span><span class="subsectionToc"><span class="number">2.1.5</span><span class="title"><a 
+href="InterfacingwithSetMCI.html#x6-140002.1.5">Supervisor</a></span></span><span class="subsectionToc"><span class="number">2.1.6</span><span class="title"><a 
+href="InterfacingwithSetMCI.html#x6-150002.1.6">Reviewer</a></span></span><span class="subsectionToc"><span class="number">2.1.7</span><span class="title"><a 
+href="InterfacingwithSetMCI.html#x6-160002.1.7">Table of Contents</a></span></span>
+<div class="lecture-materials"><div class="lecture-materials-title"><span class="material-title">Lecture Materials</span></div><div class="lecture-materials-body"><br><span class="lecture-book">LectureBook</span> <br><span class="tutorial-book">TutorialBook</span> <br><span class="laboratory-book">LaboratoryBook</span> <br><span class="lecture-slide">LectureSlide</span> <br><span class="lecture-handout">LectureHandout</span> <br><span class="assignments">Assignments</span> <br><span class="exams">Exams</span> </div> </div><div class="nav-footer"><div class="nav-footer-left"><span class="nav-footer-lecture">Daniel McGuiness</span> 
+<span class="nav-footer-webBook"><span id="bold" style="font-weight:bold;">Last Updated:</span> 1.7.2026, at 11:35.</span></div></div><span class="nav-comments">The website you are viewing is auto-generated using ParSnip and therefore subject to slight errors in typography and formatting. When in doubt, please consult the LectureBook. </span></div></div></nav> 
+
+<article class="chapter"> 
+<nav class="crosslinks-top"> <span class="nav-inactive"><span class="nav-next">NEXT</span></span> <span class="nav-inactive"><span class="nav-prev">PREV</span></span> <span class="nav-inactive"><span class="nav-prev-tail">PREV-TAIL</span></span> <a 
+href="#tailAnOverviewofmciDoc.html"><span class="nav-tail">TAIL</span></a><a 
+href="Introduction.html#AnOverviewofmciDoc.html" ><span class="nav-up">UP</span></a></nav> 
+<div class="section-header"><h3><a class="pdf-icon" href="temp.pdf#section.1.1"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-file-pdf" viewBox="0 0 16 16"><path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"></path><path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z"></path></svg></a><span class="number">1.1</span> <span class="title">  <a 
+ id="x4-30001.1"></a>An Overview of mciDoc</span></h3></div><p>
+<!--l. 49--><p class="noindent" ><code class="verb"><span 
+class="ec-lmtt-10">mcidoc</span></code> is a LaTeX document class designed to provide students studying at <span id="bold" style="font-weight:bold;">MCI Mechatonics</span> with
+all their documentation needs, whether it is to write a simple report or to write a their graduation
+thesis whether it is a single or a double degree.
+</p><!--l. 54--><p class="noindent" >As it stands the following document types are supported and are implemented for both <span id="bold" style="font-weight:bold;">english</span> and
+                                                                                
+                                                                                
+<span id="bold" style="font-weight:bold;">german.</span>
+</p>     
+<ul class="itemize1">
+<li class="itemize">     
+<!--l. 58--><p class="noindent" >Thesis
+</p>     
+</li>
+<li class="itemize">     
+<!--l. 59--><p class="noindent" >Report
+</p>     
+</li>
+<li class="itemize">     
+<!--l. 60--><p class="noindent" >Paper (WIP)
+</p>     
+</li>
+<li class="itemize">     
+<!--l. 61--><p class="noindent" >Notes (WIP)
+</p>     
+</li>
+<li class="itemize">     
+<!--l. 62--><p class="noindent" >Slide (WIP)
+</p>     
+</li>
+<li class="itemize">     
+<!--l. 63--><p class="noindent" >Poster (WIP)</p></li></ul>
+<!--l. 66--><p class="noindent" >All these aforementioned sub-classess will be explained in the following sections.
+</p>
+<!--l. 68--><p class="noindent" ><div class="subsection-header"><h4><a class="pdf-icon" href="temp.pdf#subsection.1.1.1"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-file-pdf" viewBox="0 0 16 16"><path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"></path><path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z"></path></svg></a><span class="number">1.1.1</span> <span class="title">  <a 
+ id="x4-40001.1.1"></a>Purpose of Making</span></h4></div><p>
+</p><!--l. 71--><p class="noindent" >There are three (3) reasons for the creation of this class.
+</p><!--l. 73--><p class="noindent" >The first, is to standardise and streamline document creation which abides to the standards set by the
+MCI with regards to:
+</p>     
+<ul class="itemize1">
+<li class="itemize">     
+<!--l. 77--><p class="noindent" >Font-size, figure captions, bibliography, …
+</p>     
+</li>
+<li class="itemize">     
+<!--l. 78--><p class="noindent" >Margin spacing, header and footer spacing, text information, …
+                                                                                
+                                                                                
+     
+</p>
+</li>     
+<li class="itemize">
+<!--l. 79--><p class="noindent" >Spacing between lines, linebreak settings, spacing of headers, …
+</p>     
+</li>
+<li class="itemize">     
+<!--l. 80--><p class="noindent" >Language determined grammatical rules (when to hypenate and caption text and proper
+quoatation marks)
+</p>     
+</li>
+<li class="itemize">     
+<!--l. 82--><p class="noindent" >Simple error-correction codes to minimise wrong entering of values,</p></li></ul>
+<!--l. 85--><p class="noindent" >and so on so forth.
+</p><!--l. 87--><p class="noindent" >Its second purpose is to create a repository to house a <span id="bold" style="font-weight:bold;">standardised</span> class to minimise any friction
+between the work of the student and the representation of the content.
+</p><!--l. 91--><p class="noindent" ><div class="quote"><p> Care was given to how the class behaves to minimise its interaction with other packages the end-user
+might need for their work. The class only patches certain commands but never redefines them.
+</p></p></div><p>
+<!--l. 97--><p class="noindent" >As a sidenote, <code class="verb"><span 
+class="ec-lmtt-10">mcidoc</span></code> was also designed with customisation in mind by configuring its settings through
+the options presented in the <code class="verb"><span 
+class="ec-lmtt-10">\documentclass</span></code> and using the macro <code class="verb"><span 
+class="ec-lmtt-10">\SetMCI{}</span></code> which all its features are
+explained in this documentation.
+</p><!--l. 102--><p class="noindent" >The last purpose is perhaps more in line of streamlining. While LaTeX is an excellent typesetting
+language with is very powerful capabilities, it is nevertheless a language with its quirks and customs
+that may not prove to be very useful outside of its own domain and therefore the user should not be
+worried of these quirks.
+</p><!--l. 108--><p class="noindent" >The user should only be responsible of the content they create. The form of the documentation, and
+how the content is presented is taken care of the class designer.
+</p>
+<!--l. 111--><p class="noindent" ><div class="subsection-header"><h4><a class="pdf-icon" href="temp.pdf#subsection.1.1.2"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-file-pdf" viewBox="0 0 16 16"><path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"></path><path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z"></path></svg></a><span class="number">1.1.2</span> <span class="title">  <a 
+ id="x4-50001.1.2"></a>Reading the Commands and Environments</span></h4></div><p>
+</p><!--l. 114--><p class="noindent" >Throughout the document you will see code explanations as given below. Please read these
+options to get a better understanding of how the custom commands and environments are
+operated.
+</p>
+<div class="doc-block"> <div class="command-header"><span class="command-type"><span id="bold" style="font-weight:bold;">command</span></span><span class="command-name"><code class="verb">SetMCI</code></span><span class="command-args"><code class="verb">marg key=val</code></span><span class="command-doc"><span class="inactive-manual">Manual</span></span></div><div class="body"><p> Allows global configuration of the document. Takes various <code class="verb"><span 
+class="ec-lmtt-10">key=val</span></code>
+options based on the documentclass state and other sub configurations. Here the <code class="verb"><span 
+class="ec-lmtt-10">key</span></code> is the configuation
+option, and <code class="verb"><span 
+class="ec-lmtt-10">val</span></code> is the value it takes.
+This command <span id="bold" style="font-weight:bold;">must</span> be invoked <span id="bold" style="font-weight:bold;">after</span> the <code class="verb"><span 
+class="ec-lmtt-10">documentclass</span></code> but before <code class="verb"><span 
+class="ec-lmtt-10">\begin{document}</span></code>. </p></div>
+</div><p class="noindent">
+<!--l. 129--><p class="noindent" >For example, in the above the <span 
+class="ec-lmri-10">Command </span>specifies that it is a LaTeX macro (i.e., <code class="verb"><span 
+class="ec-lmtt-10">\SetMCI</span></code>) and that it
+takes a single <span id="bold" style="font-weight:bold;">mandatory argument</span> (<span 
+class="ec-lmri-10">marg</span>) with the value of <code class="verb"><span 
+class="ec-lmtt-10">key=val</span></code>. Below this command
+description is a detailed information about the command and relevant information.
+                                                                                
+                                                                                
+</p>
+<!--l. 133--><p class="noindent" ><div class="subsection-header"><h4><a class="pdf-icon" href="temp.pdf#subsection.1.1.3"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-file-pdf" viewBox="0 0 16 16"><path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"></path><path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z"></path></svg></a><span class="number">1.1.3</span> <span class="title">  <a 
+ id="x4-60001.1.3"></a>Currently Supported Formats</span></h4></div><p>
+</p><!--l. 136--><p class="noindent" >As mentioned previously the following <code class="verb"><span 
+class="ec-lmtt-10">state</span></code>’s are supported
+</p>     
+<ul class="itemize1">
+<li class="itemize">     
+<!--l. 139--><p class="noindent" ><span id="bold" style="font-weight:bold;">Thesis:</span> The primary way the thesis is written. Supports different options depending on
+the grade of the language requirements.
+</p>     
+<!--l. 142--><p class="noindent" >To enable it, please write:
+</p>     
+<pre><code class="language-latex">
+<pre class="fancyvrb" id="fancyvrb1"><a 
+ id="x4-6002r1"></a><span 
+class="ec-lmtt-10">\documentclass[state=Thesis]{...}</span></pre>
+</code></pre><p>     
+<!--l. 148--><p class="noindent" >where <code class="verb"><span 
+class="ec-lmtt-10">...</span></code> described the path to the <code class="verb"><span 
+class="ec-lmtt-10">mcidoc.cls</span></code>.
+</p>     
+</li>
+<li class="itemize">     
+<!--l. 150--><p class="noindent" ><span id="bold" style="font-weight:bold;">Report:</span> Used in creating reports for lectures and lab sessions. Examples include writing
+assignments, or lab reports.
+</p>     
+<!--l. 153--><p class="noindent" >To enable it, please write:
+</p>     
+<pre><code class="language-latex">
+<pre class="fancyvrb" id="fancyvrb2"><a 
+ id="x4-6004r1"></a><span 
+class="ec-lmtt-10">\documentclass[state=Report]{...}</span></pre>
+</code></pre><p>     
+<!--l. 159--><p class="noindent" >where <code class="verb"><span 
+class="ec-lmtt-10">...</span></code> described the path to the <code class="verb"><span 
+class="ec-lmtt-10">mcidoc.cls</span></code>.</p></li></ul>
+<!--l. 162--><p class="noindent" >All the aforementioned documents are bundled up as a class called <code class="verb"><span 
+class="ec-lmtt-10">mcidoc</span></code>.
+</p>
+<div class="knowledge">
+<!--l. 169--><p class="noindent" >This class has been tested on different computers running Windows and macOS with the complile being
+LuaTeX. However, as with everything, there will always be edge cases and I am sure to that end, if you
+encounter any error please create an issue in <a 
+href="https://github.com/dTmC0945/C-MCI-LaTeX-Class-mcidoc/tree/main" >Github Repo</a>.
+</p>
+</div><p class="noindent">
+<!--l. 171--><p class="noindent" ><div class="info-block"> <span class="info-upper"> <span class="info-header"><span id="bold" style="font-weight:bold;">Information: </span></span><span class="info-title">TeXnician’s Note</span> </span> <div class="body"><p>  This class is designed with LuaTeX in mind as it requires the use
+of the LaTeX3 Kernel which comes precompiled with the engine. If one so wishes, they can force the
+use of <code class="verb"><span 
+class="ec-lmtt-10">pdftex</span></code> to compile the document but additional packages would then be required for the
+compilation process.  </p></div></div><p class="noindent">
+                                                                                
+                                                                                
+</p>
+<!--l. 177--><p class="noindent" ><div class="subsection-header"><h4><a class="pdf-icon" href="temp.pdf#subsection.1.1.4"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-file-pdf" viewBox="0 0 16 16"><path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"></path><path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z"></path></svg></a><span class="number">1.1.4</span> <span class="title">  <a 
+ id="x4-70001.1.4"></a>Important Notice</span></h4></div><p>
+</p><!--l. 180--><p class="noindent" >While I will try to help with any problem this class might have, it is by no means I am providing any
+kind of <span id="bold" style="font-weight:bold;">WARRANTY</span> or <span id="bold" style="font-weight:bold;">TECHNICAL SUPPORT</span>. There will be documentation and some
+example documents which should compile without any additional configuration. Nevertheless, I can
+only help with the errors from code and not with your personal LaTeX development environment (i.e.,
+TeXStudio).
+</p><!--l. 186--><p class="noindent" >As a final note and a required assumption is that the end user is assumed to have a working knowledge
+of computers and related computing concepts and finally as a reminder no emails about the <code class="verb"><span 
+class="ec-lmtt-10">mcidoc</span></code>
+class and its implementation will be answered and the only communication between the end user will
+be done through the <code class="verb"><span 
+class="ec-lmtt-10">mcidoc</span></code> Github issues.
+</p>
+<div class="doc-block"> <div class="command-header"><span class="command-type"><span id="bold" style="font-weight:bold;">command</span></span><span class="command-name"><code class="verb">documentclass</code></span><span class="command-args"><code class="verb">(marg state)</code></span><span class="command-doc"><span class="inactive-manual">Manual</span></span></div><div class="body"><p> A configuration option to change the overall behaviour of
+<code class="verb"><span 
+class="ec-lmtt-10">mcidoc</span></code> class. This value can take different options based on which formats are supported, which are
+shown at the beginning of this section.
+The behaviour of the documentclass can be changed by setting <code class="verb"><span 
+class="ec-lmtt-10">state=val</span></code> of the optional argument of
+the <code class="verb"><span 
+class="ec-lmtt-10">mcidoc</span></code> documentclass. </p></div> </div><p class="noindent">
+                                                                                
+                                                                                
+<div class="crosslinks-bottom"><span class="nav-inactive"><span class="nav-next">NEXT</span></span> <span class="nav-inactive"><span class="nav-prev">PREV</span></span> <span class="nav-inactive"><span class="nav-prev-tail">PREV-TAIL</span></span> <a 
+href="AnOverviewofmciDoc.html" ><span class="nav-front">FRONT</span></a><a 
+href="Introduction.html#AnOverviewofmciDoc.html" ><span class="nav-up">UP</span></a></nav><a 
+ id="tailAnOverviewofmciDoc.html"></a>  </div> <div class="footer"> <div class="footer-left"><span class="footer-lecture">Daniel McGuiness</span> 
+<span class="footer-webBook"><span id="bold" style="font-weight:bold;">Last Updated:</span> 1.7.2026, at 11:35.</span> </div> </div> </div> <div class="author-notes"><span class="note">Authors Note </span><span class="text">The website you are
+viewing is auto-generated using ParSnip and therefore subject to slight errors in typography and
+formatting. When in doubt, please consult the LectureBook. </span></div>  
+</body> 
+</html>
