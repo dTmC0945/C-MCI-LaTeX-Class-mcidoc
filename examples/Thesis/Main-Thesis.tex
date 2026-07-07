@@ -1,6 +1,6 @@
 %  
 % #INFO: An example of writing Thesis with LaTeX using `mcidoc'
-%
+% 
 % Copyright (C) 2023-2026 -DTMc
 %
 % COPYRIGHT NOTICE:
@@ -14,11 +14,13 @@
 % This file is part of `mcidoc' and all files in that bundle must be distributed together.
 % 
 % ---------------------------------------------------------------------------------------------
-%    
+%
+% #+VERSION: 2026.SS.2
+%
 \documentclass[state=Thesis]{mcidoc}  
 %
 % DOCUMENT CONFIGURATION ----------------------------------------------------------------------
-%  
+%   
 % As stated in the `mcidoc' documentation, `\SetMCI' is the primary way in which the document
 % is changed into a form that is usable to the user. For more information about which options
 % are available for configuration, please visit the documentation at
@@ -28,11 +30,11 @@
 \SetMCI{%
   %--
   StudentName    = {%
-    Prefix       = { Prof. },
-    Name         = { Colin Stevens },  
-    Postfix      = { Esq. }, 
+    Prefix       = {Prof.},
+    Name         = {Colin Stevens},  
+    Postfix      = {Esq.}, 
   },%
-  %
+  %       
   StudentID      = {2314808},
   Degree         = {MSc},   
   Language       = DE,   
@@ -76,6 +78,8 @@ backend = bibtex,
 style   = ieee, 
 ]{biblatex}
 
+
+ 
 % Here we add our file where we store our references.
 \bibliography{\Thesis@Bibliography@Location} 
 \makeatother      
@@ -134,7 +138,7 @@ style   = ieee,
 \end{Acknowledgments}
  
 \begin{document} % ############################################################################
-
+       
 % NOTE ----------------------------------------------------------------------------------------
 % Your primary thesis content should go here and should follow structure befitting of a
 % scientific report and should be written in a scientific format.
@@ -148,7 +152,19 @@ style   = ieee,
 % NOTE ----------------------------------------------------------------------------------------
 % Add as many chapters as you see fit for your content. For easy legibility and dynamic
 % adjustment of content try to write a `file per chapter' such as the example shown above.
-% ----------------------------- ---------------------------------------------------------------
+% ---------------------------------------------------------------------------------------------
+
+\appendix
+\pagenumbering{Roman}%
+\clearpairofpagestyles%
+\addtokomafont{headsepline}{\color{white}}
+\addtokomafont{footsepline}{\color{white}}
+\cfoot*{\pagemark}%
+\setcounter{page}{\value{savedpage}}
+ 
+% Include Chapter - introduction  
+\include{chapter/appendix.tex}
+ 
 
 \end{document} % ##############################################################################
 %    

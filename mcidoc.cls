@@ -393,7 +393,7 @@
 				\rule{5cm}{0.2pt}\hfill\rule{5cm}{0.2pt}\\
 				\noindent\parbox{5cm}{\centering{\Thesis@Location,\ \Thesis@Date}}
 				\hfill%
-				\parbox{5cm}{\centering{​Signature}}
+				\parbox{5cm}{\centering{Signature}}
 
 			}{%
 				\section*{Eidesstattliche Erklärung}
@@ -418,7 +418,7 @@
 				\rule{5cm}{0.2pt}\hfill\rule{5cm}{0.2pt}\\
 				\noindent\parbox{5cm}{\centering{\Thesis@Location,\ \Thesis@Date}}%
 				\hfill%
-				\parbox{5cm}{\centering{​Unterschrift}}
+				\parbox{5cm}{\centering{Unterschrift}}
 
 			}
 			\cleardoublepage%
@@ -462,7 +462,7 @@
 				\noindent\rule{5cm}{1pt}\hfill\rule{5cm}{1pt}\\
 				\noindent\parbox{5cm}{\centering{\Thesis@Location,\ \Thesis@Date}}
 				\hspace*{\fill}%
-				\parbox{5cm}{\centering{​Unterschrift}}
+				\parbox{5cm}{\centering{Unterschrift}}
 			}%
 			\cleardoublepage%
 		}%
@@ -530,7 +530,7 @@
 						\begin{abstract}
 							\input{aux-\jobname-abstract-\jj.abs}
 						\end{abstract}
-					\end{otherlanguage}
+                      \end{otherlanguage}
 				}%
 		}{}
 	}%
@@ -562,7 +562,8 @@
 		}{}
 	}%
 	% 
-	% 
+	\newcounter{savedpage}
+    % Here we save the page number so in the appendix the CAPITAL Roman can continue.
 	% 
 	\NewDocumentCommand{\Th@Preamble}{O{}}{
       % -- A collection command to print all necessary preamble.
@@ -573,17 +574,27 @@
         {DE}{\selectlanguage{ngerman}}
         {EN}{\selectlanguage{english}}
       }[]%
-      %
-      \MakeTitlePage%
-      \Th@ThesisEmbargoRequest[#1]
-      \Th@DeclarationOfNovelty
-      \ifacknowledgments%
-        \Th@Acknowledgments
-      \fi%
-      \Th@Abstracts
-      \TableOfContents
-      \pagenumbering{arabic}
-      \pagestyle{scrheadings}
+      % 
+      {%
+        % % Here we add Roman page numbering as required by the standard and make sure
+        % % it is CAPITALIZED.
+        % \pagenumbering{Roman}%
+        % \clearpairofpagestyles%
+        % \cfoot*{\pagemark}%
+        %
+        \MakeTitlePage%
+        \Th@ThesisEmbargoRequest[#1]
+        \Th@DeclarationOfNovelty
+        \ifacknowledgments%
+          \Th@Acknowledgments
+        \fi%
+        \Th@Abstracts
+        \TableOfContents
+      }
+      % \setcounter{savedpage}{\value{page}}
+      % % Once `frontmatter' has been finished, switch to standard numbering
+      % \pagenumbering{arabic}
+      % \pagestyle{scrheadings}
 	}
 	% 
 	% 
@@ -812,8 +823,8 @@
 
 	\clearpairofpagestyles%
 
-	\ihead{\leftmark}
-	\ohead{\rightmark}
+    \ihead{\truncate{0.35 \textwidth}{\leftmark}}
+    \ohead{\truncate{0.60 \textwidth}{\rightmark}}
 	\ofoot{\thepage}
 	\ifoot{%
 		\ifthenelse{\equal{\Student@Prefix}{unset}}{}{\Student@Prefix}
